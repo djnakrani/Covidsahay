@@ -1004,7 +1004,7 @@ video {
 
 .google-maps {
     position: relative;
-    padding-bottom: 30%; // This is the aspect ratio
+    padding-bottom: 30%;
     height: 0;
     overflow: hidden;
 }
