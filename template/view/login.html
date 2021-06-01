@@ -1,0 +1,69 @@
+{% load static %}
+{% get_static_prefix as STATFILE %}
+<!DOCTYPE HTML>
+<html class="no-js" lang="de">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="robots" content="index,follow">
+
+<title>Covid Sahay | Login</title>
+
+<link href="{{STATFILE}}css/font-awesome.min.css" rel="stylesheet">
+<link href="{{STATFILE}}css/animate.css" rel="stylesheet">
+<link href="{{STATFILE}}css/bootsnav.css" rel="stylesheet">
+<link href="{{STATFILE}}css/bootstrap.css" rel="stylesheet">
+<link href="{{STATFILE}}css/style.css" rel="stylesheet">
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'> 
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">  
+</head>
+<body>
+
+<section id="about-sec">
+<div class="container">
+<div class="row text-center">
+<h2 style="margin-top:0;">Login</h2>
+<div class="con-form clearfix">
+<div class="col-md-12">
+<input type="text" name="name" value="" size="40" class="" aria-required="true" aria-invalid="false" placeholder="Mobile Number">
+</div>
+<div class="col-md-12">
+<input type="text" name="name" value="" size="40" class="" aria-required="true" aria-invalid="false" placeholder="Password">
+</div>
+<div class="col-xs-12 submit-button">
+<input type="submit" value="Login" class="btn2" id="sub" style="border:none; margin: 30px 0 0 0">
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="callout">
+<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<h2>Change Their World And Change Yours. This changes everything.</h2>
+			</div>
+			<div class="col-md-6">
+				<div class="callout-actions">
+					<a href="{% url 'request' %}" class="button">Request Now</a>
+					<span class="callout-separator">
+						<span>Or</span>
+					</span>
+					<a href="{% url 'activities' %}" class="button">Donate Now</a>
+				</div>
+			</div>
+		</div>
+</div>
+</div>
+<script type="text/javascript" src="{{STATFILE}}js/jquery.min.js"></script>
+<script src="{{STATFILE}}js/bootstrap.js"></script>
+<script src="{{STATFILE}}js/bootsnav.js"></script>
+<script src="{{STATFILE}}js/banner.js"></script>
+<script src="{{STATFILE}}js/script.js"></script>
+</body>
+</html>
