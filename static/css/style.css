@@ -724,14 +724,6 @@ video {
     height: 1px;
     background: #fff;
 }
-.callout .callout-separator:before, .callout .callout-separator:after {
-    content: '';
-    display: inline-block;
-    vertical-align: middle;
-    width: 28px;
-    height: 1px;
-    background: #fff;
-}
 
 .footer .footer-body {
     padding: 40px 0;
@@ -1136,7 +1128,9 @@ h1 {
 .callout .callout-actions .button{
 	min-width: 176px;
 }
-
+.callout .callout-actions .button:hover{
+	min-width: 176px;
+}
 #inner-banner .overlay {
     padding: 140px 0 60px 0;
 }
