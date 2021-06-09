@@ -59,7 +59,6 @@
 <li><a href="{% url 'index' %}">Home</a></li>
 <li><a href="{% url 'about-us' %}">About Us</a></li>
 <li><a href="{% url 'activities' %}">Activities</a></li>
-<!--<li><a href="{% url 'projects' %}">Projects</a></li>-->
 <li><a href="{% url 'gallery' %}">Gallery</a></li>
 <li><a href="{% url 'contact-us' %}">Contact Us</a></li>
 </ul>
@@ -249,64 +248,15 @@
 <hr>
 <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h5>
 <ul class="clearfix">
-
-<li>
-<a href="{{STATFILE}}images/gallery1.jpg" class="swipebox" title="My Caption">
-<div class="image"><img src="{{STATFILE}}images/gallery1.jpg">
-<div class="overlay"><i class="fa fa-search-plus"></i></div>
-</div></a>
-</li>
-<li>
-<a href="{{STATFILE}}images/gallery2.jpg" class="swipebox" title="My Caption">
-<div class="image"><img src="{{STATFILE}}images/gallery2.jpg">
-<div class="overlay"><i class="fa fa-search-plus"></i></div>
-</div>
-</a>
-</li>
-
-<li>
-<a href="{{STATFILE}}images/gallery3.jpg" class="swipebox" title="My Caption">
-<div class="image"><img src="{{STATFILE}}images/gallery3.jpg">
-<div class="overlay"><i class="fa fa-search-plus"></i></div>
-</div>
-</a>
-</li>
-
-<li>
-<a href="{{STATFILE}}images/gallery4.jpg" class="swipebox" title="My Caption">
-<div class="image"><img src="{{STATFILE}}images/gallery4.jpg">
-<div class="overlay"><i class="fa fa-search-plus"></i></div>
-</div>
-</a>
-</li>
-<li>
-<a href="{{STATFILE}}images/gallery5.jpg" class="swipebox" title="My Caption">
-<div class="image"><img src="{{STATFILE}}images/gallery5.jpg">
-<div class="overlay"><i class="fa fa-search-plus"></i></div>
-</div>
-</a>
-</li>
-<li>
-<a href="{{STATFILE}}images/gallery6.jpg" class="swipebox" title="My Caption">
-<div class="image"><img src="{{STATFILE}}images/gallery6.jpg">
-<div class="overlay"><i class="fa fa-search-plus"></i></div>
-</div>
-</a>
-</li>
-<li>
-<a href="{{STATFILE}}images/gallery7.jpg" class="swipebox" title="My Caption">
-<div class="image"><img src="{{STATFILE}}images/gallery7.jpg">
-<div class="overlay"><i class="fa fa-search-plus"></i></div>
-</div>
-</a>
-</li>
-<li>
-<a href="{{STATFILE}}images/gallery8.jpg" class="swipebox" title="My Caption">
-<div class="image"><img src="{{STATFILE}}images/gallery8.jpg">
-<div class="overlay"><i class="fa fa-search-plus"></i></div>
-</div>
-</a>
-</li>
+	{% for name in img %}
+	<li>
+	<a href="{{STATFILE}}images/{{ name }}.jpg" class="swipebox" title="My Caption">
+	<div class="image"><img src="{{STATFILE}}images/{{ name }}.jpg">
+	<div class="overlay"><i class="fa fa-search-plus"></i></div>
+	</div>
+	</a>
+	</li>
+	{% endfor %}
 </ul>
 <div class="text-center">
 <a href="{% url 'gallery' %}" class="btn1">View More</a>

@@ -65,116 +65,15 @@
 <div class="container">
 <div class="row text-center">
 <ul class="clearfix">
+{% for name in img %}
 <li>
-<a href="images/gallery1.jpg" class="swipebox" title="My Caption">
-<div class="image"><img src="{{STATFILE}}images/gallery1.jpg">
-<div class="overlay"><i class="fa fa-search-plus"></i></div>
-</div></a>
-</li>
-<li>
-<a href="images/gallery2.jpg" class="swipebox" title="My Caption">
-<div class="image"><img src="{{STATFILE}}images/gallery2.jpg">
+<a href="{{STATFILE}}images/{{ name }}.jpg" class="swipebox" title="My Caption">
+<div class="image"><img src="{{STATFILE}}images/{{ name }}.jpg">
 <div class="overlay"><i class="fa fa-search-plus"></i></div>
 </div>
 </a>
 </li>
-<li>
-<a href="images/gallery3.jpg" class="swipebox" title="My Caption">
-<div class="image"><img src="{{STATFILE}}images/gallery3.jpg">
-<div class="overlay"><i class="fa fa-search-plus"></i></div>
-</div>
-</a>
-</li>
-<li>
-<a href="images/gallery4.jpg" class="swipebox" title="My Caption">
-<div class="image"><img src="{{STATFILE}}images/gallery4.jpg">
-<div class="overlay"><i class="fa fa-search-plus"></i></div>
-</div>
-</a>
-</li>
-<li>
-<a href="images/gallery5.jpg" class="swipebox" title="My Caption">
-<div class="image"><img src="{{STATFILE}}images/gallery5.jpg">
-<div class="overlay"><i class="fa fa-search-plus"></i></div>
-</div>
-</a>
-</li>
-<li>
-<a href="images/gallery6.jpg" class="swipebox" title="My Caption">
-<div class="image"><img src="{{STATFILE}}images/gallery6.jpg">
-<div class="overlay"><i class="fa fa-search-plus"></i></div>
-</div>
-</a>
-</li>
-<li>
-<a href="images/gallery7.jpg" class="swipebox" title="My Caption">
-<div class="image"><img src="{{STATFILE}}images/gallery7.jpg">
-<div class="overlay"><i class="fa fa-search-plus"></i></div>
-</div>
-</a>
-</li>
-<li>
-<a href="images/gallery8.jpg" class="swipebox" title="My Caption">
-<div class="image"><img src="{{STATFILE}}images/gallery8.jpg">
-<div class="overlay"><i class="fa fa-search-plus"></i></div>
-</div>
-</a>
-</li>
-<li>
-<a href="images/gallery1.jpg" class="swipebox" title="My Caption">
-<div class="image"><img src="{{STATFILE}}images/gallery1.jpg">
-<div class="overlay"><i class="fa fa-search-plus"></i></div>
-</div></a>
-</li>
-<li>
-<a href="images/gallery2.jpg" class="swipebox" title="My Caption">
-<div class="image"><img src="{{STATFILE}}images/gallery2.jpg">
-<div class="overlay"><i class="fa fa-search-plus"></i></div>
-</div>
-</a>
-</li>
-<li>
-<a href="images/gallery3.jpg" class="swipebox" title="My Caption">
-<div class="image"><img src="{{STATFILE}}images/gallery3.jpg">
-<div class="overlay"><i class="fa fa-search-plus"></i></div>
-</div>
-</a>
-</li>
-<li>
-<a href="images/gallery4.jpg" class="swipebox" title="My Caption">
-<div class="image"><img src="{{STATFILE}}images/gallery4.jpg">
-<div class="overlay"><i class="fa fa-search-plus"></i></div>
-</div>
-</a>
-</li>
-<li>
-<a href="images/gallery5.jpg" class="swipebox" title="My Caption">
-<div class="image"><img src="{{STATFILE}}images/gallery5.jpg">
-<div class="overlay"><i class="fa fa-search-plus"></i></div>
-</div>
-</a>
-</li>
-<li>
-<a href="images/gallery6.jpg" class="swipebox" title="My Caption">
-<div class="image"><img src="{{STATFILE}}images/gallery6.jpg">
-<div class="overlay"><i class="fa fa-search-plus"></i></div>
-</div>
-</a>
-</li>
-<li>
-<a href="images/gallery7.jpg" class="swipebox" title="My Caption">
-<div class="image"><img src="{{STATFILE}}images/gallery7.jpg">
-<div class="overlay"><i class="fa fa-search-plus"></i></div>
-</div>
-</a>
-</li>
-<li>
-<a href="images/gallery8.jpg" class="swipebox" title="My Caption">
-<div class="image"><img src="{{STATFILE}}images/gallery8.jpg">
-<div class="overlay"><i class="fa fa-search-plus"></i></div>
-</div>
-</a>
-</li>
+{% endfor %}
 </ul>
 </div>
 </div>
