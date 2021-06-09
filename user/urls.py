@@ -2,14 +2,12 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('',views.django_index,name='index'),
-    path('Login/',views.django_login,name='login'),
-    path('Register/',views.django_register,name='register'),
-    path('About_Us/',views.django_about,name='about-us'),
-    path('Activities/',views.django_activities,name='activities'),
-    path('Projects/',views.django_projects,name='projects'),
-    path('Gallery/',views.django_gallery,name='gallery'),
-    path('Contact_us/',views.django_contact,name='contact-us'),
-    path('Request/', views.django_request, name='request'),
-    
+    path('', views.django_index, name='index'),
+    path('login/', views.django_login, name='login'),
+    path('register/', views.django_register, name='register'),
+    path('about_Us/', views.django_about, name='about-us'),
+    path('activities/', views.django_activities, name='activities'),
+    path('gallery/', views.django_gallery, name='gallery'),
+    path('contact_us/', views.django_contact, name='contact-us'),
+    path('request/', views.django_request, name='request'),
 ]

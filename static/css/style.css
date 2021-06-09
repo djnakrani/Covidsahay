@@ -904,17 +904,18 @@ video {
     letter-spacing: -5px;
 }
 
-.act-box {
+/*.act-box {
     border: 1px solid #ccc;
-}
+}*/
 .act-box .image{
-	margin:0 -15px;
+	margin: 3px;
+	border: 1px solid #ccc;
 }
 .act-box .image img {
 	width:100%;
 }
 .act-box .act-pad{
-	padding:40px 50px 50px 50px;
+	padding: 20px;
 }
 .act-box h4 {
     border-bottom: 2px dashed #d5d4d4;
@@ -942,7 +943,7 @@ video {
     padding: 9px 20px;
     font-weight: 600;
     text-transform: uppercase;
-	float:right;
+	float: center;
 	margin: 10px 0 0 0 !important;
 }
 .act-box .btn1:hover {
