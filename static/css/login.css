@@ -17,7 +17,17 @@ body{
    background: #b3494e;
    color: white;
 }
-
+.btn-home{
+   font-size: 16px;
+   background:#2f2f77 ;
+   text-transform: uppercase;
+   color: #fff;
+   padding: 10px;
+}
+.btn-home:hover{
+   background:#fff ;
+   color: #2f2f77;
+}
 .form-control{
    padding: 25px;
    font-size: 17px;
@@ -27,65 +37,59 @@ body{
 .btn-success
 {
    transition: 0.5s;
+   border: none;
 }
 
-   .btn-success:hover, .btn-success:focus
-   {
-      background: white;
-      border-color: #5cb85c;
-      color: black;
-      transition: all 0.4s;
-   }
-
-   .btn-warning
-   {
-      transition: 0.5s;
-   }
-
-   .btn-warning:hover, .btn-warning:focus
-   {
-      background: white;
-      color: black;
-      border-color: 2f2f77;
-   }
-
-   .panel.with-nav-tabs .nav-tabs
-   {
-      border-bottom: none; 
-   }
-   .panel.with-nav-tabs .nav-justified
-   {
-      margin-bottom: -4px;
-   }
-
-   .panel
-   {
-      margin: 7%;
-   }
-
-   .modal-header
-   {
-      background: #fff;
-      color: #FF3838;
-      text-align: center;
-   }
-
-   .input-group-addon
-   {
-      background-color: #b3494e;
-      color: white;
-      padding: 17px;
-   }
-
-   .iga1
-   {
-      background-color: #2f2f77;
-      color: white;
-   }
-
-   .iga2
-   {
-      background-color: #b3494e;
-      color: white;
-   }
-
+.btn-success:hover, .btn-success:focus
+{
+   background: white;
+   border:2px solid #b3494e;
+   color: black;
+   transition: all 0.4s;
+}
+.btn-info
+{
+   transition: 0.5s;
+   background: #2f2f77;
+   border: none;
+}
+.btn-info:hover
+{
+   background: white;
+   color: black;
+   border: 3px solid #2f2f77;
+}
+.panel.with-nav-tabs .nav-tabs
+{
+   border-bottom: none; 
+}
+.panel.with-nav-tabs .nav-justified
+{
+   margin-bottom: -4px;
+}
+.panel
+{
+   margin: 7%;
+}
+.modal-header
+{
+   background: #fff;
+   color: #FF3838;
+   text-align: center;
+}
+.input-group-addon
+{
+   background-color: #b3494e;
+   color: white;
+   padding: 17px;
+}
+.iga1
+{
+   background-color: #2f2f77;
+   color: white;
+}
+.iga2
+{
+   background-color: #b3494e;
+   color: white;
+}
