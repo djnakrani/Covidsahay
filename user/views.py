@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from .models import Contact
 # Create your views here.
 def django_login(request):
      return render(request,'view/login.html')
@@ -29,6 +29,18 @@ def django_gallery(request):
      return render(request, 'view/gallery.html', context)
 
 def django_contact(request):
+     if request.method == 'POST':
+         name = request.POST['name']
+         email = request.POST['email']
+         subject = request.POST['subject']
+         message = request.POST['message']
+         objContact = Contact()
+         objContact.name = name
+         objContact.email = email
+         objContact.subject = subject
+         objContact.message = message
+         objContact.save()
+         print(name, email, subject, message)
      return render(request, 'view/contact.html')
 
 def django_request(request):
