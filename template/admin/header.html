@@ -1,0 +1,122 @@
+{% load static %}
+{% get_static_prefix as STATFILE %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+
+  <link href="{{STATFILE}}css/adminlte.css" rel="stylesheet">
+
+  <script src="https://kit.fontawesome.com/e45df6d123.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="page-header">
+  <nav>
+    <a href="#0" class="logo">
+      <img src="{{STATFILE}}images/flogo.png" height="80" width="200" alt="Covid Sahay">
+    </a>
+    <button class="toggle-mob-menu" aria-expanded="false" aria-label="open menu">
+      <i class="fas fa-chevron-down"></i>
+    </button>
+    <ul class="admin-menu">
+      <li class="menu-heading">
+        <h3>Dashboard</h3>
+      </li>
+      <li>
+        <a href="#0">
+          <i class="fas fa-id-badge">&nbsp;</i>
+          <span>Admin Profile</span>
+        </a>
+      </li>
+      <li>
+        <a href="#0">
+          <i class="fas fa-key">&nbsp;</i>
+          <span>Change Password</span>
+        </a>
+      </li>
+      <li class="menu-heading">
+        <h3>Settings</h3>
+      </li>
+      <li>
+        <a href="#0">
+          <i class="fas fa-tachometer-alt">&nbsp;</i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="#0">
+          <i class="fas fa-users">&nbsp;</i>
+          <span>Show All User</span>
+        </a>
+      </li>
+      <li>
+        <a href="#0">
+          <i class="fas fa-user-friends">&nbsp;</i>  
+          <span>Provider</span>
+        </a>
+      </li>
+      <li>
+        <a href="#0">
+          <i class="fas fa-user-friends">&nbsp;</i>
+          <span>Donators</span>
+        </a>
+      </li>
+      <li>
+        <a href="#0">
+          <i class="fab fa-telegram-plane">&nbsp;</i>
+          <span>Requests</span>
+        </a>
+      </li>
+      <li>
+        <!-- <div class="switch">
+          <input type="checkbox" id="mode" checked>
+          <label for="mode">
+            <span></span>
+            <span>Dark</span>
+          </label>
+        </div> -->
+        <button class="collapse-btn" aria-expanded="true" aria-label="collapse menu">
+          <i class="fas fa-arrow-right">&nbsp;</i>
+          <span>Collapse</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</header>
+<section class="page-content">
+  <section class="search-and-user">
+    
+    <div class="admin-profile">
+      <div class="switch">
+        <input type="checkbox" id="mode" checked>
+        <label for="mode">
+          <span></span>
+          <span>Dark</span>
+        </label>
+      </div>
+      <span class="greeting">Hello,admin</span>
+      <div class="notifications">
+        <!-- <span class="badge">1</span> -->
+        <span class="user"><i class="fas fa-user"></i></span>
+      </div>
+    </div>
+  </section>
+  <hr>
+  <section class="grid">
+    {% block 'content' %} {% endblock 'content' %}
+  </section>
+  <!-- <footer class="page-footer">
+    <span>made by </span>
+    <a href="https://georgemartsoukos.com/" target="_blank">
+      <img width="24" height="24" src="https://assets.codepen.io/162656/george-martsoukos-small-logo.svg" alt="George Martsoukos logo">
+    </a>
+  </footer> -->
+</section>
+
+
+<script src="{{STATFILE}}js/admin.js"></script>
+</body>
+</html>

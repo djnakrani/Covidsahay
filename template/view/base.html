@@ -1,0 +1,80 @@
+{% load static %}
+{% get_static_prefix as STATFILE %}
+<!DOCTYPE HTML>
+<html class="no-js" lang="de">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="robots" content="index,follow">
+{% block 'title' %} 
+<title>Covid Sahay</title>
+{% endblock 'title' %}
+<link href="{{STATFILE}}css/font-awesome.min.css" rel="stylesheet">
+<link href="{{STATFILE}}css/animate.css" rel="stylesheet">
+<link href="{{STATFILE}}css/bootsnav.css" rel="stylesheet">
+<link href="{{STATFILE}}css/bootstrap.css" rel="stylesheet">
+<link href="{{STATFILE}}css/style.css" rel="stylesheet">
+<link rel="stylesheet" href="{{STATFILE}}css/swipebox.css">
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'> 
+</head>
+<body>
+{% include 'view/header.html' %}
+
+{% block 'content' %} {% endblock 'content' %}
+
+{% block 'request' %}
+<div class="callout">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Change Their World And Change Yours. This changes everything.</h2>
+            </div>
+            <div class="col-md-6">
+                <div class="callout-actions">
+                    <a href="{% url 'request' %}" class="button">Request Now</a>
+                    <span class="callout-separator">
+                        <span>Or</span>
+                    </span>
+                    <a href="{% url 'activities' %}" class="button">Donate Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock 'request' %}
+
+{% include 'view/footer.html' %}
+
+
+<script type="text/javascript" src="{{STATFILE}}js/jquery.min.js"></script>
+<script src="{{STATFILE}}js/bootstrap.js"></script>
+<script src="{{STATFILE}}js/bootsnav.js"></script>
+<script src="{{STATFILE}}js/banner.js"></script>  
+<script src="{{STATFILE}}js/jquery.swipebox.js"></script>
+<script type="text/javascript">
+	$( document ).ready(function() {
+
+			/* Basic Gallery */
+			$( '.swipebox' ).swipebox();
+			
+			/* Video */
+			$( '.swipebox-video' ).swipebox();
+
+			/* Dynamic Gallery */
+			$( '#gallery' ).click( function( e ) {
+				e.preventDefault();
+				$.swipebox( [
+					{ href : 'http://swipebox.csag.co/mages/image-1.jpg', title : 'My Caption' },
+					{ href : 'http://swipebox.csag.co/images/image-2.jpg', title : 'My Second Caption' }
+				] );
+			} );
+
+      });
+</script>
+<script src="{{STATFILE}}js/script.js"></script>
+</body>
+</html>
