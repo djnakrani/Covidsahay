@@ -1,8 +1,14 @@
 .bodyLogin{
     background: url(../images/act-bg1.jpg);
+    background-size:cover;
+	background-attachment:fixed;
+	background-position:center;
 }
 .bodyRegister{
     background: url(../images/act-bg.jpg);
+    background-size:cover;
+	background-attachment:fixed;
+	background-position:center;
 }
 .register{
    margin:auto;
@@ -150,4 +156,8 @@
 .formLast .reg:hover{
     color: #fff;
     text-decoration:none;
+}
+.err{
+    color: #710103;
+    float: right;
 }

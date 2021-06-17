@@ -23,9 +23,16 @@
 <div class="container">
 <div class="row"> 
 <div class="attr-nav">
-<a class="sponsor-button" href="{% url 'register' %}">Register</a>
-<a class="donation" href="{% url 'login' %}">Login</a>
-</div>           
+{% if uId == 'Null' %}
+    <a class="sponsor-button" href="{% url 'register' %}">Register</a>
+    <a class="donation" href="{% url 'login' %}">Login</a>
+{% else  %}
+    <form action="" method="post">
+         {% csrf_token %}
+        <input type="submit" class="donation" value="Logout">
+    </form>
+{% endif %}
+</div>
 <div class="navbar-header">
 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
 <i class="fa fa-bars"></i>
