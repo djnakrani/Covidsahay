@@ -40,7 +40,6 @@ def django_contact(request):
          objContact.subject = subject
          objContact.message = message
          objContact.save()
-         print(name, email, subject, message)
      return render(request, 'view/contact.html')
 
 def django_request(request):

@@ -245,8 +245,6 @@ p{
     left: 0;
     right: 0;
 }
-
-
 #first-slider h3{
   animation-delay: 2s;
 }
@@ -256,21 +254,16 @@ p{
 #first-slider h2 {
   animation-delay: 1s;
 }
-
-
 #first-slider .carousel-control {
     width: 5%;
         text-shadow: none;
 }
-
-
 #first-slider h1 {
   text-align: center;  
   margin-bottom: 30px;
   font-size: 30px;
   font-weight: bold;
 }
-
 #first-slider .p {
   padding-top: 125px;
   text-align: center;
@@ -291,8 +284,6 @@ p{
     background-color: #fff;
   border:none;
 }
-
-
 .carousel-fade .carousel-inner .item {
   -webkit-transition-property: opacity;
   transition-property: opacity;
@@ -353,8 +344,6 @@ p{
     opacity: 1;
     filter: alpha(opacity=100);
 }
-
-
 /********************************/
 /*       Slides backgrounds     */
 /********************************/
@@ -378,7 +367,6 @@ p{
     background-size: 100%;
     background-repeat: no-repeat;
 }
-
 #about-sec{
 	display:block;
 	width:100%;
@@ -1260,11 +1248,9 @@ h1 {
     width: 100%;
     margin: 0 auto;
 }
-	
 }
-
 @media (max-width: 768px) {
-	
+
 h1 {
     font-size: 30px;
     line-height: 30px;

@@ -15,7 +15,6 @@
 <link href="{{STATFILE}}css/animate.css" rel="stylesheet">
 <link href="{{STATFILE}}css/bootsnav.css" rel="stylesheet">
 <link href="{{STATFILE}}css/bootstrap.css" rel="stylesheet">
-<link href="{{STATFILE}}css/style.css" rel="stylesheet">
 <link href="{{STATFILE}}css/login.css" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
@@ -23,97 +22,106 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<body>
+<body class="bodyRegister">
 <section>
-  
-<!------ Include the above in your HEAD tag ---------->
-
 <div class="container register">
-                <div class="row">
-                    <div class="col-md-3 register-left">
-                        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
-                        <h3>Welcome</h3>
-                        <p>You are 30 seconds away from earning your own money!</p>
-                        <input type="submit" name="" value="Login"/><br/>
-                    </div>
-                    <div class="col-md-9 register-right">
+                <div class="row" style="justify-content: space-around;">
+                    <div class="col-md-9 register-box">
                         <div class="tab-content">
                             <div class="tab-pane show active">
-                                <h3 class="register-heading">Apply as a Employee</h3>
+                                <img class="img" src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+                                <h1 class="register-heading">Welcome</h1>
                                 <div class="row register-form">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="First Name *" value="" />
+                                    <form method="post" action="" class="col-md-12">
+                                        {% csrf_token %}
+                                        <div class="form-group col-md-6">
+                                            <input type="text" class="form-text" placeholder="First Name*" value="" />
                                         </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Last Name *" value="" />
+                                        <div class="form-group col-md-6">
+                                            <input type="text" class="form-text" placeholder="Last Name*" value="" />
                                         </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Password *" value="" />
+                                        <div class="form-group col-md-6">
+                                            <input type="text" class="form-text" placeholder="Mobile number*" value="" />
                                         </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control"  placeholder="Confirm Password *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="maxl">
-                                                <label class="radio inline"> 
-                                                    <input type="radio" name="gender" value="male" checked>
-                                                    <span> Male </span> 
-                                                </label>
-                                                <label class="radio inline"> 
-                                                    <input type="radio" name="gender" value="female">
-                                                    <span>Female </span> 
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Your Email *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Your Phone *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <select class="form-control">
-                                                <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
-                                                <option>What is your Birthdate?</option>
-                                                <option>What is Your old Phone Number</option>
-                                                <option>What is your Pet Name?</option>
+                                        <div class="form-group col-md-6">
+                                            <select name="gender" class="form-text">
+                                              <option value="">Select Gender</option>
+                                              <option value="Male">Male</option>
+                                              <option value="Female">Female</option>
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Enter Your Answer *" value="" />
+                                        <div class="form-group col-md-7">
+                                             <input type="text" class="form-text" placeholder="Enter Your Birthdate" onfocus="(this.type='date')">
                                         </div>
-                                        <input type="submit" class="btnRegister"  value="Register"/>
-                                    </div>
+                                        <div class="form-group col-md-5">
+                                             <select name="bloodGrp" class="form-text">
+                                              <option value="">Select BloodGroup</option>
+                                              <option value="A+">A+</option>
+                                              <option value="B+">B+</option>
+                                              <option value="B+">C+</option>
+                                              <option value="A+">A+</option>
+                                              <option value="B+">O+</option>
+                                              <option value="A+">A-</option>
+                                              <option value="B+">B-</option>
+                                              <option value="A+">C-</option>
+                                              <option value="B+">O-</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <input type="text" class="form-text" placeholder="Email Id*" value="" />
+                                        </div>
+                                        <div class="form-group col-md-4">
+<!--                                            <input type="text" class="form-text" placeholder="State*" value="" />-->
+                                             <select name="state" class="form-text">
+                                              <option value="">Select State</option>
+                                              <option value="Male">Gujarat</option>
+                                              <option value="Female">Maharashtra</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-4">
+<!--                                            <input type="text" class="form-text" placeholder="City*" value="" />-->
+                                             <select name="city" class="form-text">
+                                              <option value="">Select City</option>
+                                              <option value="Male">Surat</option>
+                                              <option value="Female">Baroda</option>
+                                                <option value="Female">Ahmedabad</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-4">
+<!--                                            <input type="text" class="form-text" placeholder="Area*" value="" />-->
+                                             <select name="area" class="form-text">
+                                              <option value="">Select Area</option>
+                                              <option value="Male">Nana Varachha</option>
+                                              <option value="Female">Katargam</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-9">
+                                            <input type="text" class="form-text" placeholder="Address*" value="" />
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <input type="text" class="form-text" placeholder="Pincode*" value="" />
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <input type="password" class="form-text" placeholder="Password*" value="" />
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <input type="password" class="form-text"  placeholder="Confirm Password*" value="" />
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                             <input type="submit" class="btnRegister"  value="Register"/>
+                                        </div>
+                                        <div class="formLast col-md-12">
+                                            <h4>If You already have an Account Click on <a class="log" href="{% url 'login' %}">Login</a></h4>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
 </section>
-
-<div class="callout">
-<div class="container">
-		<div class="row">
-			<div class="col-md-6">
-				<h2>Change Their World And Change Yours. This changes everything.</h2>
-			</div>
-			<div class="col-md-6">
-				<div class="callout-actions">
-					<a href="{% url 'request' %}" class="button">Request Now</a>
-					<span class="callout-separator">
-						<span>Or</span>
-					</span>
-					<a href="{% url 'activities' %}" class="button">Donate Now</a>
-				</div>
-			</div>
-		</div>
-</div>
-</div>
+cc
 <script type="text/javascript" src="{{STATFILE}}js/jquery.min.js"></script>
 <script src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js'></script>
 <script src="{{STATFILE}}js/bootstrap.js"></script>
