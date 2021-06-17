@@ -1,21 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="65c1750e-2282-4f3c-ad76-354133c7e615" name="Default Changelist" comment="Changes in Login and Registration">
-      <change afterPath="$PROJECT_DIR$/user/migrations/0002_auto_20210617_0721.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/migrations/0003_cities.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/migrations/0004_auto_20210617_0906.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/migrations/0005_delete_cities.py" afterDir="false" />
+    <list default="true" id="65c1750e-2282-4f3c-ad76-354133c7e615" name="Default Changelist" comment="Login/Logout Session">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/view/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/view/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/view/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/view/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623910347220</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Login/Logout Session">
+      <created>1623935979288</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1623935979288</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -236,6 +230,7 @@
     <MESSAGE value="Chanegs" />
     <MESSAGE value="create one model Contact" />
     <MESSAGE value="Changes in Login and Registration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes in Login and Registration" />
+    <MESSAGE value="Login/Logout Session" />
+    <option name="LAST_COMMIT_MESSAGE" value="Login/Logout Session" />
   </component>
 </project>
