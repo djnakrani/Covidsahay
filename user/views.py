@@ -1,6 +1,7 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
 from .models import *
+from datetime import date
 
 # Create your views here.
 def django_login(request):
@@ -98,6 +99,22 @@ def django_request(request):
      context = {
         "uId": getSession(request),
      }
+     curDate = date.today()
+     dt = curDate.strftime("%Y-%m-%d")
+     if request.method == 'POST':
+         name = request.POST['fName']
+         whatFor = request.POST['whatFor']
+         quantity = request.POST['quantity']
+         adharcard = request.FILES['adharcard']
+         prescription = request.FILES['prescription']
+         objRequests = Requests()
+         objRequests.name = name
+         objRequests.whatFor = whatFor
+         objRequests.quantity = quantity
+         objRequests.date = dt
+         objRequests.adharcard = adharcard
+         objRequests.prescription = prescription
+         objRequests.save()
      return render(request, 'view/request.html', context)
 
 def getSession(request):

@@ -5,7 +5,7 @@
 <title>Covid Sahay | Request</title>
 {% endblock 'title' %}
 {% block 'content' %} 
-<section id="inner-banner1">
+<section id="inner-banner">
 <div class="overlay">
 <div class="container">
 <div class="row"> 
@@ -42,38 +42,39 @@
 <div class="row text-center">
 <h2 style="margin-top:0;">I WISH TO MAKE A REQUEST<br>
 WE NEED YOUR HELP</h2>
-<form action="" method="post" class="con-form clearfix">
+<form action="" method="post" class="con-form clearfix" enctype="multipart/form-data">
 	{% csrf_token %}
-<!--<div class="col-md-6">
-<input type="text" name="fname" value="" size="40" class="" aria-required="true" aria-invalid="false" placeholder="First Name*">
-</div>
-<div class="col-md-6">
-<input type="text" name="lname" value="" size="40" class="" aria-required="true" aria-invalid="false" placeholder="Last Name*">
-</div>-->
-<div class="col-md-6">
-<input type="text" name="phone" value="" size="40" class="" aria-invalid="false" placeholder="Phone Number*">
-</div>
-<div class="col-md-6">
-<input type="email" name="emailid" value="" size="40" class="" aria-invalid="false" placeholder="Email ID*">
-</div>
-<!--<div class="col-md-6">
-<input type="text" name="street" value="" size="40" class="" aria-required="true" aria-invalid="false" placeholder="Street Address*">
-</div>
-<div class="col-md-6">
-<input type="text" name="city" value="" size="40" class="" aria-required="true" aria-invalid="false" placeholder="City / Town*">
-</div>
-<div class="col-md-6">
-<input type="text" name="country" value="" size="40" class="" aria-required="true" aria-invalid="false" placeholder="Country*">
-</div>
-<div class="col-md-6">
-<input type="text" name="amount" value="" size="40" class="" aria-required="true" aria-invalid="false" placeholder="Amount*">
-</div>
-<div class="col-md-12">
-<textarea name="message" cols="40" rows="5" class="" id="message" aria-invalid="false" placeholder="Message"></textarea>
-</div>-->
-<div class="col-xs-12 submit-button">
-<input type="submit" value="Request Now" class="btn2" id="sub" style="border:none; margin: 20px 0 0 0">
-</div>
+	<div class="col-md-8">
+		<input type="text" name="fName" value="Kashyap Kalathiya" class="form-control" placeholder="Enter Full Name Who need it*">
+	</div>
+	 <div class="form-group col-md-4" style="margin-top:30px">
+		 <select class="form-text" name="whatFor">
+		  	<option value="">Select What you need*</option>
+		  	<option value="abc">abc</option>
+		    <option value="xyz">xyz</option>
+			<option value="mno">mno</option>
+		</select>
+	</div>
+	 <div class="form-group col-md-4" style="margin-top:30px">
+		 <select class="form-text" name="quantity">
+		  	<option value="">Select Quantity*</option>
+		  	<option value="1">1</option>
+		    <option value="2">2</option>
+			<option value="3">3</option>
+		</select>
+	</div>
+	<div class="col-md-4" style="margin-top:7px">
+		<span style="text-align:left;"> Adharcard* </span>
+		<input type="file" name="adharcard" class="form-control" accept=".gif,.jpeg,.png,.jpg">
+	</div>
+	<div class="col-md-4" style="margin-top:7px">
+		<span> Prescription </span>
+		<input type="file" name="prescription" class="form-control" accept=".gif,.jpeg,.png,.jpg">
+	</div>
+
+	<div class="col-xs-12 submit-button">
+		<input type="submit" value="Request Now" class="btn2" id="sub" style="border:none; margin: 20px 0 0 0">
+	</div>
 </form>
 </div>
 </div>

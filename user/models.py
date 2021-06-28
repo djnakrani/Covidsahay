@@ -16,6 +16,15 @@ class User(models.Model):
    add = models.CharField(max_length=50, null=True)
    pwd = models.CharField(max_length=50, null=True)
 
+class Requests(models.Model):
+   name = models.CharField(max_length=20, null=True)
+   user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+   whatFor = models.CharField(max_length=40, null=True)
+   quantity = models.CharField(max_length=20, default="1", null=True)
+   date = models.CharField(max_length=20, null=True)
+   adharcard = models.ImageField(upload_to='adharcard', null=True)
+   prescription = models.ImageField(upload_to='prescription', null=True)
+   status = models.CharField(max_length=20, default='pending', null=True)
 
 class Contact(models.Model):
    name = models.CharField(max_length=20, null=True)

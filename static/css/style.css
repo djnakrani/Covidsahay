@@ -1,12 +1,10 @@
 
-
 html,body {
     width:100%;
     height: auto;
     margin:0;
     padding:0;
 }
-
 body {
     font-family: 'Open Sans', sans-serif;
     position: relative;
@@ -14,11 +12,9 @@ body {
 	line-height:24px;
 	color:#6f6f6f;
 }
-
 a{
     color: #6f6f6f;
 }
-
 a,
 a:active,
 a:focus,
@@ -351,21 +347,29 @@ p{
 	background:url(../images/slide1.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
+	background-attachment:fixed;
+	background-position:center;
 }
 #first-slider .slide2 {
 	background:url(../images/slide2.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
+	background-attachment:fixed;
+	background-position:center;
 }
 #first-slider .slide3 {
 	background:url(../images/slide3.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
+	background-attachment:fixed;
+	background-position:center;
 }
 #first-slider .slide4 {
 	background:url(../images/slide4.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
+	background-attachment:fixed;
+	background-position:center;
 }
 #about-sec{
 	display:block;
@@ -793,28 +797,18 @@ video {
 
 #inner-banner{
 	display:block;
-	height: 212px;
-    background:url(../images/inner-bg.jpg) no-repeat center 0;
+	height: 293px;
+    background:url(../images/inner-bg.jpg) no-repeat;
+    background-size:cover;
+	background-attachment:fixed;
+	background-position:center;
 }
 #inner-banner .overlay{
-	background:rgba(0,0,0,0.7);
-	height: 212px;
-	padding: 100px 0 60px 0;
-}
-#inner-banner h1{
-	color:#fff;
-}
-#inner-banner1{
-	display:block;
-	height: 293px;
-    background:url(../images/inner-bg.jpg) no-repeat center 0;
-}
-#inner-banner1 .overlay{
 	background:rgba(0,0,0,0.7);
 	height: 293px;
 	padding: 180px 0 60px 0;
 }
-#inner-banner1 h1{
+#inner-banner h1{
 	color:#fff;
 }
 #team{
