@@ -41,13 +41,13 @@
 <section id="about-sec">
 <div class="container">
 <div class="row text-left">
-{% for i in daysOfWeek %}
+{% for i in req %}
 	<div class="act-box">
 		<div class="col-md-4 act-post">
-		<div class="image"><img src="{{STATFILE}}images/act.jpg" /></div>
+		<div class="image"><img src="{{STATFILE}}images/gallery3.jpg"></div>
 		<div class="act-pad">
-		<h4>Sponsor a child today</h4>
-		<p>Lorem ipsum dolor sit amet, consectet ur adipisicing.obcaecati minima</p>
+		<h4>Need {{ i.whatFor }} (Quantity : {{i.quantity}})</h4>
+		<p>My name is {{ i.name }}. I am from Surat.</p>
 		<a href="activities.html" class="btn1">donate now</a>
 		<div class="clearfix"></div>
 		</div>

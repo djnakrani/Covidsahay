@@ -1,6 +1,7 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
 from .models import *
+from datetime import date
 
 # Create your views here.
 def django_login(request):
@@ -64,9 +65,11 @@ def django_about(request):
     return render(request, 'view/about-us.html', context)
 
 def django_activities(request):
+     req = Requests.objects.all()
+     print("Request is ", req)
      context = {
          "uId": getSession(request),
-         "daysOfWeek": ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+         "req": req
      }
      return render(request, 'view/activities.html', context)
 
@@ -98,6 +101,23 @@ def django_request(request):
      context = {
         "uId": getSession(request),
      }
+     curDate = date.today()
+     # uid = current_user.id
+     dt = curDate.strftime("%Y-%m-%d")
+     if request.method == 'POST':
+         name = request.POST['fName']
+         whatFor = request.POST['whatFor']
+         quantity = request.POST['quantity']
+         adharcard = request.FILES['adharcard']
+         prescription = request.FILES['prescription']
+         objRequests = Requests()
+         objRequests.name = name
+         objRequests.whatFor = whatFor
+         objRequests.quantity = quantity
+         objRequests.date = dt
+         objRequests.adharcard = adharcard
+         objRequests.prescription = prescription
+         objRequests.save()
      return render(request, 'view/request.html', context)
 
 def getSession(request):
