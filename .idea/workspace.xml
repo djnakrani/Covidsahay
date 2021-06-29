@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="65c1750e-2282-4f3c-ad76-354133c7e615" name="Default Changelist" comment="create request">
-      <change afterPath="$PROJECT_DIR$/images/adharcard/splash.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/adharcard/splash_vrnNfz3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/prescription/splash.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/prescription/splash_18CvFCu.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/migrations/0004_auto_20210629_1241.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/migrations/0005_auto_20210629_1243.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/migrations/0006_auto_20210629_1245.py" afterDir="false" />
+    <list default="true" id="65c1750e-2282-4f3c-ad76-354133c7e615" name="Default Changelist" comment="create request and view request">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Covidsahay/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Covidsahay/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template/view/activities.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/activities.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -211,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624880298457</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="create request">
+      <created>1624974973188</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1624974973188</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="UnknownFeatures">
