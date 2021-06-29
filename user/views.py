@@ -110,7 +110,7 @@ def django_request(request):
          adharcard = request.FILES['adharcard']
          prescription = request.FILES['prescription']
          objRequests = Requests()
-         objRequests.user = context["uId"]
+         # objRequests.user = context["uId"]
          objRequests.name = name
          objRequests.whatFor = whatFor
          objRequests.quantity = quantity
