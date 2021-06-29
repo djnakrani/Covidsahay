@@ -65,9 +65,11 @@ def django_about(request):
     return render(request, 'view/about-us.html', context)
 
 def django_activities(request):
+     req = Requests.objects.all()
+     print("Request is ", req)
      context = {
          "uId": getSession(request),
-         "daysOfWeek": ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+         "req": req
      }
      return render(request, 'view/activities.html', context)
 
@@ -100,6 +102,7 @@ def django_request(request):
         "uId": getSession(request),
      }
      curDate = date.today()
+     # uid = current_user.id
      dt = curDate.strftime("%Y-%m-%d")
      if request.method == 'POST':
          name = request.POST['fName']
