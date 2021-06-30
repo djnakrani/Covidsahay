@@ -102,7 +102,6 @@ def django_request(request):
         "uId": getSession(request),
      }
      curDate = date.today()
-     # uid = current_user.id
      dt = curDate.strftime("%Y-%m-%d")
      if request.method == 'POST':
          name = request.POST['fName']
@@ -111,6 +110,7 @@ def django_request(request):
          adharcard = request.FILES['adharcard']
          prescription = request.FILES['prescription']
          objRequests = Requests()
+         # objRequests.user = context["uId"]
          objRequests.name = name
          objRequests.whatFor = whatFor
          objRequests.quantity = quantity
