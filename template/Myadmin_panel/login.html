@@ -21,21 +21,26 @@
                 <div class="col-lg-12 login-title">
                     ADMIN PANEL
                 </div>
+                <hr class="adminhr">
                 <div class="col-lg-12 login-form">
                     <div class="col-lg-12">
-                        <form>
-                            <div class="form-group">
+                        <form method="POST" >
+                            {% csrf_token %}
+                            <div class="form-group adminlog">
                                 <label class="form-control-label">USERNAME</label>
-                                <input type="text" class="form-control myinput">
+                                <input type="text" name="email" class="form-control">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group adminlog">
                                 <label class="form-control-label">PASSWORD</label>
-                                <input type="password" class="form-control myinput">
+                                <input type="password" name="pwd" class="form-control">
                             </div>
 
-                            <div class="col-lg-12 loginbttm">
-                                <div class="col-lg-12 login-btm login-button">
-                                    <button type="submit" class="btn btn-outline-primary">LOGIN</button>
+                            <div class="col-lg-12">
+                                <div class="col-lg-12 text-danger">
+                                    <p>{{ txtErr }}</p> 
+                                </div>
+                                <div class="col-lg-12 login-button">
+                                    <input type="submit" class="btn btn-outline-danger" name="submit" value="LOGIN"/>
                                 </div>
                             </div>
                         </form>
