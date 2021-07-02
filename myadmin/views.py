@@ -1,7 +1,7 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render ,redirect
 from .models import *
-# from Covidsahay.user.models import User
+from Covidsahay.user.models import User,Requests
 
 # Create your views here.
 def django_admin_panel(request):
@@ -36,3 +36,21 @@ def django_admin_alluser(request):
           "aId":aDetail.aName
      }
      return render(request,'Myadmin_panel/alluser.html',context)
+
+def django_admin_changepassword(request):
+     aId=request.session['admin_id']
+     aDetail= MyAdmin.objects.get(id=aId)
+     allDataUser = User.objects.all()
+     context={
+          "aId":aDetail.aName
+     }
+     return render(request,'Myadmin_panel/changepassword.html',context)
+
+def django_admin_request(request):
+     aId=request.session['admin_id']
+     aDetail= MyAdmin.objects.get(id=aId)
+     # allDataUser = User.objects.all()
+     context={
+          "aId":aDetail.aName
+     }
+     return render(request,'Myadmin_panel/request.html',context)
