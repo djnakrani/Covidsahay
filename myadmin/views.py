@@ -1,7 +1,7 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render ,redirect
 from .models import *
-
+# from Covidsahay.user.models import User
 
 # Create your views here.
 def django_admin_panel(request):
@@ -9,7 +9,7 @@ def django_admin_panel(request):
           try:
             aName = request.POST['email']
             aPwd = request.POST['pwd']
-            aDetail = MyAdmin.objects.get(email=aName, pwd=aPwd)
+            aDetail = MyAdmin.objects.get(aEmail=aName, aPwd=aPwd)
             if aDetail:
                 request.session['admin_id'] = aDetail.id
                 return redirect('admindashboard')
@@ -19,5 +19,20 @@ def django_admin_panel(request):
           return render(request, 'Myadmin_panel/login.html')
 
 def django_admin_dashboard(request):
+     aId=request.session['admin_id']
+     aDetail= MyAdmin.objects.get(id=aId)
+     # print(aDetail.aName)
+     context={
+          "aId":aDetail.aName
+     }
+     return render(request,'Myadmin_panel/admin.html',context)
 
-     return render(request,'Myadmin_panel/admin.html')
+
+def django_admin_alluser(request):
+     aId=request.session['admin_id']
+     aDetail= MyAdmin.objects.get(id=aId)
+     # allDataUser = User.objects.all()
+     context={
+          "aId":aDetail.aName
+     }
+     return render(request,'Myadmin_panel/alluser.html',context)
