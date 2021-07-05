@@ -20,14 +20,32 @@
                         <input type="button" onclick="show(this.id)" id="{{all.id}}" class="btn btn-primary view" value="View >>">
                         <p class="list-group-item-text">{{all.date |upper}}</p>
                     </div>
-                    
-                    <div class="col-md-10 hide" id="div{{all.id}}">
-                        <p class="list-group-item-text title">{{all.name |upper}}</p>
-                        <p class="list-group-item-text title">{{all.user |upper}}</p>
-                        <p class="list-group-item-text title">{{all.whatFor |upper}}</p>
-                        <p class="list-group-item-text title">{{all.quantity |upper}}</p>
-                        <p class="list-group-item-text">{{all.date |upper}}</p>
-                        <span class="expertise-label">{{all.whatFor |upper}}</span>
+                    <div class="container hide" id="div{{all.id}}">
+                        <hr class="shine">
+                        <div class="row">
+                          <div class="col-sm-12 col-md-2">
+                            <label for="">Name:</label><p class="">{{all.name |upper}}</p>
+                            <label for="">UserId:</label><p class="">{{all.user |upper}}</p>
+                            <label for="">Requirement:</label><p class="">{{all.whatFor |upper}}</p>
+                            <label for="">Quantity:</label><p class="">{{all.quantity |upper}}</p>
+                            <label for="">Date:</label><p class="">{{all.date |upper}}</p>
+                            <label for="">Mobile no:</label><p class="">{{all.whatFor |upper}}</p>
+                          </div>
+                          <div class="col-sm-12 col-md-5">
+                            <p class="">Adharcard:<img id="myImg" class="img-zoom" src="http://127.0.0.1:8000/{{all.adharcard}}" height="300" width="400"/></p>
+                          </div>
+                          <div class="col-sm-12 col-md-5">
+                            <p class="">Prescription:<img id="myImg" class="img-zoom" src="http://127.0.0.1:8000/{{all.prescription}}" height="300" width="400"/></p>
+                          </div>
+                        </div>
+                        <hr class="shine">
+                        <div class="inline-block text-center">
+                            <form action=""> 
+                                <input type="hidden" name="id" value="">
+                                <button type="submit" name="Accept" value="Accepted" class="btn btn-success">Accepted</button>
+                                <button type="submit" name="Reject" value="Rejected" class="btn btn-danger">Rejected</button>
+                            </form>
+                        </div>                      
                     </div>
                 </div>
                 <div class="clearfix"></div>
@@ -37,18 +55,20 @@
         </div>
     </div>
 </div>
-    
+
 {% endblock 'content' %}
 {% block 'extrajs' %}
 <script>
-    function show(id)
-    {
-        var x = document.getElementById("div"+id);
-        if (x.style.display === "block") {
-            x.style.display = "none";
-        } else {
-            x.style.display = "block";
-        }
+function show(id)
+{ 
+    var x = document.getElementById("div"+id);
+    if (x.style.display === "block") {
+        x.style.display = "none";
+        document.getElementById(id).value="View >>";
+    } else {
+        x.style.display = "block";
+        document.getElementById(id).value="<< Hide";
     }
+}
 </script>
 {% endblock 'extrajs' %}

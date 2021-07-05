@@ -132,3 +132,21 @@ body {
   display: block;
   color: red;
 }
+
+.shine {
+  margin: 10px 0;
+  position: relative;
+  color: #333;
+  border-bottom: 1px solid #1f1209;
+	box-shadow: 0 20px 20px -20px #333;
+}
+
+.img-zoom{
+  height: 300px;
+  width: 400px;
+  transition: transform .2s;
+}
+
+.img-zoom:hover{
+  transform: scale(1.5); 
+}
