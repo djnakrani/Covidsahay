@@ -40,17 +40,19 @@
                         </div>
                         <hr class="shine">
                         <div class="inline-block text-center">
-                            <form action=""> 
-                                <input type="hidden" name="id" value="">
-                                <button type="submit" name="Accept" value="Accepted" class="btn btn-success">Accepted</button>
-                                <button type="submit" name="Reject" value="Rejected" class="btn btn-danger">Rejected</button>
+                            <form action="{% url 'CheckRequest' %}" method="POST"> 
+                                {% csrf_token %}
+                                <input type="hidden" name="id" value="{{all.id}}">
+                                <button type="submit" name="request" value="Accepted" class="btn btn-success">Accepted</button>
+                                <button type="submit" name="request" value="Rejected" class="btn btn-danger">Rejected</button>
                             </form>
                         </div>                      
                     </div>
                 </div>
                 <div class="clearfix"></div>
                     {% endif %}
-                {% endfor %}   
+                {% endfor %}
+                    <div class="text-danger text-center">No Request Pending....</div>
             </div>
         </div>
     </div>

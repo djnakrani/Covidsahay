@@ -7,5 +7,127 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h2>Activity</h2>
 </div>
+<div class="row">
+
+    <!-- Card 1-->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card shadow h-100 py-2">
+            <div class="card-header">
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                    Total Users</div>
+            </div>
+            <div class="card-body ">
+                <div class="row align-items-center">
+                    <div class="col mr-2">
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{totaluser}}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 2-->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card shadow h-100 py-2">
+            <div class="card-header">
+                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                    Total Request</div>
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col mr-2">
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{totalrequest}}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fab fa-telegram-plane fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 3-->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card shadow h-100 py-2">
+            <div class="card-header">
+                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                    Total Donations</div>
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col mr-2">
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{totaldonation}}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-hands-helping fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 4-->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card shadow h-100 py-2">
+            <div class="card-header">
+                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                    Pending Requests</div>
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col mr-2">
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{totalpending}}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 5-->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card shadow h-100 py-2">
+            <div class="card-header">
+                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                    Approval Requests</div>
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col mr-2">
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{totalapproval}}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 1-->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card shadow h-100 py-2">
+            <div class="card-header">
+                <div class="text-xs font-weight-bold text-muted text-uppercase mb-1">
+                    Rejected Requests
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col mr-2">
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{totalreject}}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock 'content' %}
