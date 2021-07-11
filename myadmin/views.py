@@ -1,12 +1,12 @@
 from django.core.exceptions import ObjectDoesNotExist
-from django.shortcuts import render ,redirect,HttpResponseRedirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from .models import *
-from user.models import User,Requests
+from user.models import User, Requests
 
 
 # Create your views here.
 def django_admin_panel(request):
-     if request.method=="POST":
+     if request.method == "POST":
           try:
             aName = request.POST['email']
             aPwd = request.POST['pwd']
@@ -22,21 +22,21 @@ def django_admin_panel(request):
 def django_admin_dashboard(request):
      datauser = User.objects.all()
      datarequest = Requests.objects.all()
-     totaluser=datauser.count()
-     totalrequest=datarequest.count()
-     totaldonation=0
-     totalpending=0
-     totalapproval=0
-     totalreject=0
+     totaluser = datauser.count()
+     totalrequest = datarequest.count()
+     totaldonation = 0
+     totalpending = 0
+     totalapproval = 0
+     totalreject = 0
      for x in datarequest:
           if x.status == "Sucessfull":
                totaldonation += 1
           elif x.status == "pending":
-               totalpending +=1
+               totalpending += 1
           elif x.status == "Accepted":
-               totalapproval +=1
+               totalapproval += 1
           else :
-               totalreject +=1     
+               totalreject += 1
      # print(totaldonation)
      # print(totalpending)
      # print(totalapproval)
@@ -66,30 +66,27 @@ def django_admin_alluser(request):
      return render(request,'Myadmin_panel/alluser.html',context)
 
 def django_admin_changepassword(request):
-     aId=request.session['admin_id']
-     aDetail= MyAdmin.objects.get(id=aId)
-     context={
-          "aId":aDetail.aName,
+     aId = request.session['admin_id']
+     aDetail = MyAdmin.objects.get(id=aId)
+     context = {
+          "aId": aDetail.aName,
      }
-     return render(request,'Myadmin_panel/changepassword.html',context)
+     return render(request, 'Myadmin_panel/changepassword.html',context)
 
 def django_admin_request(request):
-     aId=request.session['admin_id']
-     aDetail= MyAdmin.objects.get(id=aId)
+     aId = request.session['admin_id']
+     aDetail = MyAdmin.objects.get(id=aId)
      Request = Requests.objects.all()
-     context={
-          "aId":aDetail.aName,
-          "Request":Request,
-
+     context = {
+          "aId": aDetail.aName,
+          "Request": Request,
      }
-     return render(request,'Myadmin_panel/request.html',context)
+     return render(request, 'Myadmin_panel/request.html', context)
 
 def request_check(request):
-     if request.method=="POST":
-          objRequest=Requests()
+     if request.method == "POST":
+          objRequest = Requests()
           objRequest.id = request.POST['id']
           objRequest.status = request.POST['request']
           objRequest.save(update_fields=['status'])
           return HttpResponseRedirect('/myadmin/Request')
-
-     

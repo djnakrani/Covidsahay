@@ -46,8 +46,8 @@
 		<div class="col-md-4 act-post">
 		<div class="image"><img src="http://127.0.0.1:8000/{{ i.adharcard }}"></div>
 		<div class="act-pad">
-		<h4>Need {{ i.whatFor }} (Quantity : {{i.quantity}})</h4>
-		<p>My name is {{ i.name }}. I am from Surat.</p>
+		<h5>Need {{ i.whatFor }} (Quantity : {{i.quantity}})</h5>
+		<p>My name is {{ i.name }}. I am from {{ i.user.city }}.</p>
 		<a href="activities.html" class="btn1">donate now</a>
 		<div class="clearfix"></div>
 		</div>
@@ -58,3 +58,4 @@
 </div>
 </section>
 {% endblock 'content' %}
+{% block 'request' %}{% endblock 'request' %}

@@ -937,7 +937,7 @@ video {
     border: 2px solid rgb(46 49 145);
     border-top: none;
 }
-.act-box h4 {
+.act-box h5 {
     border-bottom: 2px dashed #d5d4d4;
     padding-bottom: 15px;
     margin: 10px;
@@ -1488,5 +1488,4 @@ element.style {
 #first-slider .carousel .item {
     min-height: 190px;
 }
-
 }

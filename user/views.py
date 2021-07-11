@@ -1,5 +1,7 @@
+from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login, logout
 from django.core.exceptions import ObjectDoesNotExist
-from django.shortcuts import render, redirect
+from django.shortcuts import render, HttpResponseRedirect, redirect
 from .models import *
 from datetime import date
 
@@ -17,6 +19,37 @@ def django_login(request):
             return render(request, 'view/login.html', {"txtErr": "Please enter Valid EmailId Or Password"})
     else:
         return render(request, 'view/login.html')
+
+# def django_login(request):
+#     if not request.user.is_authenticated:
+#         if request.method == 'POST':
+#             try:
+#                 uName = request.POST['email']
+#                 uPwd = request.POST['pwd']
+#                 user = authenticate(email=uName, pwd=uPwd)
+#
+#                 if user is not None:
+#                     login(request, user)
+#                     # messages.success(request, 'You are Login Successfully...')
+#                     return redirect('index')
+#                 else:
+#                     return redirect('login')
+#             # uDetail = User.objects.get(email=uName, pwd=uPwd)
+#                 # if uDetail:
+#                 #     request.session['user_id'] = uDetail.id
+#                 #     return redirect('index')
+#             except ObjectDoesNotExist:
+#                 return render(request, 'view/login.html', {"txtErr": "Please enter Valid EmailId Or Password"})
+#         else:
+#             return render(request, 'view/login.html')
+#     else:
+#         return HttpResponseRedirect('/index/')
+
+
+# def user_logout(request):
+#     logout(request)
+#     return HttpResponseRedirect('/dashboard/login')
+
 
 def django_register(request):
      if request.method == 'POST':
@@ -69,7 +102,7 @@ def django_activities(request):
      print("Request is ", req)
      context = {
          "uId": getSession(request),
-         "req": req
+         "req": req,
      }
      return render(request, 'view/activities.html', context)
 
@@ -99,7 +132,7 @@ def django_contact(request):
 
 def django_request(request):
      context = {
-        "uId": getSession(request),
+        "userId": getUser(request),
      }
      curDate = date.today()
      dt = curDate.strftime("%Y-%m-%d")
@@ -110,7 +143,7 @@ def django_request(request):
          adharcard = request.FILES['adharcard']
          prescription = request.FILES['prescription']
          objRequests = Requests()
-         # objRequests.user = context["uId"]
+         objRequests.user_id = context["userId"]
          objRequests.name = name
          objRequests.whatFor = whatFor
          objRequests.quantity = quantity
@@ -118,7 +151,18 @@ def django_request(request):
          objRequests.adharcard = adharcard
          objRequests.prescription = prescription
          objRequests.save()
+         return redirect('activities')
      return render(request, 'view/request.html', context)
+
+def getUser(request):
+    if 'user_id' in request.session:
+        uId = request.session['user_id']
+        print("User", uId)
+        return uId
+    else:
+        uId = "null"
+        print("User", uId)
+        return uId
 
 def getSession(request):
     uId = ''
