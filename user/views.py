@@ -100,7 +100,7 @@ def django_about(request):
     return render(request, 'view/about-us.html', context)
 
 def django_activities(request):
-     req = Requests.objects.all()
+     req = Requests.objects.filter(status="Accepted")
      print("Request is ", req)
      context = {
          "uId": getSession(request),
@@ -120,60 +120,63 @@ def django_contact(request):
         "uId": getSession(request),
      }
      if request.method == 'POST':
-         name = request.POST['name']
-         email = request.POST['email']
-         subject = request.POST['subject']
-         message = request.POST['message']
-         objContact = Contact()
-         objContact.name = name
-         objContact.email = email
-         objContact.subject = subject
-         objContact.message = message
-         objContact.save()
+         if request.POST.get('email'):
+             name = request.POST['name']
+             email = request.POST['email']
+             subject = request.POST['subject']
+             message = request.POST['message']
+             objContact = Contact()
+             objContact.name = name
+             objContact.email = email
+             objContact.subject = subject
+             objContact.message = message
+             objContact.save()
      return render(request, 'view/contact.html', context)
 
 def django_request(request):
+     uid = getSession(request)
+     curr_user = User.objects.filter(id=uid)
+     print("Current User is ", curr_user)
      context = {
-        "userId": getUser(request),
+        "uId": getSession(request),
+        "curr_user": curr_user,
      }
      curDate = date.today()
      dt = curDate.strftime("%Y-%m-%d")
      if request.method == 'POST':
-         name = request.POST['fName']
-         whatFor = request.POST['whatFor']
-         quantity = request.POST['quantity']
-         adharcard = request.FILES['adharcard']
-         prescription = request.FILES['prescription']
-         objRequests = Requests()
-         objRequests.user_id = context["userId"]
-         objRequests.name = name
-         objRequests.whatFor = whatFor
-         objRequests.quantity = quantity
-         objRequests.date = dt
-         objRequests.adharcard = adharcard
-         objRequests.prescription = prescription
-         objRequests.save()
-         return redirect('activities')
+         if request.POST.get('whatFor'):
+             name = request.POST['fName']
+             whatFor = request.POST['whatFor']
+             quantity = request.POST['quantity']
+             try:
+                adharcard = request.FILES['adharcard']
+             except KeyError:
+                 adharcard = 'images/adharcard/adharcard.jpg'
+             try:
+                 prescription = request.FILES['prescription']
+             except KeyError:
+                 prescription = 'images/adharcard/adharcard.jpg'
+             objRequests = Requests()
+             objRequests.user_id = context["uId"]
+             objRequests.name = name
+             objRequests.whatFor = whatFor
+             objRequests.quantity = quantity
+             objRequests.date = dt
+             objRequests.adharcard = adharcard
+             objRequests.prescription = prescription
+             objRequests.save()
+             return redirect('activities')
      return render(request, 'view/request.html', context)
-
-def getUser(request):
-    if 'user_id' in request.session:
-        uId = request.session['user_id']
-        print("User", uId)
-        return uId
-    else:
-        uId = "null"
-        print("User", uId)
-        return uId
 
 def getSession(request):
     uId = ''
     if request.method == 'POST':
-        if request.session.has_key('user_id'):
-            request.session.flush()
-            uId = "Null"
-            print("Session", uId)
-        return uId
+        if request.POST.get('logout'):
+            if request.session.has_key('user_id'):
+                request.session.flush()
+                uId = "Null"
+                print("Session", uId)
+            return uId
     if 'user_id' in request.session:
         uId = request.session['user_id']
         print("Session", uId)

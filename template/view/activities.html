@@ -10,14 +10,13 @@
 <div class="overlay">
 <div class="container">
 <div class="row">
-<div class="col-sm-6"><h1>ACTIVITIES</h1></div>
-<div class="col-sm-6">
-  <h6 class="breadcrumb"><a href="{% url 'index' %}">Home</a> / Activities</h6></div>
+<div class="col-sm-3"><h1>ACTIVITIES</h1></div>
+<div class="col-sm-6"><input type="text" id="searchReq" onkeyup="myFunction()" placeholder="Search for Request.."></div>
+<div class="col-sm-3"><h6 class="breadcrumb"><a href="{% url 'index' %}">Home</a> / Activities</h6></div>
 </div>
 </div>
 </div>
 </section>
-
 
 <div class="callout">
 <div class="container">
@@ -58,4 +57,5 @@
 </div>
 </section>
 {% endblock 'content' %}
+
 {% block 'request' %}{% endblock 'request' %}
