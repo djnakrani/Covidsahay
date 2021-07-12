@@ -4,6 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, HttpResponseRedirect, redirect
 from .models import *
 from datetime import date
+from django.contrib import messages
 
 # Create your views here.
 def django_login(request):
@@ -16,7 +17,8 @@ def django_login(request):
                 request.session['user_id'] = uDetail.id
                 return redirect('index')
         except ObjectDoesNotExist:
-            return render(request, 'view/login.html', {"txtErr": "Please enter Valid EmailId Or Password"})
+            messages.error(request,"Please enter Valid EmailId Or Password")
+            return render(request, 'view/login.html')
     else:
         return render(request, 'view/login.html')
 
