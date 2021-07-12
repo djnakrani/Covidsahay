@@ -27,18 +27,6 @@ class Requests(models.Model):
    prescription = models.ImageField(upload_to='images/prescription', null=True)
    status = models.CharField(max_length=20, default='pending', null=True)
 
-   # def image_tag1(self):
-   #    if self.adharcard:
-   #       return mark_safe('<img src="%s" style="width:120px;height:120px" />' % self.adharcard.url)
-   #    else:
-   #       return 'no image found'
-   #
-   # def image_tag2(self):
-   #    if self.prescription:
-   #       return mark_safe('<img src="%s" style="width:120px;height:120px" />' % self.prescription.url)
-   #    else:
-   #       return 'no image found'
-
 class Contact(models.Model):
    name = models.CharField(max_length=20, null=True)
    email = models.CharField(max_length=40, null=True)
