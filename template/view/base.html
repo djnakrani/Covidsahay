@@ -38,7 +38,11 @@
             </div>
             <div class="col-md-6">
                 <div class="callout-actions">
-                    <a href="{% url 'request' %}" class="button">Request Now</a>
+                    {% if uId == 'Null' %}
+                        <a href="" class="button" id="msg">Request Now</a>
+                    {% else  %}
+                        <a href="{% url 'request' %}" class="button">Request Now</a>
+                    {% endif %}
                     <span class="callout-separator">
                         <span>Or</span>
                     </span>
@@ -78,5 +82,16 @@
       });
 </script>
 <script src="{{STATFILE}}js/script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#msg").click(function(){
+    swal({ title: "You Have to Login/Register first", text: "Click Ok Button to Login", type: "info" ,buttons: true}).then(function() {
+    window.location = "{% url 'login' %}";
+});
+  });
+});
+</script>
 </body>
 </html>

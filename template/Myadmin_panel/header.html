@@ -52,9 +52,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+<!--            <form action="" method="post">-->
+<!--               {% csrf_token %}-->
+                  <a class="nav-link" href="" name="logout" >
               <i class="fas fa-sign-out-alt"></i>&nbsp;Logout
             </a>
+<!--              <input type="submit" value="Logout" name="logout">-->
+<!--            </form>-->
           </li>
         </ul>
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -65,7 +69,7 @@
         <ul class="nav flex-column mb-2">
           <li class="nav-item">
             <a class="nav-link" href="{% url 'admindashboard' %}">
-              <i class="fas fa-chart-line"></i>&nbsp;ACTIVITIES
+              <i class="fas fa-chart-line"></i>&nbsp;DASHBOARD
             </a>
           </li>
           <li class="nav-item">
@@ -76,6 +80,11 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'request2' %}">
               <i class="fab fa-telegram-plane"></i>&nbsp;REQUESTS
+            </a>
+          </li>
+              <li class="nav-item">
+            <a class="nav-link" href="{% url 'request2' %}">
+              <i class="fab fa-telegram-plane"></i>&nbsp;DONOR DETAILS
             </a>
           </li>
         </ul>

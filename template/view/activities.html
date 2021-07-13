@@ -4,8 +4,7 @@
 {% block 'title' %} 
 <title>Covid Sahay | Activities</title>
 {% endblock 'title' %}
-{% block 'content' %} 
-
+{% block 'content' %}
 <section id="inner-banner">
 <div class="overlay">
 <div class="container">
@@ -26,7 +25,14 @@
 		</div>
 		<div class="col-md-6 col-xl-6">
 			<div class="callout-actions">
-				<a href="{% url 'request' %}" class="button">Request Now</a>
+				{% if uId == 'Null' %}
+                        <a href="" class="button">Request Now</a>
+                        <script>
+                        swal("Something Wrong!!", 'sd', 'warning')
+                        </script>
+                    {% else  %}
+                        <a href="{% url 'request' %}" class="button">Request Now</a>
+                    {% endif %}
 				<span class="callout-separator">
 					<span>Or</span>
 				</span>
@@ -43,11 +49,11 @@
 {% for i in req %}
 	<div class="act-box">
 		<div class="col-md-4 act-post">
-		<div class="image"><img src="http://127.0.0.1:8000/{{ i.adharcard }}"></div>
+		<div class="image"><img src="{{ i.adharcard.url }}"></div>
 		<div class="act-pad">
-		<h5>Need {{ i.whatFor }} (Quantity : {{i.quantity}})</h5>
-		<p>My name is {{ i.name }}. I am from {{ i.user.city }}.</p>
-		<a href="activities.html" class="btn1">donate now</a>
+		<h5>Need {{ i.whatFor }}<br> (Quantity : {{i.quantity}})</h5>
+		<p id="decs">My name is {{ i.name }}. I am from {{ i.user.city }}.</p>
+		<a href="" class="btn1" data-toggle="modal" data-id="{{ i.id }}" id="donate" data-target="#exampleModalLong">donate now</a>
 		<div class="clearfix"></div>
 		</div>
 		</div>
@@ -56,6 +62,34 @@
 </div>
 </div>
 </section>
-{% endblock 'content' %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="margin-top:15%;margin-bottom:5%">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">REQUEST DETAILS</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top:-4%">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <br>
+
+
+
+
+
+      </div>
+      <div class="modal-footer">
+		<button type="button" class="btn btn-primary">Donate</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock 'content' %}
 {% block 'request' %}{% endblock 'request' %}
