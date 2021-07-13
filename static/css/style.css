@@ -413,7 +413,6 @@ p{
     padding: 9px 20px;
     font-weight: 600;
     text-transform: uppercase;
-	float: center;
 	margin: 15px 0 15px 100px !important;
 }
 .act-box .btn1:hover {
@@ -1420,8 +1419,7 @@ h5 {
 .topbar .bar-phone {
     padding-right: 10px;
 }
-element.style {
-}
+
 #first-slider .slide1 h2, #first-slider .slide2 h2, #first-slider .slide3 h2, #first-slider .slide4 h2 {
     font-size: 16px;
     line-height: 16px;
