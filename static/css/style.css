@@ -1502,3 +1502,21 @@ element.style {
   border: 1px solid #ddd;
   margin-bottom: 12px;
 }
+
+#css-dropdown
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 300px;
+    height: 42px;
+    margin: 100px auto 0 auto;
+}
+
+.search{
+    margin-top: 10px;
+    border:2px solid red;
+    border-radius: 3px;
+    padding: 10px;
+}

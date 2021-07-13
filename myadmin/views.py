@@ -1,7 +1,7 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from .models import *
-from user.models import User, Requests
+from user.models import *
 
 
 # Create your views here.
