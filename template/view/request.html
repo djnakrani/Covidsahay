@@ -44,18 +44,43 @@
 WE NEED YOUR HELP</h2>
 <form action="" method="post" class="con-form clearfix" enctype="multipart/form-data">
 	{% csrf_token %}
-	<div class="col-md-8">
+	<div class="col-md-8" id="name1">
+		{% for i in curr_user %}
+			<input type="text" name="fName" value="{{ i.fName }} {{ i.lName }}" class="form-control" placeholder="Enter Full Name Who need it*">
+		{% endfor %}
+	</div>
+	<div class="col-md-4" id="name2">
 		{% for i in curr_user %}
 			<input type="text" name="fName" value="{{ i.fName }} {{ i.lName }}" class="form-control" placeholder="Enter Full Name Who need it*">
 		{% endfor %}
 	</div>
 	 <div class="form-group col-md-4" style="margin-top:30px">
-		 <select class="form-text" name="whatFor">
-		  	<option value="">Select What you need*</option>
-		  	<option value="abc">abc</option>
-		    <option value="xyz">xyz</option>
-			<option value="mno">mno</option>
+		 <select class="form-text" name="whatFor" id="whatFor">
+		  	 <option value="">Select What you need*</option>
+		  	 <option value="Remdesivir">Remdesivir</option>
+		     <option value="Fabiflu">Fabiflu</option>
+			 <option value="Tocilizumab">Tocilizumab</option>
+			 <option value="Favipiravir">Favipiravir</option>
+			 <option value="Dexamethasone">Dexamethasone</option>
+			 <option value="Ivermectin">Ivermectin</option>
+			 <option value="Vitamin C">Vitamin C</option>
+			 <option value="Zinc Sulphate">Zinc Sulphate</option>
+			 <option value="Oxygen Cylinder">Oxygen Cylinder</option>
+			 <option value="Oxygen Regulator">Oxygen Regulator</option>
+			 <option value="Oximeter">Oximeter</option>
+			 <option value="Oxygen Concentrator">Oxygen Concentrator</option>
+			 <option value="Oximeter">Oximeter</option>
+			 <option value="Oxygen Beds">Oxygen Beds</option>
+			 <option value="ICU Beds">ICU Beds</option>
+			 <option value="Ventilator">Ventilator</option>
+			 <option value="Home Ventilator">Home Ventilator</option>
+			 <option value="Plasma">Plasma</option>
+			 <option value="Blood">Blood</option>
+			 <option value="Others" id="others">Others</option>
 		</select>
+	</div>
+	<div class="form-group col-md-4" style="" id="whatOthers">
+		 <input type="text" placeholder="Enter What you need"class="form-text" name="whatOthers">
 	</div>
 	 <div class="form-group col-md-4" style="margin-top:30px">
 		 <input type="number" placeholder="Enter Quantity" min="1" max="50" class="form-text" name="quantity">
@@ -76,6 +101,28 @@ WE NEED YOUR HELP</h2>
 </div>
 </div>
 </section>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$('#name2').hide();
+$('#whatOthers').hide();
+$('#whatFor').change(function() {
+    var selected = $(this).val();
+    if(selected == 'Others'){
+      $('#whatOthers').show();
+      $('#name1').hide();
+      $('#name2').show();
+    }
+    else{
+      $('#whatOthers').hide();
+      $('#name1').show();
+      $('#name2').hide();
+    }
+});
+</script>
 {% endblock 'content' %}
 {% block 'request' %}{% endblock 'request' %}
+
+
+
+
+

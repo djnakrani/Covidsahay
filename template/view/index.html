@@ -201,5 +201,10 @@
 </div>
 </div>
 </section>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    {% for msg in messages %}
+        swal("Something Wrong!!", '{{msg}}', '{{msg.tags}}')
+    {% endfor %}
+</script>
 {% endblock 'content' %}

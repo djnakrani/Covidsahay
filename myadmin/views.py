@@ -3,7 +3,6 @@ from django.shortcuts import render, redirect, HttpResponseRedirect
 from .models import *
 from user.models import *
 
-
 # Create your views here.
 def django_admin_panel(request):
      if request.method == "POST":
@@ -35,33 +34,43 @@ def django_admin_dashboard(request):
                totalpending += 1
           elif x.status == "Accepted":
                totalapproval += 1
-          else :
+          else:
                totalreject += 1
-     # print(totaldonation)
-     # print(totalpending)
-     # print(totalapproval)
-     # print(totalreject)
-     aId=request.session['admin_id']
-     aDetail= MyAdmin.objects.get(id=aId)
-     context={
-          "aId":aDetail.aName,
-          "totaluser":totaluser,
-          "totalrequest":totalrequest,
-          "totaldonation":totaldonation,
-          "totalpending":totalpending,
-          "totalapproval":totalapproval,
-          "totalreject":totalreject,
+     try:
+          aId = request.session['admin_id']
+     except KeyError:
+          return redirect('alogin')
+     aDetail = MyAdmin.objects.get(id=aId)
+     context = {
+          "aId": aDetail.aName,
+          "totaluser": totaluser,
+          "totalrequest": totalrequest,
+          "totaldonation": totaldonation,
+          "totalpending": totalpending,
+          "totalapproval": totalapproval,
+          "totalreject": totalreject,
      }
+     if request.method == 'GET':
+          logout = request.GET.get('logout')
+          if logout:
+               if request.session.has_key('admin_id'):
+                    request.session.flush()
+               return redirect('alogin')
+     # if request.method == 'POST':
+     #      if request.POST.get('logout'):
+     #           if request.session.has_key('admin_id'):
+     #                request.session.flush()
+     #           return redirect('alogin')
      return render(request,'Myadmin_panel/admin.html',context)
 
 
 def django_admin_alluser(request):
-     aId=request.session['admin_id']
-     aDetail= MyAdmin.objects.get(id=aId)
+     aId = request.session['admin_id']
+     aDetail = MyAdmin.objects.get(id=aId)
      data = User.objects.all()
-     context={
-          "aId":aDetail.aName,
-          "alldata":data
+     context = {
+          "aId": aDetail.aName,
+          "alldata": data
      }
      return render(request,'Myadmin_panel/alluser.html',context)
 

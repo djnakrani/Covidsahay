@@ -1,5 +1,5 @@
-from django.contrib.auth import authenticate
-from django.contrib.auth import authenticate, login, logout
+import datetime
+
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, HttpResponseRedirect, redirect
 from .models import *
@@ -15,43 +15,13 @@ def django_login(request):
             uDetail = User.objects.get(email=uName, pwd=uPwd)
             if uDetail:
                 request.session['user_id'] = uDetail.id
-                return redirect('index')
+                messages.success(request, "You Have successfully Login")
+                return HttpResponseRedirect('/')
         except ObjectDoesNotExist:
-            messages.error(request,"Please enter Valid EmailId Or Password")
+            messages.warning(request, "Please enter Valid EmailId Or Password")
             return render(request, 'view/login.html')
     else:
         return render(request, 'view/login.html')
-
-# def django_login(request):
-#     if not request.user.is_authenticated:
-#         if request.method == 'POST':
-#             try:
-#                 uName = request.POST['email']
-#                 uPwd = request.POST['pwd']
-#                 user = authenticate(email=uName, pwd=uPwd)
-#
-#                 if user is not None:
-#                     login(request, user)
-#                     # messages.success(request, 'You are Login Successfully...')
-#                     return redirect('index')
-#                 else:
-#                     return redirect('login')
-#             # uDetail = User.objects.get(email=uName, pwd=uPwd)
-#                 # if uDetail:
-#                 #     request.session['user_id'] = uDetail.id
-#                 #     return redirect('index')
-#             except ObjectDoesNotExist:
-#                 return render(request, 'view/login.html', {"txtErr": "Please enter Valid EmailId Or Password"})
-#         else:
-#             return render(request, 'view/login.html')
-#     else:
-#         return HttpResponseRedirect('/index/')
-
-
-# def user_logout(request):
-#     logout(request)
-#     return HttpResponseRedirect('/dashboard/login')
-
 
 def django_register(request):
      if request.method == 'POST':
@@ -66,7 +36,6 @@ def django_register(request):
          city = request.POST['city']
          area = request.POST['area']
          add = request.POST['add']
-#        pincode = request.POST['pincode']
          pwd = request.POST['pwd']
          objUser = User()
          objUser.fName = fName
@@ -80,7 +49,6 @@ def django_register(request):
          objUser.city = city
          objUser.area = area
          objUser.add = add
-#        objUser.pincode = pincode
          objUser.pwd = pwd
          objUser.save()
          print(fName, lName, add, mono, email)
@@ -119,10 +87,10 @@ def django_activities(request):
 
 def activities(request,need):
     if need == "":
-        req = Requests.objects.filter(status="Accepted")
+        req = Requests.objects.filter(status="Accepted").order_by('-date')
     else:
         user=User.objects.filter(city__in=need) | User.objects.filter(state__in=need) | User.objects.filter(area__in=need)
-        req = Requests.objects.filter(status="Accepted") & (Requests.objects.filter(whatFor__in=need) | Requests.objects.filter(user__in=user))
+        req = Requests.objects.filter(status="Accepted").order_by('-date') & (Requests.objects.filter(whatFor__in=need) | Requests.objects.filter(user__in=user))
         # print(req)
     opwhat = Requests.objects.values_list('whatFor',flat=True).distinct()
     city = User.objects.values_list('city',flat=True).distinct()
@@ -156,12 +124,14 @@ def django_contact(request):
              email = request.POST['email']
              subject = request.POST['subject']
              message = request.POST['message']
+             print(name, email, subject, message)
              objContact = Contact()
              objContact.name = name
              objContact.email = email
              objContact.subject = subject
              objContact.message = message
              objContact.save()
+             messages.success(request, "Your Message are successfully Sent.")
      return render(request, 'view/contact.html', context)
 
 def django_request(request):
@@ -178,6 +148,8 @@ def django_request(request):
          if request.POST.get('whatFor'):
              name = request.POST['fName']
              whatFor = request.POST['whatFor']
+             if whatFor == "Others":
+                 whatFor = request.POST['whatOthers']
              quantity = request.POST['quantity']
              try:
                 adharcard = request.FILES['adharcard']
@@ -196,7 +168,8 @@ def django_request(request):
              objRequests.adharcard = adharcard
              objRequests.prescription = prescription
              objRequests.save()
-             return redirect('activities')
+             messages.success(request, "Your Request are successfully Created")
+             return HttpResponseRedirect('/activities')
      return render(request, 'view/request.html', context)
 
 def getSession(request):
