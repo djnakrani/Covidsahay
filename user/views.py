@@ -68,15 +68,46 @@ def django_about(request):
     return render(request, 'view/about-us.html', context)
 
 def django_activities(request):
-     req = Requests.objects.filter(status="Accepted").order_by('-date')
-     print("Request is ", req)
-     context = {
-         "uId": getSession(request),
-         "req": req,
-     }
-     return render(request, 'view/activities.html', context)
+     
+    #  req = Requests.objects.filter(status="Accepted")
+    #  print("Request is ", req)
+    #  context = {
+    #      "uId": getSession(request),
+    #      "req": req,
+    #  }
+    if request.method == "POST":
+        whats=request.POST['allsearch'].split(",")
+        print(whats)
+
+        context=activities(request,whats)
+        return render(request, 'view/activities.html', context)
+    else:
+        context=activities(request,"")
+        return render(request, 'view/activities.html', context)
+
+def activities(request,need):
+    if need == "":
+        req = Requests.objects.filter(status="Accepted").order_by('-date')
+    else:
+        user=User.objects.filter(city__in=need) | User.objects.filter(state__in=need) | User.objects.filter(area__in=need)
+        req = Requests.objects.filter(status="Accepted").order_by('-date') & (Requests.objects.filter(whatFor__in=need) | Requests.objects.filter(user__in=user))
+        # print(req)
+    opwhat = Requests.objects.values_list('whatFor',flat=True).distinct()
+    city = User.objects.values_list('city',flat=True).distinct()
+    state = User.objects.values_list('state',flat=True).distinct()
+    area = User.objects.values_list('area',flat=True).distinct()
+    context = {
+        "uId": getSession(request),
+        "req": req,
+        "opwhat":opwhat,
+        "city":city,
+        "state":state,
+        "area":area,
+    }
+    return context
 
 def django_gallery(request):
+     
      context = {
          "uId": getSession(request),
          "img": ['gallery1', 'gallery2', 'gallery3', 'gallery4', 'gallery5', 'gallery6', 'gallery7', 'gallery8']
@@ -158,3 +189,4 @@ def getSession(request):
         uId = "Null"
         print("Session", uId)
         return uId
+

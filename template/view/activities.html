@@ -9,9 +9,9 @@
 <div class="overlay">
 <div class="container">
 <div class="row">
-<div class="col-sm-3"><h1>ACTIVITIES</h1></div>
-<div class="col-sm-6"><input type="text" id="searchReq" onkeyup="myFunction()" placeholder="Search for Request.."></div>
-<div class="col-sm-3"><h6 class="breadcrumb"><a href="{% url 'index' %}">Home</a> / Activities</h6></div>
+<div class="col-sm-6"><h1>ACTIVITIES</h1></div>
+<!-- <div class="col-sm-6"><input type="text" id="searchReq" onkeyup="myFunction()" placeholder="Search for Request.."></div> -->
+<div class="col-sm-6"><h6 class="breadcrumb"><a href="{% url 'index' %}">Home</a> / Activities</h6></div>
 </div>
 </div>
 </div>
@@ -42,7 +42,49 @@
 	</div>		
 </div>
 </div>
+<div class="container search">
+	<div class="row">
+		<form id="search" action="" method="POST">
+			{% csrf_token %}
+			<div class="col-md-10 col-xl-6">
+				<input type="hidden" name="allsearch" id="data">
+				<select id="whatFor" class="selectpicker show-menu-arrow form-control" name="whatFor" multiple data-live-search="true" title="Select Your Choices..">
+					<optgroup label="WhatFor">
+						{% for a in opwhat %}
+						<option value="{{a}}">{{a}}</option>
+						{% endfor %}
+					</optgroup>
+					<optgroup label="City">
+						{% for a in city %}
+						<option value="{{a}}">{{a}}</option>
+						{% endfor %}
+					</optgroup>
+					<optgroup label="State">
+						{% for a in state %}
+						<option value="{{a}}">{{a}}</option>
+						{% endfor %}
+					</optgroup>
+					<optgroup label="Area">
+						{% for a in area %}
+						<option value="{{a}}">{{a}}</option>
+						{% endfor %}
+					</optgroup>
+				</select>
+			</div>
+			<!-- <div class="col-md-5 col-xl-6">
+				<select name="city" class="form-control" id="city">
+					<option value="">Select City....</option>
+					{% for a in city %}
+					<option value="{{a}}">{{a}}</option>
+					{% endfor %}
+				</select>			</div> -->
+			<div class="col-md-2 col-xl-6">
+				<input type="button" onclick="try1()" class="btn btn-info" value="Search">
+			</div>
+		</form>
 
+	</div>
+</div>
 <section id="about-sec">
 <div class="container">
 <div class="row text-left">
@@ -86,7 +128,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <script>
   $('.modal-link').click(function(){
     $('#i-name').html($(this).data('name'));
