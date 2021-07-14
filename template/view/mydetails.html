@@ -1,0 +1,107 @@
+{% extends 'view/base.html' %}
+{% load static %}
+{% get_static_prefix as STATFILE %}
+{% block 'title' %} 
+<title>Covid Sahay | My Details</title>
+{% endblock 'title' %}
+{% block 'content' %}
+<section id="inner-banner">
+<div class="overlay">
+<div class="container">
+<div class="row">
+<div class="col-sm-6"><h1>MY DETAILS</h1></div>
+<div class="col-sm-6"><h6 class="breadcrumb"><a href="{% url 'index' %}">Home</a> / MY DETAILS</h6></div>
+</div>
+</div>
+</div>
+</section>
+
+<div id="users">
+    <div class="container">
+        <div class="row mydetails">
+            {% for all in user %}
+            <form method="post" action="" class="col-md-12">
+                {% csrf_token %}
+                <input type="hidden" class="form-text" placeholder="" name="id" value="{{all.id}}" readonly />
+                <div class="form-group col-md-6">
+                    <label for="">First Name:</label>
+                    <input type="text" class="form-text" placeholder="First Name*" name="fName" value="{{all.fName | upper}}" readonly />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Last Name:</label>
+                    <input type="text" class="form-text" placeholder="Last Name*" name="lName" value="{{all.lName | upper}}" readonly/>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Mobile Number:</label>
+                    <input type="text" class="form-text" placeholder="Mobile number*" name="mono" value="{{all.mono}}"/>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Gender:</label>
+                    <input type="text" class="form-text" placeholder="Mobile number*" name="gender" value="{{all.gender}}" readonly/>
+                </div>
+                <div class="form-group col-md-7">
+                    <label for="">Date Of Birth:</label>
+                    <input type="text" class="form-text" placeholder="" name="dob" value="{{all.dob}}" readonly/>
+                </div>
+                <div class="form-group col-md-5">
+                    <label for="">Blood Group:</label>
+                    <input type="text" class="form-text" placeholder="" name="bGrp" value="{{all.bGrp}}" readonly/>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="">Email:</label>
+                    <input type="text" class="form-text" placeholder="Email Id*" name="email" value="{{all.email}}"/>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="">State:</label>
+                     <select class="form-text" name="state">
+                      <option value="">Select State*</option>
+                      <option value="Gujarat" selected>Gujarat</option>
+                      <option value="Maharashtra">Maharashtra</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="">City:</label>
+                     <select class="form-text" name="city">
+                      <option value="">Select City*</option>
+                      <option value="Surat" selected>Surat</option>
+                      <option value="Baroda">Baroda</option>
+                        <option value="Ahmedabad">Ahmedabad</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="">Area:</label>
+                     <select class="form-text" name="area">
+                      <option value="">Select Area*</option>
+                      <option value="Nana Varachha" selected>Nana Varachha</option>
+                      <option value="Katargam">Katargam</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="">Address:</label>
+                    <textarea class="form-text" placeholder="Address*" name="add" rows="3" >{{all.add}}</textarea>
+                </div>
+                <div class="form-group col-md-3">
+                    <input type="hidden" class="form-text" placeholder="" name="pwd" value="{{all.pwd}}" />
+                </div>
+                <div class="form-group col-md-6">
+                     <input type="submit" class="btnRegister"  value="Change Details"/>
+                </div>
+            </form>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock 'content' %}
+
+{% block 'request' %}{% endblock 'request' %}
+
+{% block 'extrajs' %}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    {% for msg in messages %}
+        swal("Yupp!!", '{{msg}}', '{{msg.tags}}')
+    {% endfor %}
+</script>
+{% endblock 'extrajs' %}
+

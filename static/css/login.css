@@ -128,9 +128,9 @@
    cursor: pointer;
 }
 .btnRegister:hover{
-	background-color: #7a7df336;
+	background-color: #c40000d2;
     text-decoration: none;
-    color: #fff;
+    color: #000;
 }
 .form-lbl{
     margin-top:5%;

@@ -172,6 +172,54 @@ def django_request(request):
              return HttpResponseRedirect('/activities')
      return render(request, 'view/request.html', context)
 
+
+def django_myrequest(request):
+     Request = Requests.objects.all()
+     context = {
+         "uId": getSession(request),
+         "Request": Request,
+
+     }
+     return render(request, 'view/myrequest.html', context)
+
+def django_mydetails(request):
+     uId=getSession(request)
+     if request.method == 'POST': 
+         objUser = User()
+         objUser.id = request.POST['id']
+         objUser.fName = request.POST['fName']
+         objUser.lName = request.POST['lName']
+         objUser.mono = request.POST['mono']
+         objUser.gender = request.POST['gender']
+         objUser.dob = request.POST['dob']
+         objUser.bGrp = request.POST['bGrp']
+         objUser.email = request.POST['email']
+         objUser.state = request.POST['state']
+         objUser.city = request.POST['city']
+         objUser.area = request.POST['area']
+         objUser.add = request.POST['add']
+         objUser.pwd = request.POST['pwd']
+        #  print(id,fName,lName,mono,gender,dob,bGrp,email,state,city,area,add,pwd)
+         objUser.save()
+         messages.success(request, "Your Data successfully Upgrated.")
+         
+     user = User.objects.filter(id=uId)
+     #  print(user)
+     context = {
+         "uId": uId,
+         "user": user,
+     }
+     return render(request, 'view/mydetails.html', context)
+
+def django_changeuserpassword(request):
+     uId=getSession(request)
+     user = User.objects.filter(id=uId)
+     context = {
+         "uId": uId,
+         "user":user,
+     }
+     return render(request, 'view/changepassword.html', context)
+
 def getSession(request):
     uId = ''
     if request.method == 'POST':
