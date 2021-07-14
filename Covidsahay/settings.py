@@ -27,8 +27,6 @@ SECRET_KEY = 'bdv$f-&uq89r@@9r+nth^07k8m)6_fhq)mn#%!b1+d5!8*us+v'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user',
     'myadmin',
-  
 ]
 
 MIDDLEWARE = [

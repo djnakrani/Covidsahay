@@ -53,7 +53,8 @@
 		<div class="act-pad">
 		<h5>Need {{ i.whatFor }}<br> (Quantity : {{i.quantity}})</h5>
 		<p id="decs">My name is {{ i.name }}. I am from {{ i.user.city }}.</p>
-		<a href="" class="btn1" data-toggle="modal" data-id="{{ i.id }}" id="donate" data-target="#exampleModalLong">donate now</a>
+<!--		<a href="" class="btn1" data-toggle="modal" data-id="{{ i.id }}" id="donate" data-target="#exampleModalLong">donate now</a>-->
+			<a href="" class="btn1 modal-link" data-toggle="modal" data-target="#exampleModalLong" data-whatFor="{{ i.whatFor }}" data-name="{{ i.name }}">donate now</a>
 		<div class="clearfix"></div>
 		</div>
 		</div>
@@ -76,11 +77,8 @@
       </div>
       <div class="modal-body">
         <br>
-
-
-
-
-
+			<p id="i-name"></p>
+		  <p id="i-whatFor"></p>
       </div>
       <div class="modal-footer">
 		<button type="button" class="btn btn-primary">Donate</button>
@@ -89,7 +87,12 @@
     </div>
   </div>
 </div>
-
+<script>
+  $('.modal-link').click(function(){
+    $('#i-name').html($(this).data('name'));
+    $('#i-whatFor').html($(this).data('whatFor'));
+});
+</script>
 
 {% endblock 'content' %}
 {% block 'request' %}{% endblock 'request' %}
