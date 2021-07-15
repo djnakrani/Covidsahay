@@ -216,3 +216,9 @@
 	border:2px solid #ec1d25;
 }
 
+@media (max-width: 480px) {
+   .dropdown-content {
+      right: -10px;
+  }
+   
+}

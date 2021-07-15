@@ -1502,7 +1502,7 @@ nav.navbar.bootsnav ul.nav > li > a {
 nav.navbar.bootsnav .navbar-header {
     padding-left: 15px;
     padding-right: 15px;
-    height: 110px;
+    /* height: 110px; */
 }
 
 }
