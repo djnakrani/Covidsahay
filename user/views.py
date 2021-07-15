@@ -68,13 +68,6 @@ def django_about(request):
     return render(request, 'view/about-us.html', context)
 
 def django_activities(request):
-    #  req = Requests.objects.filter(status="Accepted")
-    #  print("Request is ", req)
-    #  context = {
-    #      "uId": getSession(request),
-    #      "req": req,
-    #  }
-
     context = {
          "uId": getSession(request),
      }
@@ -83,22 +76,11 @@ def django_activities(request):
             whats = request.POST['allsearch'].split(",")
             print(whats)
             if whats:
-                print("T")
+                print("what")
                 context = activities(request, whats)
             else:
-                req = Requests.objects.filter(status="Accepted").order_by('-date')
-                opwhat = Requests.objects.values_list('whatFor', flat=True).distinct()
-                city = User.objects.values_list('city', flat=True).distinct()
-                state = User.objects.values_list('state', flat=True).distinct()
-                area = User.objects.values_list('area', flat=True).distinct()
-                context = {
-                    "uId": getSession(request),
-                    "req": req,
-                    "opwhat": opwhat,
-                    "city": city,
-                    "state": state,
-                    "area": area,
-                }
+                context = activities(request, "")
+                print("else")
         elif request.POST.get('rId'):
             uid = getSession(request)
             curDate = date.today()
@@ -110,17 +92,23 @@ def django_activities(request):
             objDonor.user_id = context["uId"]
             objDonor.date = dt
             objDonor.save()
+            context = activities(request, "")
             messages.success(request, "Your successfully Donate.")
+            return HttpResponseRedirect('/activities', context)
+        else:
+            context = activities(request, "")
         return render(request, 'view/activities.html', context)
     else:
         context = activities(request, "")
         return render(request, 'view/activities.html', context)
 
 def activities(request, need):
+    # print(need)
     if need:
         user = User.objects.filter(city__in=need) | User.objects.filter(state__in=need) | User.objects.filter(
             area__in=need)
-        if user.exists():
+        # print(user.exists())
+        if not user.exists():
             req = Requests.objects.filter(status="Accepted").order_by('-date') & (Requests.objects.filter(whatFor__in=need))
         else:
             req = Requests.objects.filter(status="Accepted").order_by('-date') & (Requests.objects.filter(whatFor__in=need).filter(user__in=user))
@@ -212,12 +200,11 @@ def django_myrequest(request):
      context = {
          "uId": getSession(request),
          "Request": Request,
-
      }
      return render(request, 'view/myrequest.html', context)
 
 def django_mydetails(request):
-     uId=getSession(request)
+     uId = getSession(request)
      if request.method == 'POST': 
          objUser = User()
          objUser.id = request.POST['id']

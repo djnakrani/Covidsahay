@@ -9,9 +9,9 @@
 <div class="overlay">
 <div class="container">
 <div class="row">
-<div class="col-sm-6"><h1>MY REQUEST</h1></div>
+<div class="col-sm-6"><h1>YOUR REQUEST</h1></div>
 <!-- <div class="col-sm-6"><input type="text" id="searchReq" onkeyup="myFunction()" placeholder="Search for Request.."></div> -->
-<div class="col-sm-6"><h6 class="breadcrumb"><a href="{% url 'index' %}">Home</a> / MY REQUEST</h6></div>
+<div class="col-sm-6"><h6 class="breadcrumb"><a href="{% url 'index' %}">Home</a> / YOUR REQUEST</h6></div>
 </div>
 </div>
 </div>
@@ -25,7 +25,7 @@
                     {% if all.user.id == uId %}
                 <div class="list-group list list-group-item">
                     <div class="col-md-10">
-                        <h4 class="list-group-item-heading name">{{all.whatFor |upper}}</h4>
+                        <h4 class="list-group-item-heading name">{{all.whatFor | upper}}</h4>
 						<div class="row">
 							<div class="col-md-3"><label for="">Name:</label><p class="">{{all.name|upper}}</p></div>
 							<div class="col-md-2"><label for="">Date:</label><p class="">{{all.date |upper}}</p></div>
@@ -43,9 +43,10 @@
                 </div>
                 <div class="clearfix"></div>
 			</div>
-                    {% endif %}
+                {% endif %}
                 {% endfor %}
-                    <div class="text-danger text-center">No Request More Request....</div>
+<!--                    <div class="text-danger text-center">No Request More Request....</div>-->
+
         </div>
     </div>
 </div>
