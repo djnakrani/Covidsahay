@@ -3,6 +3,7 @@ import datetime
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, HttpResponseRedirect, redirect
 from .models import *
+from myadmin.models import *
 from datetime import date
 from django.contrib import messages
 
@@ -58,6 +59,12 @@ def django_register(request):
                  return HttpResponseRedirect('login')
              else:
                  messages.error(request, "Password Does not Match")
+     city = City.objects.all()
+     state = State.objects.all()
+     context = {
+         "state": state,
+         "city": city,
+     }
      return render(request, 'view/register.html')
 
 def django_index(request):

@@ -6,4 +6,10 @@ class MyAdmin(models.Model):
    aEmail = models.CharField(max_length=30, null=True)
    aPwd = models.CharField(max_length=20, null=True)
 
+class State(models.Model):
+   State = models.CharField(max_length=30, null=True)
+
+class City(models.Model):
+   City = models.CharField(max_length=30, null=True)
+   State = models.ForeignKey(State, on_delete=models.SET_NULL, null=True)
 
