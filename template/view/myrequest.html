@@ -25,20 +25,33 @@
                     {% if all.user.id == uId %}
                 <div class="list-group list list-group-item">
                     <div class="col-md-10">
-                        <h4 class="list-group-item-heading name">{{all.whatFor | upper}}</h4>
+                        <h4 class="list-group-item-heading name" style="margin-bottom:2%">{{all.whatFor | upper}}</h4>
 						<div class="row">
-							<div class="col-md-3"><label for="">Name:</label><p class="">{{all.name|upper}}</p></div>
-							<div class="col-md-2"><label for="">Date:</label><p class="">{{all.date |upper}}</p></div>
-							<div class="col-md-2"><label for="">Quantity:</label><p class="">{{all.quantity |upper}}</p></div>
+							<div class="col-md-2"><label for="">DATE : </label><p class="">{{all.date |upper}}</p></div>
+							<div class="col-md-2"><label for="">QUANTITY : </label><p class="">{{all.quantity |upper}}</p></div>
+                            {% if all.status == 'Accepted' %}
+                                <div class="col-md-3"><label for="">STATUS : </label><p class="">Admin Accepted</p></div>
+                            {% elif all.status == 'DAccepted' %}
+                                <div class="col-md-3"><label for="">STATUS : </label><p class="">Donor Accepted</p></div>
+                            {% else %}
+                                <div class="col-md-3"><label for="">STATUS : </label><p class="">{{all.status|upper}}</p></div>
+                            {% endif %}
 						</div>                                                    
                     </div>
                     <div class="row">
                         <div class="col-sm-12 col-md-2">
-						<form action="" method="POST"> 
+                        {% for i in Donors %}
+                            {% if i.requests.id == all.id %}
+                                <button type="submit" name="request" value="View" class="btn btn-primary modal-link" data-toggle="modal" data-target="#exampleModalLong" data-name="{{ i.user.fName | title}}" data-rid="{{ i.id }}" data-whatfor="{{ i.requests.whatFor }}" data-quantity="{{ i.requests.quantity }}" data-mono="{{ i.user.mono }}" data-gender="{{ i.user.gender }}" data-dob="{{ i.user.dob }}" data-bgrp="{{ i.user.bGrp }}" data-email="{{ i.user.email }}" data-add="{{ i.user.add | title }}" data-area="{{ i.user.area | title }}" data-city="{{ i.user.city }}" data-state="{{ i.user.state }}">View Donor</button>
+                            {% endif %}
+                        {% endfor %}
+                        <br><br>
+                        <form action="" method="POST">
                             {% csrf_token %}
-                            <input type="hidden" name="id" value="{{all.id}}">
-                            <button type="submit" name="request" value="Cancelled" class="btn btn-success">Cancel</button>
+                            <input type="hidden" name="rId" value="{{all.id}}">
+                            <button type="submit" name="request" id="msg" value="Cancelled" class="btn btn-success">Cancel</button>
                         </form>
+
                     </div> 
                 </div>
                 <div class="clearfix"></div>
@@ -46,11 +59,69 @@
                 {% endif %}
                 {% endfor %}
 <!--                    <div class="text-danger text-center">No Request More Request....</div>-->
-
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="margin-top:15%;margin-bottom:5%">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 style="margin-left: 4%; color:red;" class="modal-title" id="exampleModalLongTitle">DONOR DETAILS</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top:-5%">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+          <div class="modal-body">
+		  <style>
+			  h5{
+			  	line-height: 200%;
+			  	margin-left: 4%;
+			  }
+			  span{
+			  	font-weight:normal
+			  }
+			  .space{
+				margin-left:1%;
+			  }
+		  </style>
+		  <h5>WHAT YOU NEED : <span id="r-whatfor"></span><span class="space">(Quantity : <span id="r-quantity"></span>)</span></h5>
+		  <h5>DONOR NAME : <span id="r-name" style="margin-right:7%;"></span> GENDER : <span id="r-gender"></span></h5>
+		  <h5>DATE OF BIRTH : <span id="r-dob"></span></h5>
+		  <h5>BLOOD GROUP : <span id="r-bgrp"></span></h5>
+		  <h5>MOBILE NUMBER : <span id="r-mono"></span></h5>
+		  <h5>EMAIL ID : <span id="r-email"></span></h5>
+		  <h5>ADDRESS : <span id="r-add"></span>,<span class="space" id="r-area"></span>,<span class="space" id="r-city"></span>,<span class="space" id="r-state"></span></h5>
+              
+	 </div>
+    <div class="modal-footer">
+<!--    <button type="submit" class="btn btn-primary" style="background: #2f3191">Donate</button>-->
+	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
+    </div>
+  </div>
+</div>
+<script>
+    $('.modal-link').click(function(){
+    $('#r-whatfor').html($(this).data('whatfor'));
+    $('#r-quantity').html($(this).data('quantity'));
+
+    $('#r-name').html($(this).data('name'));
+    $('#r-gender').html($(this).data('gender'));
+    $('#r-dob').html($(this).data('dob'));
+    $('#r-bgrp').html($(this).data('bgrp'));
+
+    $('#r-mono').html($(this).data('mono'));
+    $('#r-email').html($(this).data('email'));
+
+    $('#r-add').html($(this).data('add'));
+    $('#r-area').html($(this).data('area'));
+    $('#r-city').html($(this).data('city'));
+    $('#r-state').html($(this).data('state'));
+<!--    var id = $(this).data('rid');-->
+<!--    $('#r-rid').val(id);-->
+});
+</script>
 {% endblock 'content' %}
 
 {% block 'request' %}{% endblock 'request' %}

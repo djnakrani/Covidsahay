@@ -100,7 +100,7 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     {% for msg in messages %}
-        swal("Yupp!!", '{{msg}}', '{{msg.tags}}')
+        swal("", '{{msg}}', '{{msg.tags}}')
     {% endfor %}
 </script>
 {% endblock 'extrajs' %}

@@ -1496,11 +1496,11 @@ h5 {
 }
 
 .myrequest{
-    border: 2px solid #ec1d25;
+    /*border: 2px solid #ec1d25;*/
     border-radius: 5px;
     padding: 10px;
     margin: 20px;
-    height: 1000px;
+    /*height: 500px;*/
     overflow-y: scroll;
 }
 
@@ -1510,4 +1510,13 @@ h5 {
     padding: 10px;
     margin: 20px;
     height: 100%;
+}
+.img-zoom{
+  height: 400px;
+  width: 500px;
+  transition: transform .2s;
+}
+
+.img-zoom:hover{
+  transform: scale(1.5);
 }
