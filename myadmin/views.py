@@ -2,6 +2,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from .models import *
 from user.models import *
+from django.contrib import messages
+
 
 # Create your views here.
 def django_admin_panel(request):
@@ -82,14 +84,23 @@ def django_admin_changepassword(request):
      except KeyError:
           return redirect('alogin')
      aDetail = MyAdmin.objects.get(id=aId)
+     admin=MyAdmin.objects.filter(id=aId)
      context = {
           "aId": aDetail.aName,
+          "admin":admin,
      }
      if request.method == 'POST':
           if request.POST.get('logout'):
                if request.session.has_key('admin_id'):
                     request.session.flush()
                return redirect('alogin')
+          else:
+               objAdmin=MyAdmin()
+               objAdmin.id=aId
+               objAdmin.aPwd=request.POST['cnew']
+               objAdmin.save(update_fields=['aPwd'])
+               messages.success(request,'Your Password Updated Sucessfully..')
+
      return render(request, 'Myadmin_panel/changepassword.html', context)
 
 def django_admin_request(request):

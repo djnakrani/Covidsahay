@@ -150,3 +150,9 @@ body {
 .img-zoom:hover{
   transform: scale(1.5); 
 }
+
+.myapassword{
+  padding: 30px;
+  margin: 20px;
+  height: 100%;
+}
