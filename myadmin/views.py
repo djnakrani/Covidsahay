@@ -50,46 +50,64 @@ def django_admin_dashboard(request):
           "totalapproval": totalapproval,
           "totalreject": totalreject,
      }
-     if request.method == 'GET':
-          logout = request.GET.get('logout')
-          if logout:
+     if request.method == 'POST':
+          if request.POST.get('logout'):
                if request.session.has_key('admin_id'):
                     request.session.flush()
                return redirect('alogin')
-     # if request.method == 'POST':
-     #      if request.POST.get('logout'):
-     #           if request.session.has_key('admin_id'):
-     #                request.session.flush()
-     #           return redirect('alogin')
-     return render(request,'Myadmin_panel/admin.html',context)
+     return render(request, 'Myadmin_panel/admin.html', context)
 
 
 def django_admin_alluser(request):
-     aId = request.session['admin_id']
+     try:
+          aId = request.session['admin_id']
+     except KeyError:
+          return redirect('alogin')
      aDetail = MyAdmin.objects.get(id=aId)
      data = User.objects.all()
      context = {
           "aId": aDetail.aName,
           "alldata": data
      }
-     return render(request,'Myadmin_panel/alluser.html',context)
+     if request.method == 'POST':
+          if request.POST.get('logout'):
+               if request.session.has_key('admin_id'):
+                    request.session.flush()
+               return redirect('alogin')
+     return render(request, 'Myadmin_panel/alluser.html', context)
 
 def django_admin_changepassword(request):
-     aId = request.session['admin_id']
+     try:
+          aId = request.session['admin_id']
+     except KeyError:
+          return redirect('alogin')
      aDetail = MyAdmin.objects.get(id=aId)
      context = {
           "aId": aDetail.aName,
      }
-     return render(request, 'Myadmin_panel/changepassword.html',context)
+     if request.method == 'POST':
+          if request.POST.get('logout'):
+               if request.session.has_key('admin_id'):
+                    request.session.flush()
+               return redirect('alogin')
+     return render(request, 'Myadmin_panel/changepassword.html', context)
 
 def django_admin_request(request):
-     aId = request.session['admin_id']
+     try:
+          aId = request.session['admin_id']
+     except KeyError:
+          return redirect('alogin')
      aDetail = MyAdmin.objects.get(id=aId)
      Request = Requests.objects.all()
      context = {
           "aId": aDetail.aName,
           "Request": Request,
      }
+     if request.method == 'POST':
+          if request.POST.get('logout'):
+               if request.session.has_key('admin_id'):
+                    request.session.flush()
+               return redirect('alogin')
      return render(request, 'Myadmin_panel/request.html', context)
 
 def request_check(request):

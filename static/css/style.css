@@ -1150,20 +1150,15 @@ h1 {
 .breadcrumb {
     margin-top: 10px;
 }
-
 .act-box .act-pad {
     padding: 20px 20px 25px 20px;
 }
-
 #pro-sec h3 {
     font-size: 20px;
     line-height: 24px;
 }
-	
 }
-
 @media (max-width: 768px) {
-	
 h1 {
     font-size: 36px;
     line-height: 36px;
@@ -1179,7 +1174,6 @@ h1 {
     float: right;
     margin: -5px 15px -5px 0;
 }
-
 #first-slider .slide1 h2, #first-slider .slide2 h2, #first-slider .slide3 h2, #first-slider .slide4 h2 {
     font-size: 36px;
     width: 90%;
@@ -1232,21 +1226,18 @@ h1 {
 #gallery-sec ul li:nth-child(2n+0) {
     margin: 20px 0 0 0;
 }
-
 #inner-banner .overlay {
     padding: 110px 0 60px 0;
 }
 .breadcrumb {
     margin-top: 5px;
 }
-
 #pro-sec .grid-image {
     width: 100%;
     margin: 0 auto;
 }
 }
 @media (max-width: 768px) {
-
 h1 {
     font-size: 30px;
     line-height: 30px;
@@ -1302,7 +1293,6 @@ nav.navbar.bootsnav .navbar-toggle {
 #help .line.line-50 {
     margin: 10px auto;
 }
-
 .act-box .act-pad {
     padding: 50px 50px 50px 50px;
 }
@@ -1317,15 +1307,12 @@ nav.navbar.bootsnav .navbar-toggle {
 .bwt-footer-copyright .right-text {
     text-align: center;
 }
-	
 }
 @media (max-width: 640px) {
-	
 #video-sec .media-text {
     float: right;
     width: 83%;
 }
-
 #inner-banner .overlay {
     padding: 120px 0 60px 0;
 }
@@ -1342,7 +1329,6 @@ nav.navbar.bootsnav .navbar-toggle {
     font-size: 24px;
     line-height: 30px;
 }
-	
 }
 @media (max-width: 480px) {
 
@@ -1390,7 +1376,6 @@ h1 {
     margin: 15px 0px 0px 0;
     float: none;
 }
-
 .google-maps {
     position: relative;
     padding-bottom: 50%;
@@ -1400,10 +1385,8 @@ h1 {
 #first-slider .carousel .item {
     min-height: 270px;
 }
-	
 }
 @media (max-width: 360px) {
-
 h1 {
     font-size: 20px;
     line-height: 20px;
@@ -1419,7 +1402,6 @@ h5 {
 .topbar .bar-phone {
     padding-right: 10px;
 }
-
 #first-slider .slide1 h2, #first-slider .slide2 h2, #first-slider .slide3 h2, #first-slider .slide4 h2 {
     font-size: 16px;
     line-height: 16px;
@@ -1476,11 +1458,8 @@ h5 {
 #first-slider .carousel .item {
     min-height: 220px;
 }
-
 }
-
 @media (max-width: 320px) {
-	
 #first-slider .slide1 h2, #first-slider .slide2 h2, #first-slider .slide3 h2, #first-slider .slide4 h2 {
     font-size: 16px;
     line-height: 16px;
@@ -1500,9 +1479,7 @@ h5 {
   border: 1px solid #ddd;
   margin-bottom: 12px;
 }
-
-#css-dropdown
-{
+#css-dropdown{
     position: absolute;
     top: 0;
     right: 0;
@@ -1511,7 +1488,6 @@ h5 {
     height: 42px;
     margin: 100px auto 0 auto;
 }
-
 .search{
     margin-top: 10px;
     border:2px solid red;

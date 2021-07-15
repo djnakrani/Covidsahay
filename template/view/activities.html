@@ -94,9 +94,8 @@
 		<div class="image"><img src="{{ i.adharcard.url }}"></div>
 		<div class="act-pad">
 		<h5>Need {{ i.whatFor }}<br> (Quantity : {{i.quantity}})</h5>
-		<p id="decs">My name is {{ i.name }}. I am from {{ i.user.city }}.</p>
-<!--		<a href="" class="btn1" data-toggle="modal" data-id="{{ i.id }}" id="donate" data-target="#exampleModalLong">donate now</a>-->
-			<a href="" class="btn1 modal-link" data-toggle="modal" data-target="#exampleModalLong" data-whatFor="{{ i.whatFor }}" data-name="{{ i.name }}">donate now</a>
+		<p id="decs">My name is {{ i.name | title}}. I am from {{ i.user.city }}.</p>
+			<a href="" id="modal" class="btn1 modal-link" data-toggle="modal" data-target="#exampleModalLong" data-name="{{ i.name | title}}" data-rid="{{ i.id }}" data-whatfor="{{ i.whatFor }}" data-quantity="{{ i.quantity }}" data-date="{{ i.date }}" data-mono="{{ i.user.mono }}" data-gender="{{ i.user.gender }}" data-dob="{{ i.user.dob }}" data-bgrp="{{ i.user.bGrp }}" data-email="{{ i.user.email }}" data-add="{{ i.user.add | title }}" data-area="{{ i.user.area | title }}" data-city="{{ i.user.city }}" data-state="{{ i.user.state }}">donate now</a>
 		<div class="clearfix"></div>
 		</div>
 		</div>
@@ -106,35 +105,98 @@
 </div>
 </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document" style="margin-top:15%;margin-bottom:5%">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">REQUEST DETAILS</h5>
+        <h4 style="margin-left: 4%; color:red;" class="modal-title" id="exampleModalLongTitle">REQUEST DETAILS</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top:-4%">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <br>
-			<p id="i-name"></p>
-		  <p id="i-whatFor"></p>
-      </div>
-      <div class="modal-footer">
-		<button type="button" class="btn btn-primary">Donate</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		  <style>
+			  h5{
+			  	line-height: 200%;
+			  	margin-left: 4%;
+			  }
+			  span{
+			  	font-weight:normal
+			  }
+			  .space{
+				margin-left:1%;
+			  }
+		  </style>
+		  <h5>WHAT HE NEED : <span id="r-whatfor"></span><span class="space">(Quantity : <span id="r-quantity"></span>)</span></h5>
+		  <h5>WHEN HE REQUEST : <span id="r-date"></span></h5>
+		  <h5>NAME : <span id="r-name" style="margin-right:7%;"></span> GENDER : <span id="r-gender"></span></h5>
+		  <h5>DATE OF BIRTH : <span id="r-dob"></span></h5>
+		  <h5>BLOOD GROUP : <span id="r-bgrp"></span></h5>
+		  <h5>MOBILE NUMBER : <span id="r-mono"></span></h5>
+		  <h5>EMAIL ID : <span id="r-email"></span></h5>
+		  <h5>ADDRESS : <span id="r-add"></span>,<span class="space" id="r-area"></span>,<span class="space" id="r-city"></span>,<span class="space" id="r-state"></span></h5>
+	 </div>
+
+    <div class="modal-footer">
+	<form action="" method="post" >
+		{% csrf_token %}
+		<input type="text" name="rId" id="r-rid" value="">
+		<button type="submit" class="btn btn-primary" style="background: #2f3191">Donate</button>
+	</form>
+	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
       </div>
     </div>
   </div>
-</div> -->
+</div>
 <script>
   $('.modal-link').click(function(){
-    $('#i-name').html($(this).data('name'));
-    $('#i-whatFor').html($(this).data('whatFor'));
+    $('#r-whatfor').html($(this).data('whatfor'));
+    $('#r-quantity').html($(this).data('quantity'));
+    $('#r-date').html($(this).data('date'));
+
+    $('#r-name').html($(this).data('name'));
+    $('#r-gender').html($(this).data('gender'));
+    $('#r-dob').html($(this).data('dob'));
+    $('#r-bgrp').html($(this).data('bgrp'));
+
+    $('#r-mono').html($(this).data('mono'));
+    $('#r-email').html($(this).data('email'));
+
+    $('#r-add').html($(this).data('add'));
+    $('#r-area').html($(this).data('area'));
+    $('#r-city').html($(this).data('city'));
+    $('#r-state').html($(this).data('state'));
+    var id = $(this).data('rid');
+    $('#r-rid').val(id);
 });
 </script>
 
 {% endblock 'content' %}
 {% block 'request' %}{% endblock 'request' %}
+{% block 'extrajs' %}
+<script type="text/javascript">
+function try1()
+{
+	var selected = [];
+    for (var option of document.getElementById('whatFor').options)
+    {
+        if (option.selected) {
+            selected.push(option.value);
+        }
+    }
+	document.getElementById('data').value=selected;
+    document.getElementById('search').submit();
+}
+$(document).ready(function(){
+	var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
+	removeItemButton: true,
+	maxItemCount:10,
+	searchResultLimit:5,
+	renderChoiceLimit:5
+	});
+});
+
+</script>
+{% endblock 'extrajs' %}
