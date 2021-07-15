@@ -25,33 +25,39 @@ def django_login(request):
 
 def django_register(request):
      if request.method == 'POST':
-         fName = request.POST['fName']
-         lName = request.POST['lName']
-         mono = request.POST['mono']
-         gender = request.POST['gender']
-         dob = request.POST['dob']
-         bGrp = request.POST['bGrp']
-         email = request.POST['email']
-         state = request.POST['state']
-         city = request.POST['city']
-         area = request.POST['area']
-         add = request.POST['add']
-         pwd = request.POST['pwd']
-         objUser = User()
-         objUser.fName = fName
-         objUser.lName = lName
-         objUser.mono = mono
-         objUser.gender = gender
-         objUser.dob = dob
-         objUser.bGrp = bGrp
-         objUser.email = email
-         objUser.state = state
-         objUser.city = city
-         objUser.area = area
-         objUser.add = add
-         objUser.pwd = pwd
-         objUser.save()
-         print(fName, lName, add, mono, email)
+         if request.POST.get('register'):
+             fName = request.POST['fName']
+             lName = request.POST['lName']
+             mono = request.POST['mono']
+             gender = request.POST['gender']
+             dob = request.POST['dob']
+             bGrp = request.POST['bGrp']
+             email = request.POST['email']
+             state = request.POST['state']
+             city = request.POST['city']
+             area = request.POST['area']
+             add = request.POST['add']
+             pwd = request.POST['pwd']
+             conPwd = request.POST['conPwd']
+             if pwd == conPwd:
+                 objUser = User()
+                 objUser.fName = fName
+                 objUser.lName = lName
+                 objUser.mono = mono
+                 objUser.gender = gender
+                 objUser.dob = dob
+                 objUser.bGrp = bGrp
+                 objUser.email = email
+                 objUser.state = state
+                 objUser.city = city
+                 objUser.area = area
+                 objUser.add = add
+                 objUser.pwd = pwd
+                 objUser.save()
+                 messages.success(request, "You have successfully Registered")
+                 return HttpResponseRedirect('login')
+             else:
+                 messages.error(request, "Password Does not Match")
      return render(request, 'view/register.html')
 
 def django_index(request):
@@ -81,7 +87,7 @@ def django_activities(request):
             else:
                 context = activities(request, "")
                 # print("else")
-        elif request.POST.get('rId'):
+        elif request.POST.get('req'):
             uid = getSession(request)
             curDate = date.today()
             dt = curDate.strftime("%Y-%m-%d")
@@ -134,7 +140,6 @@ def activities(request, need):
     return context
 
 def django_gallery(request):
-     
      context = {
          "uId": getSession(request),
          "img": ['gallery1', 'gallery2', 'gallery3', 'gallery4', 'gallery5', 'gallery6', 'gallery7', 'gallery8']
@@ -146,7 +151,7 @@ def django_contact(request):
         "uId": getSession(request),
      }
      if request.method == 'POST':
-         if request.POST.get('email'):
+         if request.POST.get('contact'):
              name = request.POST['name']
              email = request.POST['email']
              subject = request.POST['subject']
@@ -162,40 +167,43 @@ def django_contact(request):
 
 def django_request(request):
      uid = getSession(request)
-     curr_user = User.objects.filter(id=uid)
-     print("Current User is ", curr_user)
-     context = {
-        "uId": getSession(request),
-        "curr_user": curr_user,
-     }
-     curDate = date.today()
-     dt = curDate.strftime("%Y-%m-%d")
-     if request.method == 'POST':
-         if request.POST.get('whatFor'):
-             name = request.POST['fName']
-             whatFor = request.POST['whatFor']
-             if whatFor == "Others":
-                 whatFor = request.POST['whatOthers']
-             quantity = request.POST['quantity']
-             try:
-                adharcard = request.FILES['adharcard']
-             except KeyError:
-                 adharcard = 'images/adharcard/adharcard.jpg'
-             try:
-                 prescription = request.FILES['prescription']
-             except KeyError:
-                 prescription = 'images/prescription/prec.png'
-             objRequests = Requests()
-             objRequests.user_id = context["uId"]
-             objRequests.name = name
-             objRequests.whatFor = whatFor
-             objRequests.quantity = quantity
-             objRequests.date = dt
-             objRequests.adharcard = adharcard
-             objRequests.prescription = prescription
-             objRequests.save()
-             messages.success(request, "Your Request are successfully Created")
-             return HttpResponseRedirect('/activities')
+     if uid == "null":
+         curr_user = User.objects.filter(id=uid)
+         print("Current User is ", curr_user)
+         context = {
+            "uId": getSession(request),
+            "curr_user": curr_user,
+         }
+         curDate = date.today()
+         dt = curDate.strftime("%Y-%m-%d")
+         if request.method == 'POST':
+             if request.POST.get('req'):
+                 name = request.POST['fName']
+                 whatFor = request.POST['whatFor']
+                 if whatFor == "Others":
+                     whatFor = request.POST['whatOthers']
+                 quantity = request.POST['quantity']
+                 try:
+                    adharcard = request.FILES['adharcard']
+                 except KeyError:
+                     adharcard = 'images/adharcard/adharcard.jpg'
+                 try:
+                     prescription = request.FILES['prescription']
+                 except KeyError:
+                     prescription = 'images/prescription/prec.png'
+                 objRequests = Requests()
+                 objRequests.user_id = context["uId"]
+                 objRequests.name = name
+                 objRequests.whatFor = whatFor
+                 objRequests.quantity = quantity
+                 objRequests.date = dt
+                 objRequests.adharcard = adharcard
+                 objRequests.prescription = prescription
+                 objRequests.save()
+                 messages.success(request, "Your Request are successfully Created")
+                 return HttpResponseRedirect('/activities')
+     else:
+         return redirect('index')
      return render(request, 'view/request.html', context)
 
 
@@ -210,7 +218,7 @@ def django_myrequest(request):
          "Donors": Donors,
      }
      if request.method == 'POST':
-         if request.POST.get('rId'):
+         if request.POST.get('request'):
              rid = request.POST['rId']
              print(rid)
              Request.filter(id=rid).delete()
@@ -264,7 +272,7 @@ def django_changeuserpassword(request):
         user = User.objects.filter(id=uId)
         context = {
             "uId": uId,
-            "user":user,
+            "user": user,
         }
         return render(request, 'view/changepassword.html', context)
 
