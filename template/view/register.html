@@ -77,17 +77,18 @@
 <!--                                            <input type="text" class="form-text" placeholder="State*" value="" />-->
                                              <select class="form-text" name="state">
                                               <option value="">Select State*</option>
-                                              <option value="Gujarat">Gujarat</option>
-                                              <option value="Maharashtra">Maharashtra</option>
+                                              {% for s in state %}
+                                                <option value="{{s.id}}">{{s.State}}</option>
+                                              {% endfor %}
                                             </select>
                                         </div>
                                         <div class="form-group col-md-4">
 <!--                                            <input type="text" class="form-text" placeholder="City*" value="" />-->
                                              <select class="form-text" name="city">
                                               <option value="">Select City*</option>
-                                              <option value="Surat">Surat</option>
-                                              <option value="Baroda">Baroda</option>
-                                                <option value="Ahmedabad">Ahmedabad</option>
+                                              {% for c in city %}
+                                                <option value="{{c.id}}">{{c.City}}</option>
+                                              {% endfor %}
                                             </select>
                                         </div>
                                         <div class="form-group col-md-4">

@@ -3,6 +3,7 @@ import datetime
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, HttpResponseRedirect, redirect
 from .models import *
+from myadmin.models import *
 from datetime import date
 from django.contrib import messages
 
@@ -52,7 +53,14 @@ def django_register(request):
          objUser.pwd = pwd
          objUser.save()
          print(fName, lName, add, mono, email)
-     return render(request, 'view/register.html')
+    
+     city = City.objects.all()
+     state= State.objects.all()
+     context ={
+         "state":state,
+         "city":city,
+     }
+     return render(request, 'view/register.html',context)
 
 def django_index(request):
      context = {

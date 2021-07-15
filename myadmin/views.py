@@ -128,3 +128,21 @@ def request_check(request):
           objRequest.status = request.POST['request']
           objRequest.save(update_fields=['status'])
           return HttpResponseRedirect('/myadmin/Request')
+
+def django_admin_donor(request):
+     try:
+          aId = request.session['admin_id']
+     except KeyError:
+          return redirect('alogin')
+     aDetail = MyAdmin.objects.get(id=aId)
+     Donors = Donor.objects.all()
+     context = {
+          "aId": aDetail.aName,
+          "Donors": Donors,
+     }
+     if request.method == 'POST':
+          if request.POST.get('logout'):
+               if request.session.has_key('admin_id'):
+                    request.session.flush()
+               return redirect('alogin')
+     return render(request, 'Myadmin_panel/donors.html', context)

@@ -8,4 +8,5 @@ urlpatterns = [
     path('/Request', django_admin_request, name='request2'), 
     path('/PasswordChange', django_admin_changepassword, name='changepassword'),
     path('/CheckRequest', request_check, name='CheckRequest'),    
+    path('/Donors',django_admin_donor, name='donors'),
 ]
