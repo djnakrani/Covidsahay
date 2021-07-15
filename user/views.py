@@ -83,6 +83,7 @@ def django_activities(request):
             whats = request.POST['allsearch'].split(",")
             print(whats)
             if whats:
+                print("T")
                 context = activities(request, whats)
             else:
                 req = Requests.objects.filter(status="Accepted").order_by('-date')
@@ -119,8 +120,10 @@ def activities(request, need):
     if need:
         user = User.objects.filter(city__in=need) | User.objects.filter(state__in=need) | User.objects.filter(
             area__in=need)
-        req = Requests.objects.filter(status="Accepted").order_by('-date') & (
-                    Requests.objects.filter(whatFor__in=need) | Requests.objects.filter(user__in=user))
+        if user.exists():
+            req = Requests.objects.filter(status="Accepted").order_by('-date') & (Requests.objects.filter(whatFor__in=need))
+        else:
+            req = Requests.objects.filter(status="Accepted").order_by('-date') & (Requests.objects.filter(whatFor__in=need).filter(user__in=user))
     else:
         req = Requests.objects.filter(status="Accepted").order_by('-date')
 
