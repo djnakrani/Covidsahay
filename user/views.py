@@ -87,13 +87,17 @@ def django_activities(request):
             dt = curDate.strftime("%Y-%m-%d")
             rId = request.POST['rId']
             print(rId, dt, uid)
+            objReq = Requests()
+            objReq.id = rId
+            objReq.status = "DAccepted"
             objDonor = Donor()
             objDonor.requests_id = rId
             objDonor.user_id = context["uId"]
             objDonor.date = dt
             objDonor.save()
+            objReq.save(update_fields=['status'])
             context = activities(request, "")
-            messages.success(request, "Your successfully Donate.")
+            messages.success(request, "You Donate successfully.")
             return HttpResponseRedirect('/activities', context)
         else:
             context = activities(request, "")
@@ -180,7 +184,7 @@ def django_request(request):
              try:
                  prescription = request.FILES['prescription']
              except KeyError:
-                 prescription = 'images/adharcard/adharcard.jpg'
+                 prescription = 'images/prescription/prec.png'
              objRequests = Requests()
              objRequests.user_id = context["uId"]
              objRequests.name = name
@@ -197,10 +201,19 @@ def django_request(request):
 
 def django_myrequest(request):
      Request = Requests.objects.all()
+     Donors = Donor.objects.all()
+     print("Donors", Donors)
+     print(type(Donors))
      context = {
          "uId": getSession(request),
          "Request": Request,
+         "Donors": Donors,
      }
+     if request.method == 'POST':
+         if request.POST.get('rId'):
+             rid = request.POST['rId']
+             print(rid)
+             Request.filter(id=rid).delete()
      return render(request, 'view/myrequest.html', context)
 
 def django_mydetails(request):

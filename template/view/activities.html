@@ -89,17 +89,62 @@
 <div class="container">
 <div class="row text-left">
 {% for i in req %}
+	{% if i.user.id != uId %}
 	<div class="act-box">
 		<div class="col-md-4 act-post">
-		<div class="image"><img src="{{ i.adharcard.url }}"></div>
+		{% if i.whatFor == 'Remdesivir' %}
+			<div class="image"><img src="{{STATFILE}}images/remdesivir.jpeg"></div>
+		{% elif i.whatFor == 'Fabiflu' %}
+			<div class="image"><img src="{{STATFILE}}images/fabiflu.jpeg"></div>
+		{% elif i.whatFor == 'Tocilizumab' %}
+			<div class="image"><img src="{{STATFILE}}images/tocilizumab.jpeg"></div>
+		{% elif i.whatFor == 'Favipiravir' %}
+			<div class="image"><img src="{{STATFILE}}images/favipiravir.jpeg"></div>
+		{% elif i.whatFor == 'Dexamethasone' %}
+			<div class="image"><img src="{{STATFILE}}images/dexamethasone.jpeg"></div>
+		{% elif i.whatFor == 'Ivermectin' %}
+			<div class="image"><img src="{{STATFILE}}images/ivermectin.jpeg"></div>
+		{% elif i.whatFor == 'Vitamin C' %}
+			<div class="image"><img src="{{STATFILE}}images/vitaminc.jpeg"></div>
+		{% elif i.whatFor == 'Zinc Sulphate' %}
+			<div class="image"><img src="{{STATFILE}}images/zincsulphate.jpeg"></div>
+		{% elif i.whatFor == 'Oxygen Cylinder' %}
+			<div class="image"><img src="{{STATFILE}}images/oxygencylinder.jpeg"></div>
+		{% elif i.whatFor == 'Oxygen Regulator' %}
+			<div class="image"><img src="{{STATFILE}}images/oxygenregulator.jpeg"></div>
+		{% elif i.whatFor == 'Oximeter' %}
+			<div class="image"><img src="{{STATFILE}}images/oximeter.jpeg"></div>
+		{% elif i.whatFor == 'Oxygen Concentrator' %}
+			<div class="image"><img src="{{STATFILE}}images/oxygenconcentrator.jpeg"></div>
+		{% elif i.whatFor == 'Oxygen Beds' %}
+			<div class="image"><img src="{{STATFILE}}images/oxygenbeds.jpeg"></div>
+		{% elif i.whatFor == 'ICU Beds' %}
+			<div class="image"><img src="{{STATFILE}}images/icubeds.jpeg"></div>
+		{% elif i.whatFor == 'Ventilator' %}
+			<div class="image"><img src="{{STATFILE}}images/ventilator.jpeg"></div>
+		{% elif i.whatFor == 'Home Ventilator' %}
+			<div class="image"><img src="{{STATFILE}}images/homeventilator.jpeg"></div>
+		{% elif i.whatFor == 'Plasma' %}
+			<div class="image"><img src="{{STATFILE}}images/plasma.jpeg"></div>
+		{% elif i.whatFor == 'Blood' %}
+			<div class="image"><img src="{{STATFILE}}images/blood.jpeg"></div>
+		{% else %}
+			<div class="image"><img src="{{STATFILE}}images/others.png"></div>
+		{% endif %}
+
 		<div class="act-pad">
 		<h5>Need {{ i.whatFor }}<br> (Quantity : {{i.quantity}})</h5>
 		<p id="decs">My name is {{ i.name | title}}. I am from {{ i.user.city }}.</p>
-			<a href="" id="modal" class="btn1 modal-link" data-toggle="modal" data-target="#exampleModalLong" data-name="{{ i.name | title}}" data-rid="{{ i.id }}" data-whatfor="{{ i.whatFor }}" data-quantity="{{ i.quantity }}" data-date="{{ i.date }}" data-mono="{{ i.user.mono }}" data-gender="{{ i.user.gender }}" data-dob="{{ i.user.dob }}" data-bgrp="{{ i.user.bGrp }}" data-email="{{ i.user.email }}" data-add="{{ i.user.add | title }}" data-area="{{ i.user.area | title }}" data-city="{{ i.user.city }}" data-state="{{ i.user.state }}">donate now</a>
+			{% if uId == 'Null' %}
+				<button id="dmsg" class="btn1" >donate now</button>
+			{% else  %}
+				<a href="" id="modal" class="btn1 modal-link" data-toggle="modal" data-target="#exampleModalLong" data-name="{{ i.name | title}}" data-rid="{{ i.id }}" data-adhar="{{ i.adharcard }}" data-pres="{{ i.prescription }}" data-whatfor="{{ i.whatFor }}" data-quantity="{{ i.quantity }}" data-date="{{ i.date }}" data-mono="{{ i.user.mono }}" data-gender="{{ i.user.gender }}" data-dob="{{ i.user.dob }}" data-bgrp="{{ i.user.bGrp }}" data-email="{{ i.user.email }}" data-add="{{ i.user.add | title }}" data-area="{{ i.user.area | title }}" data-city="{{ i.user.city }}" data-state="{{ i.user.state }}">donate now</a>
+			{% endif %}
 		<div class="clearfix"></div>
 		</div>
 		</div>
 	</div>
+	{% endif %}
 {% endfor %}
 </div>
 </div>
@@ -133,18 +178,23 @@
 		  <h5>NAME : <span id="r-name" style="margin-right:7%;"></span> GENDER : <span id="r-gender"></span></h5>
 		  <h5>DATE OF BIRTH : <span id="r-dob"></span></h5>
 		  <h5>BLOOD GROUP : <span id="r-bgrp"></span></h5>
-		  <h5>MOBILE NUMBER : <span id="r-mono"></span></h5>
+		  <h5>MOBILE NUMBER : <a href="tel:7201095700" id="r-mono"></a></h5>
 		  <h5>EMAIL ID : <span id="r-email"></span></h5>
-		  <h5>ADDRESS : <span id="r-add"></span>,<span class="space" id="r-area"></span>,<span class="space" id="r-city"></span>,<span class="space" id="r-state"></span></h5>
+		  <h5>ADDRESS : <span id="r-add"></span>,<span class="space" id="r-area"></span>,<span class="space" id="r-city"></span>,<span class="space" id="r-state"></span></h5><br>
+		  <h5>ADHARCARD : <img style="margin-left:2.8%;" id="r-adhar" class="img-zoom" src="" height="200" width="300"/></h5><br>
+		  <h5>PRESCRIPTION : <img id="r-pres" class="img-zoom" src="" height="200" width="300"/></h5>
+
+<!--		  <h5>ADHARCARD : <a href={{STATFILE}}images/plasma.jpeg id="r-adhar"></a></h5>-->
+<!--		  <h5>PRESCRIPTION : <a href="" id="r-pres"></a></h5>-->
 	 </div>
 
     <div class="modal-footer">
 	<form action="" method="post" >
 		{% csrf_token %}
-		<input type="text" name="rId" id="r-rid" value="">
+		<input type="hidden" name="rId" id="r-rid" value="">
 		<button type="submit" class="btn btn-primary" style="background: #2f3191">Donate</button>
 	</form>
-	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+<!--	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
 
       </div>
     </div>
@@ -168,11 +218,36 @@
     $('#r-area').html($(this).data('area'));
     $('#r-city').html($(this).data('city'));
     $('#r-state').html($(this).data('state'));
+<!--	$('#r-adhar').html($(this).data('adhar'));-->
+<!--    $('#r-pres').html($(this).data('pres'));-->
     var id = $(this).data('rid');
     $('#r-rid').val(id);
+    var path = 'http://127.0.0.1:8000/';
+    var adharUrl = $(this).data('adhar');
+    var presUrl = $(this).data('pres');
+    var finalAdharPath = path.concat(adharUrl);
+    var finalPresPath = path.concat(presUrl);
+    console.log(finalAdharPath);
+    console.log(finalPresPath);
+	$("#r-adhar").attr('src',finalAdharPath);
+    $("#r-pres").attr('src',finalPresPath);
 });
 </script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    {% for msg in messages %}
+        swal('{{msg}}', "Now They will contact you..!!" ,'{{msg.tags}}')
+    {% endfor %}
+</script>
+<script>
+$(document).ready(function(){
+  $("#dmsg").click(function(){
+    swal({ title: "You Have to Login/Register first", text: "Click Ok Button to Login", type: "info" ,buttons: true}).then(function() {
+    window.location = "{% url 'login' %}";
+});
+  });
+});
+</script>
 {% endblock 'content' %}
 {% block 'request' %}{% endblock 'request' %}
 {% block 'extrajs' %}
@@ -197,6 +272,6 @@ $(document).ready(function(){
 	renderChoiceLimit:5
 	});
 });
-
 </script>
+
 {% endblock 'extrajs' %}

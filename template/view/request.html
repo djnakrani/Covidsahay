@@ -55,7 +55,7 @@ WE NEED YOUR HELP</h2>
 		{% endfor %}
 	</div>
 	 <div class="form-group col-md-4" style="margin-top:30px">
-		 <select class="form-text" name="whatFor" id="whatFor">
+		 <select class="form-text" name="whatFor" id="whatFor" required>
 		  	 <option value="">Select What you need*</option>
 		  	 <option value="Remdesivir">Remdesivir</option>
 		     <option value="Fabiflu">Fabiflu</option>
@@ -69,7 +69,6 @@ WE NEED YOUR HELP</h2>
 			 <option value="Oxygen Regulator">Oxygen Regulator</option>
 			 <option value="Oximeter">Oximeter</option>
 			 <option value="Oxygen Concentrator">Oxygen Concentrator</option>
-			 <option value="Oximeter">Oximeter</option>
 			 <option value="Oxygen Beds">Oxygen Beds</option>
 			 <option value="ICU Beds">ICU Beds</option>
 			 <option value="Ventilator">Ventilator</option>
@@ -80,10 +79,10 @@ WE NEED YOUR HELP</h2>
 		</select>
 	</div>
 	<div class="form-group col-md-4" style="" id="whatOthers">
-		 <input type="text" placeholder="Enter What you need"class="form-text" name="whatOthers">
+		 <input type="text" placeholder="Enter What you need"class="form-text" name="whatOthers" required>
 	</div>
 	 <div class="form-group col-md-4" style="margin-top:30px">
-		 <input type="number" placeholder="Enter Quantity" min="1" max="50" class="form-text" name="quantity">
+		 <input type="number" placeholder="Enter Quantity*" min="1" max="50" class="form-text" name="quantity" required>
 	</div>
 	<div class="col-md-4" style="margin-top:7px">
 		<span style="text-align:left;"> Adharcard* </span>
