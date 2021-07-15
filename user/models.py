@@ -28,6 +28,12 @@ class Requests(models.Model):
    prescription = models.ImageField(upload_to='images/prescription', null=True)
    status = models.CharField(max_length=20, default='pending', null=True)
 
+class Donor(models.Model):
+   user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+   requests = models.ForeignKey(Requests, on_delete=models.SET_NULL, null=True)
+   date = models.CharField(max_length=20, null=True)
+   status = models.CharField(max_length=20, default='pending', null=True)
+
 class Contact(models.Model):
    name = models.CharField(max_length=20, null=True)
    email = models.CharField(max_length=40, null=True)

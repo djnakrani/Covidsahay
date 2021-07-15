@@ -68,41 +68,73 @@ def django_about(request):
     return render(request, 'view/about-us.html', context)
 
 def django_activities(request):
-     
     #  req = Requests.objects.filter(status="Accepted")
     #  print("Request is ", req)
     #  context = {
     #      "uId": getSession(request),
     #      "req": req,
     #  }
+
+    context = {
+         "uId": getSession(request),
+     }
     if request.method == "POST":
-        whats=request.POST['allsearch'].split(",")
-        print(whats)
-
-        context=activities(request,whats)
+        if request.POST.get('allsearch'):
+            whats = request.POST['allsearch'].split(",")
+            print(whats)
+            if whats:
+                context = activities(request, whats)
+            else:
+                req = Requests.objects.filter(status="Accepted").order_by('-date')
+                opwhat = Requests.objects.values_list('whatFor', flat=True).distinct()
+                city = User.objects.values_list('city', flat=True).distinct()
+                state = User.objects.values_list('state', flat=True).distinct()
+                area = User.objects.values_list('area', flat=True).distinct()
+                context = {
+                    "uId": getSession(request),
+                    "req": req,
+                    "opwhat": opwhat,
+                    "city": city,
+                    "state": state,
+                    "area": area,
+                }
+        elif request.POST.get('rId'):
+            uid = getSession(request)
+            curDate = date.today()
+            dt = curDate.strftime("%Y-%m-%d")
+            rId = request.POST['rId']
+            print(rId, dt, uid)
+            objDonor = Donor()
+            objDonor.requests_id = rId
+            objDonor.user_id = context["uId"]
+            objDonor.date = dt
+            objDonor.save()
+            messages.success(request, "Your successfully Donate.")
         return render(request, 'view/activities.html', context)
     else:
-        context=activities(request,"")
+        context = activities(request, "")
         return render(request, 'view/activities.html', context)
 
-def activities(request,need):
-    if need == "":
+def activities(request, need):
+    if need:
+        user = User.objects.filter(city__in=need) | User.objects.filter(state__in=need) | User.objects.filter(
+            area__in=need)
+        req = Requests.objects.filter(status="Accepted").order_by('-date') & (
+                    Requests.objects.filter(whatFor__in=need) | Requests.objects.filter(user__in=user))
+    else:
         req = Requests.objects.filter(status="Accepted").order_by('-date')
-    else:
-        user=User.objects.filter(city__in=need) | User.objects.filter(state__in=need) | User.objects.filter(area__in=need)
-        req = Requests.objects.filter(status="Accepted").order_by('-date') & (Requests.objects.filter(whatFor__in=need) | Requests.objects.filter(user__in=user))
-        # print(req)
-    opwhat = Requests.objects.values_list('whatFor',flat=True).distinct()
-    city = User.objects.values_list('city',flat=True).distinct()
-    state = User.objects.values_list('state',flat=True).distinct()
-    area = User.objects.values_list('area',flat=True).distinct()
+
+    opwhat = Requests.objects.values_list('whatFor', flat=True).distinct()
+    city = User.objects.values_list('city', flat=True).distinct()
+    state = User.objects.values_list('state', flat=True).distinct()
+    area = User.objects.values_list('area', flat=True).distinct()
     context = {
         "uId": getSession(request),
         "req": req,
-        "opwhat":opwhat,
-        "city":city,
-        "state":state,
-        "area":area,
+        "opwhat": opwhat,
+        "city": city,
+        "state": state,
+        "area": area,
     }
     return context
 
@@ -124,7 +156,6 @@ def django_contact(request):
              email = request.POST['email']
              subject = request.POST['subject']
              message = request.POST['message']
-             print(name, email, subject, message)
              objContact = Contact()
              objContact.name = name
              objContact.email = email

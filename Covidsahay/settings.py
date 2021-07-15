@@ -14,8 +14,8 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATES_DIR=os.path.join(BASE_DIR,'template')
-STATIC_DIR=os.path.join(BASE_DIR,'static')
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'template')
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -27,8 +27,6 @@ SECRET_KEY = 'bdv$f-&uq89r@@9r+nth^07k8m)6_fhq)mn#%!b1+d5!8*us+v'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user',
     'myadmin',
-  
 ]
 
 MIDDLEWARE = [
