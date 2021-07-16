@@ -24,7 +24,7 @@
                 {% for all in Request  %}
                     {% if all.user.id == uId %}
                 <div class="list-group list list-group-item">
-                    <div class="col-md-9" style="margin-left:5%;margin-top:1.3%;">
+                    <div class="col-md-7" style="margin-left:5%;margin-top:1.3%;">
                         <h4 class="list-group-item-heading name" style="margin-bottom:2%">{{all.whatFor | upper}}</h4>
 						<div class="row">
 							<div class="col-md-3"><label for="">DATE : </label><p class="">{{all.date |upper}}</p></div>
@@ -33,24 +33,31 @@
                                 <div class="col-md-3"><label for="">STATUS : </label><p class="">Admin Accepted</p></div>
                             {% elif all.status == 'DAccepted' %}
                                 <div class="col-md-3"><label for="">STATUS : </label><p class="">Donor Accepted</p></div>
+                            {% elif all.status == 'Due' %}
+                                <div class="col-md-3"><label for="">STATUS : </label><p class="">Completed</p></div>
                             {% else %}
                                 <div class="col-md-3"><label for="">STATUS : </label><p class="">{{all.status|upper}}</p></div>
                             {% endif %}
 						</div>                                                    
                     </div>
                     <div class="row">
-                        <div class="col-sm-12 col-md-2" style="margin-top:1.7%;">
+                        <div class="col-sm-12 col-md-4" style="margin-top:1.7%;right: -20%;">
                         {% for i in Donors %}
                             {% if i.requests.id == all.id and all.status == "DAccepted" %}
                                 <button type="submit" name="donor" value="View" class="btn btn-primary modal-link" data-toggle="modal" data-target="#exampleModalLong" data-name="{{ i.user.fName | title}}" data-rid="{{ i.requests.id }}" data-whatfor="{{ i.requests.whatFor }}" data-quantity="{{ i.requests.quantity }}" data-mono="{{ i.user.mono }}" data-gender="{{ i.user.gender }}" data-dob="{{ i.user.dob }}" data-bgrp="{{ i.user.bGrp }}" data-email="{{ i.user.email }}" data-add="{{ i.user.add | title }}" data-area="{{ i.user.area | title }}" data-city="{{ i.user.city }}" data-state="{{ i.user.state }}">View Donor</button>
                             {% endif %}
                          {% endfor %}
                             <br><br>
+                    {% if all.status != "Due" %}
                       <form action="" method="POST">
                          {% csrf_token %}
                             <input type="hidden" name="rId" value="{{all.id}}">
+
                             <button type="submit" name="request" id="msg" value="Cancelled" class="btn btn-success">Cancel</button>
                         </form>
+                    {% else %}
+                        <h6 style="margin-left: -50%;color:red;">Your Request is expired or Completed</h6>
+                    {% endif %}
                         </div>
                 </div>
                 <div class="clearfix"></div>
@@ -132,18 +139,17 @@
 
 $(document).ready(function(){
   $(".feedback").click(function(){
+    var id = $(this).data('rid1');
   	swal({
 	  title: "Thank You For Request..!!",
 	  text: "Is Donor Fulfill Your Request..!!, Then Click on Yes",
 	  buttons: ["No", "Yes"],
 	  dangerMode: true,
 	})
-
 	.then((yes) => {
 	  if (yes) {
-        var id = $(this).data('rid1');
         console.log(id)
-<!--        window.location = "{% url 'myrequest'%}";-->
+<!--        window.location = "{% url 'myrequest' %}";-->
 	  } else {
 	  }
 	});

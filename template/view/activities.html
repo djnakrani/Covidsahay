@@ -26,7 +26,7 @@
 		<div class="col-md-6 col-xl-6">
 			<div class="callout-actions">
 				{% if uId == 'Null' %}
-						<a href="" id="dmsg1" class="button dmsg1" >donate now</a>
+						<a href="" id="dmsg1" class="button dmsg1" >Request now</a>
                     {% else  %}
                         <a href="{% url 'request' %}" class="button">Request Now</a>
                     {% endif %}
@@ -39,6 +39,7 @@
 	</div>		
 </div>
 </div>
+<div style="margin-top:-2%;background: #ec1c25;padding-bottom:1.5%;">
 <div class="container search">
 	<div class="row">
 		<form id="search" action="" method="POST">
@@ -69,12 +70,13 @@
 				</select>
 			</div>
 			<div class="col-md-2 col-xl-6">
-				<input type="button" onclick="try1()" class="btn btn-info" value="Search">
+				<input type="button" onclick="try1()" class="btn btn-info" style="background-color: #2e3191;border-color: #2e3191;" value="Search">
 			</div>
 		</form>
 
 	</div>
 </div>
+	</div>
 <section id="about-sec">
 <div class="container">
 <div class="row text-left">
@@ -184,7 +186,7 @@
 	<form action="" method="post" >
 		{% csrf_token %}
 		<input type="hidden" name="rId" id="r-rid" value="">
-		<button type="submit" name="req" class="btn btn-primary" style="background: #2f3191">Donate</button>
+		<button type="submit" name="rId" class="btn btn-primary" style="background: #2f3191">Donate</button>
 	</form>
 <!--	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
 
@@ -231,6 +233,25 @@
         swal('{{msg}}', "Now They will contact you..!!" ,'{{msg.tags}}')
     {% endfor %}
 </script>
+<script>
+$(document).ready(function(){
+  $(".dmsg").click(function(){
+  	swal({
+	  title: "You Have to Login first",
+	  text: "Click Ok Button to Login..!!",
+	  icon: "warning",
+	  buttons: true,
+	  dangerMode: true,
+	})
+	.then((login) => {
+	  if (login) {
+		window.location = "{% url 'login' %}";
+	  } else {
+	  }
+	});
+  });
+});
+</script>
 {% endblock 'content' %}
 {% block 'request' %}{% endblock 'request' %}
 {% block 'extrajs' %}
@@ -255,26 +276,6 @@ $(document).ready(function(){
 	searchResultLimit:5,
 	renderChoiceLimit:5
 	});
-});
-</script>
-<script>
-$(document).ready(function(){
-  $(".dmsg1").click(function(){
-
-  	swal({
-	  title: "You Have to Login first",
-	  text: "Click Ok Button to Login..!!",
-	  icon: "warning",
-	  buttons: true,
-	  dangerMode: true,
-	})
-	.then((login) => {
-	  if (login) {
-		window.location = "{% url 'login' %}";
-	  } else {
-	  }
-	});
-  });
 });
 </script>
 {% endblock 'extrajs' %}

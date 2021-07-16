@@ -1,10 +1,11 @@
 import datetime
+from time import timezone
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, HttpResponseRedirect, redirect
 from .models import *
 from myadmin.models import *
-from datetime import date
+from datetime import date, timedelta
 from django.contrib import messages
 
 # Create your views here.
@@ -26,7 +27,7 @@ def django_login(request):
 
 def django_register(request):
      if request.method == 'POST':
-         if request.POST.get('register'):
+         if request.POST.get('fName'):
              fName = request.POST['fName']
              lName = request.POST['lName']
              mono = request.POST['mono']
@@ -84,6 +85,7 @@ def django_activities(request):
     context = {
          "uId": getSession(request),
      }
+
     if request.method == "POST":
         if request.POST.get('allsearch'):
             whats = request.POST['allsearch'].split(",")
@@ -94,7 +96,7 @@ def django_activities(request):
             else:
                 context = activities(request, "")
                 # print("else")
-        elif request.POST.get('req'):
+        elif request.POST.get('rId'):
             uid = getSession(request)
             curDate = date.today()
             dt = curDate.strftime("%Y-%m-%d")
@@ -121,6 +123,23 @@ def django_activities(request):
 
 def activities(request, need):
     # print(need)
+    td = date.today()
+    today = td.strftime("%Y-%m-%d")
+    lessTen = td - timedelta(days=10)
+    lessThenTen = lessTen.strftime("%Y-%m-%d")
+    req1 = Requests.objects.filter(status__in=["Accepted", "DAccepted"]).order_by('-date')
+    for i in req1:
+        if today >= i.date >= lessThenTen:
+            print("Date", i.date)
+        else:
+            if i.status == 'Accepted' or i.status == 'DAccepted':
+                rId = i.id
+                objReq = Requests()
+                objReq.id = rId
+                objReq.status = "Due"
+                objReq.save(update_fields=['status'])
+
+
     if need:
         user = User.objects.filter(city__in=need) | User.objects.filter(state__in=need) | User.objects.filter(
             area__in=need)
@@ -158,7 +177,7 @@ def django_contact(request):
         "uId": getSession(request),
      }
      if request.method == 'POST':
-         if request.POST.get('contact'):
+         if request.POST.get('email'):
              name = request.POST['name']
              email = request.POST['email']
              subject = request.POST['subject']
@@ -173,60 +192,98 @@ def django_contact(request):
      return render(request, 'view/contact.html', context)
 
 def django_request(request):
-     uid = getSession(request)
-     curr_user = User.objects.filter(id=uid)
-     print("Current User is ", curr_user)
-     context = {
-        "uId": getSession(request),
-        "curr_user": curr_user,
-     }
-     curDate = date.today()
-     dt = curDate.strftime("%Y-%m-%d")
-     if request.method == 'POST':
-         if request.POST.get('req'):
-             name = request.POST['fName']
-             whatFor = request.POST['whatFor']
-             if whatFor == "Others":
-                 whatFor = request.POST['whatOthers']
-             quantity = request.POST['quantity']
-             try:
-                adharcard = request.FILES['adharcard']
-             except KeyError:
-                 adharcard = 'images/adharcard/adharcard.jpg'
-             try:
-                 prescription = request.FILES['prescription']
-             except KeyError:
-                 prescription = 'images/prescription/prec.png'
-             objRequests = Requests()
-             objRequests.user_id = context["uId"]
-             objRequests.name = name
-             objRequests.whatFor = whatFor
-             objRequests.quantity = quantity
-             objRequests.date = dt
-             objRequests.adharcard = adharcard
-             objRequests.prescription = prescription
-             objRequests.save()
-             messages.success(request, "Your Request are successfully Created")
-             return HttpResponseRedirect('/activities')
-     return render(request, 'view/request.html', context)
+    uId = getSession(request)
+    if uId == "Null":
+        return redirect('index')
+    else:
+         uid = getSession(request)
+         curr_user = User.objects.filter(id=uid)
+         print("Current User is ", curr_user)
+         context = {
+            "uId": getSession(request),
+            "curr_user": curr_user,
+         }
+         curDate = date.today()
+         dt = curDate.strftime("%Y-%m-%d")
+         if request.method == 'POST':
+             if request.POST.get('req'):
+                 name = request.POST['fName']
+                 whatFor = request.POST['whatFor']
+                 if whatFor == "Others":
+                     whatFor = request.POST['whatOthers']
+                 quantity = request.POST['quantity']
+                 try:
+                    adharcard = request.FILES['adharcard']
+                 except KeyError:
+                     adharcard = 'images/adharcard/adharcard.jpg'
+                 try:
+                     prescription = request.FILES['prescription']
+                 except KeyError:
+                     prescription = 'images/prescription/prec.png'
+                 objRequests = Requests()
+                 objRequests.user_id = context["uId"]
+                 objRequests.name = name
+                 objRequests.whatFor = whatFor
+                 objRequests.quantity = quantity
+                 objRequests.date = dt
+                 objRequests.adharcard = adharcard
+                 objRequests.prescription = prescription
+                 objRequests.save()
+                 messages.success(request, "Your Request are successfully Created")
+                 return HttpResponseRedirect('/activities')
+         return render(request, 'view/request.html', context)
 
 
 def django_myrequest(request):
-     Request = Requests.objects.all().order_by('-status')
-     Donors = Donor.objects.all()
-     print("Donors", Donors)
-     print(type(Donors))
-     context = {
+    uId = getSession(request)
+    if uId == "Null":
+        return redirect('index')
+    else:
+        td = date.today()
+        today = td.strftime("%Y-%m-%d")
+        lessTen = td - timedelta(days=10)
+        lessThenTen = lessTen.strftime("%Y-%m-%d")
+        req1 = Requests.objects.filter(status__in=["Accepted", "DAccepted"]).order_by('-date')
+        for i in req1:
+            if today >= i.date >= lessThenTen:
+                print("Date", i.date)
+            else:
+                if i.status == 'Accepted' or i.status == 'DAccepted':
+                    rId = i.id
+                    objReq = Requests()
+                    objReq.id = rId
+                    objReq.status = "Due"
+                    objReq.save(update_fields=['status'])
+
+        Request = Requests.objects.all().order_by('-status')
+        Donors = Donor.objects.all()
+        print("Donors", Donors)
+        print(type(Donors))
+        context = {
          "uId": getSession(request),
          "Request": Request,
          "Donors": Donors,
-     }
-     if request.method == 'POST':
-         if request.POST.get('request'):
-             rid = request.POST['rId']
-             print(rid)
-             Request.filter(id=rid).delete()
-     return render(request, 'view/myrequest.html', context)
+        }
+        if request.method == 'POST':
+             if request.POST.get('request'):
+                 rid = request.POST['rId']
+                 print(rid)
+                 Request.filter(id=rid).delete()
+        return render(request, 'view/myrequest.html', context)
+
+def django_mydonation(request):
+    uId = getSession(request)
+    if uId == "Null":
+        return redirect('index')
+    else:
+        Request = Requests.objects.all().order_by('-status')
+        Donors = Donor.objects.all()
+        context = {
+         "uId": getSession(request),
+         "Request": Request,
+         "Donors": Donors,
+        }
+        return render(request, 'view/mydonation.html', context)
 
 def django_mydetails(request):
      uId = getSession(request)
@@ -263,6 +320,9 @@ def django_mydetails(request):
             "city":city,
         }
         return render(request, 'view/mydetails.html', context)
+
+def django_forgetpwd(request):
+    return render(request, 'view/forgetpwd.html')
 
 def django_changeuserpassword(request):
     uId=getSession(request)
