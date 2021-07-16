@@ -131,3 +131,25 @@
     {% endfor %}
 </script>
 {% endblock 'content' %}
+{% block 'extrajs' %}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#msg1").click(function(){
+  	swal({
+	  title: "You Have to Login first",
+	  text: "Click Ok Button to Login..!!",
+	  icon: "warning",
+	  buttons: true,
+	  dangerMode: true,
+	})
+	.then((login) => {
+	  if (login) {
+		window.location = "{% url 'login' %}";
+	  } else {
+	  }
+	});
+  });
+});
+</script>
+{% endblock 'extrajs' %}

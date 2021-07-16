@@ -38,7 +38,7 @@
             <div class="col-md-6">
                 <div class="callout-actions">
                     {% if uId == 'Null' %}
-                        <a href="" class="button" class="dmsg">Request Now</a>
+                        <a href="" id="msg1" class="button msg1">Request Now</a>
                     {% else  %}
                         <a href="{% url 'request' %}" class="button">Request Now</a>
                     {% endif %}
@@ -51,26 +51,7 @@
         </div>
     </div>
 </div>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script>
-$(document).ready(function(){
-  $(".dmsg").click(function(){
-  	swal({
-	  title: "You Have to Login first",
-	  text: "Click Ok Button to Login..!!",
-	  icon: "warning",
-	  buttons: true,
-	  dangerMode: true,
-	})
-	.then((login) => {
-	  if (login) {
-		window.location = "{% url 'login' %}";
-	  } else {
-	  }
-	});
-  });
-});
-</script>
+
 {% endblock 'request' %}
 {% include 'view/footer.html' %}
 <script type="text/javascript" src="{{STATFILE}}js/jquery.min.js"></script>

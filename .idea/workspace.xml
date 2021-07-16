@@ -2,10 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65c1750e-2282-4f3c-ad76-354133c7e615" name="Default Changelist" comment="Pending Done">
+      <change afterPath="$PROJECT_DIR$/template/view/forgetpwd.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/view/mydonation.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template/view/activities.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/activities.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/view/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/view/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/view/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/view/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template/view/myrequest.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/myrequest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -286,7 +294,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626378188566</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Pending Done">
+      <created>1626416274949</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1626416274949</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="UnknownFeatures">
