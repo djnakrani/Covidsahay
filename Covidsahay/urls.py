@@ -23,10 +23,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('user.urls')),
     path('myadmin', include('myadmin.urls')),
-    path('reset-pass/', auth_view.PasswordResetView.as_view(template_name='view/forgetpwd.html'), name='password_reset'),
-    path('reset_pass_done/', auth_view.PasswordResetDoneView.as_view(template_name='view/resetpassdone.html'), name='password_reset_done'),
-    path('reset_pass_confirm/<uidb64>/<token>', auth_view.PasswordResetConfirmView.as_view(template_name='view/resetpassconfirm.html'), name='password_reset_confirm'),
-    path('reset_pass_complete/', auth_view.PasswordResetCompleteView.as_view(template_name='view/resetpasscomplete.html'), name='password_reset_complete'),
+    # path('reset-pass/', auth_view.PasswordResetView.as_view(template_name='view/forgetpwd.html'), name='password_reset'),
+    # path('reset_pass_done/', auth_view.PasswordResetDoneView.as_view(template_name='view/resetpassdone.html'), name='password_reset_done'),
+    # path('reset_pass_confirm/<uidb64>/<token>', auth_view.PasswordResetConfirmView.as_view(template_name='view/resetpassconfirm.html'), name='password_reset_confirm'),
+    # path('reset_pass_complete/', auth_view.PasswordResetCompleteView.as_view(template_name='view/resetpasscomplete.html'), name='password_reset_complete'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

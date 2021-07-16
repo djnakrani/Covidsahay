@@ -50,12 +50,14 @@
 <div class="row text-center">
 <h1>ABOUT COVID SAHAY</h1>
 <hr>
-<h5>Our Team Is Working Hard Day By Day For Needy People.</h5>
-<div align="justify">
-    <p>We Are Working As a Free Organzation For Needy People.People Can Help Each Other By This Our Initiative.And Also People Can Donate Medical Resources Like Injection,Oxygen,Medicine Etc.People Can Easily Get In Touch With People Who Need This Resources Immediately</p>
-    <p>Second Wave Of Covid Hit The People Of World Very Badly So,That We Can Have Created This Initiative For The Middleclass People As Well As Lower Class People So That They Can Get Easily Help.Now a Days People Have Everything But They Have No Medium To Connect So That There Are Many People Lost Their Life In Second Wave.</p>    
-    <p>Nowadays, We Can See That Covid Is Spreading And People Are Becoming Its Victim. In Which, Many Poor Or Medium Class People Can't Afford The Expensive Medicines, Oxygen Supplies, Oxygen Beds Etc.So In Our System, Providing Free Medicines, Oxygen Supplies, Hospital Beds, Blood, Plasma Etc. From The People Who Like To Donate Or Help Others.Our System Provide Facility To Connect People With Each Other And Help Each Other.</p>
-    <p>Our Main Motto Is That, In The Current Circumstances, We Can See That People Can Not Afford Expensive Medical Resources. So Our System Allows Those Needy Person To Connect With People Who Are Interested In Helping Others So They Can Get Help Easily.</p>
+<h5>Our Team Is Working Hard Day By Day For Needy People.</h5><br>
+<div text-align="justify">
+    <p>We Are Working As a Free Organization For Needy People. People Can Donate Medical Resources Like Injection, Oxygen, Medicine Etc.People Can Easily Get In Touch With People Who Need This Resources Immediately</p>
+    <p>Second Wave Of Covid Hit The People Of World Very Badly So, That We Can Have Created This Initiative For The Middle class People As Well As Lower Class People So That They Can Get Easily Help. </p>
+<!--    Now a Days People Have Everything But They Have No Medium To Connect So That There Are Many People Lost Their Life In Second Wave.-->
+    <p>Nowadays, We Can See That Covid Is Spreading And People are Becoming it's Victim. In Which, Many Poor Or Medium Class People Can't Afford The Expensive Medicines, Oxygen Supplies, Oxygen Beds etc. So We Providing Free Medicines, Oxygen Supplies, Hospital Beds, Blood, Plasma etc. From The People Who Like To Donate Or Help Others. </p>
+    <p>Our System Provide Facility To Connect People With Each Other And Help Each Other.</p>
+<!--    <p>Our Main Motto Is That, In The Current Circumstances, We Can See That People Can Not Afford Expensive Medical Resources. So Our System Allows Those Needy Person To Connect With People Who Are Interested In Helping Others So They Can Get Help Easily.</p>-->
 </div>
 <div class="text-center">
 <a href="{% url 'activities' %}" class="btnd">donate now</a>
@@ -70,29 +72,29 @@
 <div class="row text-center">
 <h1>How Can You Help?</h1>
 <hr>
-<h5>Providing The Some Importance of Save Life.</h5>
+<h5>Providing Medical Resources to Save Lives.</h5>
 <div class="text-left"> 
 <div class="col-md-6 clearfix top-off">
 <div class="grid-content-left"><i class="fa fa-heart"></i></div>
-<div class="grid-content-wrapper"><h4>Take Request From People</h4><p>We Make The Relation between People's To Help Each Others.</p>
+<div class="grid-content-wrapper"><h4>Take Request From People</h4><p>User can create their own request that what they need.</p>
 <a href="{% url 'activities' %}" title="" >Read More</a>
 </div>
 </div>
 <div class="col-md-6 clearfix top-off">
 <div class="grid-content-left"><i class="fas fa-briefcase-medical"></i></div>
-<div class="grid-content-wrapper"><h4>Donate Medical Resources</h4><p>Improving The Health Of The Community , The Resources Are Very Importance So Do Not Waste Resources</p>
+<div class="grid-content-wrapper"><h4>Donate Medical Resources</h4><p>You can donate to the user's request by contact them.</p>
 <a href="{% url 'activities' %}" title="" >Read More</a>
 </div>
 </div>
 <div class="col-md-6 clearfix top-off">
 <div class="grid-content-left"><i class="fa fa-tint"></i></div>
-<div class="grid-content-wrapper"><h4>Donate Blood</h4><p>Bring A Life Back To Power. Make Blood Donation Your Responsibility</p>
+<div class="grid-content-wrapper"><h4>Donate Blood</h4><p>You can donate Blood to our users if they need.</p>
 <a href="{% url 'activities' %}" title="" >Read More</a>
 </div>
 </div>
 <div class="col-md-6 clearfix top-off">
-<div class="grid-content-left"><i class="fa fa-thumbs-up"></i></div>
-<div class="grid-content-wrapper"><h4>Donate Plasma</h4><p>Help Save A Life , Give The Gift Of Plasma</p>
+<div class="grid-content-left"><i class="fa fa-tint"></i></div>
+<div class="grid-content-wrapper"><h4>Donate Plasma</h4><p>You can donate Plasma to our users if they need.</p>
 <a href="{% url 'activities' %}" title="" >Read More</a>
 </div>
 </div>
@@ -106,7 +108,7 @@
 <div class="row text-center">
 <h1>OUR GALLERY</h1>
 <hr>
-<h5>This Is Our Happy Family Who Got Help In Time</h5>
+<h5>This Is Our Happy Family Who Got Help..!!</h5>
 <ul class="clearfix">
 	{% for name in img %}
 	<li>
@@ -131,25 +133,3 @@
     {% endfor %}
 </script>
 {% endblock 'content' %}
-{% block 'extrajs' %}
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script>
-$(document).ready(function(){
-  $("#msg1").click(function(){
-  	swal({
-	  title: "You Have to Login first",
-	  text: "Click Ok Button to Login..!!",
-	  icon: "warning",
-	  buttons: true,
-	  dangerMode: true,
-	})
-	.then((login) => {
-	  if (login) {
-		window.location = "{% url 'login' %}";
-	  } else {
-	  }
-	});
-  });
-});
-</script>
-{% endblock 'extrajs' %}
