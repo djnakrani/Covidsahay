@@ -253,10 +253,14 @@ def django_mydetails(request):
          return redirect('index')
      else:
         user = User.objects.filter(id=uId)
+        state=State.objects.all()
+        city=City.objects.all()
         #  print(user)
         context = {
             "uId": uId,
             "user": user,
+            "state":state,
+            "city":city,
         }
         return render(request, 'view/mydetails.html', context)
 
@@ -279,6 +283,19 @@ def django_changeuserpassword(request):
             "user": user,
         }
         return render(request, 'view/changepassword.html', context)
+
+
+def city_view(request):
+    state_id=request.GET.get('stateid')
+    state=State.objects.filter(id=state_id)
+    print(state)
+    city=City.objects.filter(State=state)
+    print(city)
+    context={
+        'city':city,
+    }
+    return render(request, 'view/City.html', context)
+    
 
 def getSession(request):
     uId = ''

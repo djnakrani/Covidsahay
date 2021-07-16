@@ -73,26 +73,23 @@
                                             <input type="email" class="form-text" placeholder="Email Id*" name="email" required/>
                                         </div>
                                         <div class="form-group col-md-4">
-<!--                                            <input type="text" class="form-text" placeholder="State*" value="" />-->
-                                             <select class="form-text" name="state" required>
-                                              <option value="e">Select State*</option>
+                                             <select class="form-text" name="state" id="state" onchange="mycity()" required>
+                                              <option value="">Select State*</option>
                                               {% for s in state %}
                                                 <option value="{{s.id}}">{{s.State}}</option>
                                               {% endfor %}
                                             </select>
                                         </div>
                                         <div class="form-group col-md-4">
-<!--                                            <input type="text" class="form-text" placeholder="City*" value="" />-->
-                                             <select class="form-text" name="city">
-                                              <option value="w">Select City*</option>
-                                              {% for c in city %}
-                                                <option value="{{c.id}}">{{c.City}}</option>
-                                              {% endfor %}
-                                            </select>
+                                            <div id="city_div">
+                                                <select class="form-text" name="city" id="city" required>
+                                                <option value="">Select City*</option>
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="form-group col-md-4">
 <!--                                            <input type="text" class="form-text" placeholder="Area*" value="" />-->
-                                             <select class="form-text" name="area" required>
+                                             <select class="form-text" name="area"  required>
                                               <option value="">Select Area*</option>
                                               <option value="Nana Varachha">Nana Varachha</option>
                                               <option value="Katargam">Katargam</option>
@@ -131,6 +128,16 @@
 <script src="{{STATFILE}}js/login.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
+function mycity(){
+    stateid=document.getElementById('state').value;
+    output = '<select class="form-text" name="city" id="city"> <option value="">Select City*</option>';
+    {% for s in city %}
+        if(stateid == "{{s.State.id}}"){
+            output += '<option value="{{s.id}}">{{s.City}}</option>';
+        }
+    {% endfor %}
+    $('#city_div').html(output);
+}
 function match()
 {
     password=document.getElementById('pwd')
@@ -141,6 +148,7 @@ function match()
     confirm_password.setCustomValidity('');
     }
 }
+
 </script>
 </body>
 </html>

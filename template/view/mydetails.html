@@ -53,18 +53,20 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="">State:</label>
-                     <select class="form-text" name="state" id="state" required>
-                      <option value="">Select State*</option>
-                      {% for s in state %}
-                      <option value="{{s.id}}">{{s.State}}</option>
+                    <select class="form-text" name="state" id="state" onchange="mycity()" required>
+                        <option value="">Select State*</option>
+                        {% for s in state %}
+                        <option value="{{s.id}}">{{s.State}}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="">City:</label>
-                     <select class="form-text" name="city" required>
-                      <option value="">Select City*</option>
-                    </select>
+                    <div id="city_div">
+                        <select class="form-text" name="city" id="city">
+                            <option value="">Select City*</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="">Area:</label>
@@ -97,9 +99,17 @@
 {% block 'extrajs' %}
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
-$("#state").change(function(){
-    swal("","","success");
-})
+function mycity(){
+    stateid=document.getElementById('state').value;
+    // alert(stateid);
+    output = '<select class="form-text" name="city" id="city"> <option value="">Select City*</option>';
+    {% for s in city %}
+        if(stateid == "{{s.State.id}}"){
+            output += '<option value="{{s.id}}">{{s.City}}</option>';
+        }
+    {% endfor %}
+    $('#city_div').html(output);
+}
     {% for msg in messages %}
         swal("", '{{msg}}', '{{msg.tags}}')
     {% endfor %}
