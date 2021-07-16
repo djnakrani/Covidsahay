@@ -174,48 +174,45 @@ def django_contact(request):
 
 def django_request(request):
      uid = getSession(request)
-     if uid == "null":
-         curr_user = User.objects.filter(id=uid)
-         print("Current User is ", curr_user)
-         context = {
-            "uId": getSession(request),
-            "curr_user": curr_user,
-         }
-         curDate = date.today()
-         dt = curDate.strftime("%Y-%m-%d")
-         if request.method == 'POST':
-             if request.POST.get('req'):
-                 name = request.POST['fName']
-                 whatFor = request.POST['whatFor']
-                 if whatFor == "Others":
-                     whatFor = request.POST['whatOthers']
-                 quantity = request.POST['quantity']
-                 try:
-                    adharcard = request.FILES['adharcard']
-                 except KeyError:
-                     adharcard = 'images/adharcard/adharcard.jpg'
-                 try:
-                     prescription = request.FILES['prescription']
-                 except KeyError:
-                     prescription = 'images/prescription/prec.png'
-                 objRequests = Requests()
-                 objRequests.user_id = context["uId"]
-                 objRequests.name = name
-                 objRequests.whatFor = whatFor
-                 objRequests.quantity = quantity
-                 objRequests.date = dt
-                 objRequests.adharcard = adharcard
-                 objRequests.prescription = prescription
-                 objRequests.save()
-                 messages.success(request, "Your Request are successfully Created")
-                 return HttpResponseRedirect('/activities')
-     else:
-         return redirect('index')
+     curr_user = User.objects.filter(id=uid)
+     print("Current User is ", curr_user)
+     context = {
+        "uId": getSession(request),
+        "curr_user": curr_user,
+     }
+     curDate = date.today()
+     dt = curDate.strftime("%Y-%m-%d")
+     if request.method == 'POST':
+         if request.POST.get('req'):
+             name = request.POST['fName']
+             whatFor = request.POST['whatFor']
+             if whatFor == "Others":
+                 whatFor = request.POST['whatOthers']
+             quantity = request.POST['quantity']
+             try:
+                adharcard = request.FILES['adharcard']
+             except KeyError:
+                 adharcard = 'images/adharcard/adharcard.jpg'
+             try:
+                 prescription = request.FILES['prescription']
+             except KeyError:
+                 prescription = 'images/prescription/prec.png'
+             objRequests = Requests()
+             objRequests.user_id = context["uId"]
+             objRequests.name = name
+             objRequests.whatFor = whatFor
+             objRequests.quantity = quantity
+             objRequests.date = dt
+             objRequests.adharcard = adharcard
+             objRequests.prescription = prescription
+             objRequests.save()
+             messages.success(request, "Your Request are successfully Created")
+             return HttpResponseRedirect('/activities')
      return render(request, 'view/request.html', context)
 
 
 def django_myrequest(request):
-     Request = Requests.objects.all()
+     Request = Requests.objects.all().order_by('-status')
      Donors = Donor.objects.all()
      print("Donors", Donors)
      print(type(Donors))

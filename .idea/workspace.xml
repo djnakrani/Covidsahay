@@ -2,22 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65c1750e-2282-4f3c-ad76-354133c7e615" name="Default Changelist" comment="Pending Done">
-      <change afterPath="$PROJECT_DIR$/static/images/covid-icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/Myadmin_panel/changepassword.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/Myadmin_panel/changepassword.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/Myadmin_panel/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/Myadmin_panel/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/sponser.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/sponsor-a-child.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/template/view/activities.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/activities.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/view/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/view/changepassword.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/changepassword.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/view/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/view/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/view/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/view/projects.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/view/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/view/request.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/request.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/view/myrequest.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/myrequest.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,20 +84,20 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/template/view/index.html" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Covidsahay/urls.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/user/tests.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/user/admin.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/user/models.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/user/apps.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/user/views.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/user/urls.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/template/view/request.html" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/template/view/activities.html" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/template/view/register.html" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/template/view/about-us.html" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/template/view/gallery.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/template/view/index.html" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/template/view/contact.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/template/view/activities.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/user/models.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/template/view/about-us.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/user/views.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/template/view/register.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Covidsahay/urls.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/template/view/request.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/user/tests.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/user/apps.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/user/admin.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1tL3XqLxutRlaH9vfTLbcsrlGei" />
   <component name="ProjectLevelVcsManager">
@@ -291,7 +279,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626368707925</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Pending Done">
+      <created>1626378188566</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1626378188566</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="UnknownFeatures">

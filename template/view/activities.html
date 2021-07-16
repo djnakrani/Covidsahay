@@ -152,7 +152,7 @@
   <div class="modal-dialog" role="document" style="margin-top:15%;margin-bottom:5%">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 style="margin-left: 4%; color:red;" class="modal-title" id="exampleModalLongTitle">REQUEST DETAILS</h4>
+        <h4 style="margin-left: 4%; color: #2f3191" class="modal-title" id="exampleModalLongTitle">REQUEST DETAILS</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top:-4%">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -169,6 +169,11 @@
 			  .space{
 				margin-left:1%;
 			  }
+			  #r-email, #r-mono{
+			    text-decoration: underline;
+			    color: #2f3191;
+			    font-weight:normal;
+			  }
 		  </style>
 		  <h5>WHAT HE NEED : <span id="r-whatfor"></span><span class="space">(Quantity : <span id="r-quantity"></span>)</span></h5>
 		  <h5>WHEN HE REQUEST : <span id="r-date"></span></h5>
@@ -176,13 +181,10 @@
 		  <h5>DATE OF BIRTH : <span id="r-dob"></span></h5>
 		  <h5>BLOOD GROUP : <span id="r-bgrp"></span></h5>
 		  <h5>MOBILE NUMBER : <a href="tel:7201095700" id="r-mono"></a></h5>
-		  <h5>EMAIL ID : <a href="mailto:dangarmanhar@gmail.com?subject = 'Help From Covid Sahay'" id="r-email"></a></h5>
+		  <h5>EMAIL ID : <a href="mailto:dangarmanhar@gmail.com" id="r-email"></a></h5>
 		  <h5>ADDRESS : <span id="r-add"></span>,<span class="space" id="r-area"></span>,<span class="space" id="r-city"></span>,<span class="space" id="r-state"></span></h5><br>
 		  <h5>ADHARCARD : <img style="margin-left:2.8%;" id="r-adhar" class="img-zoom" src="" height="200" width="300"/></h5><br>
 		  <h5>PRESCRIPTION : <img id="r-pres" class="img-zoom" src="" height="200" width="300"/></h5>
-
-<!--		  <h5>ADHARCARD : <a href={{STATFILE}}images/plasma.jpeg id="r-adhar"></a></h5>-->
-<!--		  <h5>PRESCRIPTION : <a href="" id="r-pres"></a></h5>-->
 	 </div>
 
     <div class="modal-footer">
@@ -264,6 +266,7 @@ $(document).ready(function(){
 <script>
 $(document).ready(function(){
   $(".dmsg1").click(function(){
+
   	swal({
 	  title: "You Have to Login first",
 	  text: "Click Ok Button to Login..!!",
