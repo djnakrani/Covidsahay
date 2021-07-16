@@ -26,10 +26,7 @@
 		<div class="col-md-6 col-xl-6">
 			<div class="callout-actions">
 				{% if uId == 'Null' %}
-                        <a href="" class="button">Request Now</a>
-                        <script>
-                        swal("Something Wrong!!", 'sd', 'warning')
-                        </script>
+						<a href="" id="dmsg1" class="button dmsg1" >donate now</a>
                     {% else  %}
                         <a href="{% url 'request' %}" class="button">Request Now</a>
                     {% endif %}
@@ -136,7 +133,7 @@
 		<h5>Need {{ i.whatFor }}<br> (Quantity : {{i.quantity}})</h5>
 		<p id="decs">My name is {{ i.name | title}}. I am from {{ i.user.city }}.</p>
 			{% if uId == 'Null' %}
-				<button id="dmsg" class="btn1" >donate now</button>
+				<button id="dmsg" class="btn1 dmsg" >donate now</button>
 			{% else  %}
 				<a href="" id="modal" class="btn1 modal-link" data-toggle="modal" data-target="#exampleModalLong" data-name="{{ i.name | title}}" data-rid="{{ i.id }}" data-adhar="{{ i.adharcard }}" data-pres="{{ i.prescription }}" data-whatfor="{{ i.whatFor }}" data-quantity="{{ i.quantity }}" data-date="{{ i.date }}" data-mono="{{ i.user.mono }}" data-gender="{{ i.user.gender }}" data-dob="{{ i.user.dob }}" data-bgrp="{{ i.user.bGrp }}" data-email="{{ i.user.email }}" data-add="{{ i.user.add | title }}" data-area="{{ i.user.area | title }}" data-city="{{ i.user.city }}" data-state="{{ i.user.state }}">donate now</a>
 			{% endif %}
@@ -179,7 +176,7 @@
 		  <h5>DATE OF BIRTH : <span id="r-dob"></span></h5>
 		  <h5>BLOOD GROUP : <span id="r-bgrp"></span></h5>
 		  <h5>MOBILE NUMBER : <a href="tel:7201095700" id="r-mono"></a></h5>
-		  <h5>EMAIL ID : <span id="r-email"></span></h5>
+		  <h5>EMAIL ID : <a href="mailto:dangarmanhar@gmail.com?subject = 'Help From Covid Sahay'" id="r-email"></a></h5>
 		  <h5>ADDRESS : <span id="r-add"></span>,<span class="space" id="r-area"></span>,<span class="space" id="r-city"></span>,<span class="space" id="r-state"></span></h5><br>
 		  <h5>ADHARCARD : <img style="margin-left:2.8%;" id="r-adhar" class="img-zoom" src="" height="200" width="300"/></h5><br>
 		  <h5>PRESCRIPTION : <img id="r-pres" class="img-zoom" src="" height="200" width="300"/></h5>
@@ -192,7 +189,7 @@
 	<form action="" method="post" >
 		{% csrf_token %}
 		<input type="hidden" name="rId" id="r-rid" value="">
-		<button type="submit" class="btn btn-primary" style="background: #2f3191">Donate</button>
+		<button type="submit" name="req" class="btn btn-primary" style="background: #2f3191">Donate</button>
 	</form>
 <!--	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
 
@@ -239,15 +236,6 @@
         swal('{{msg}}', "Now They will contact you..!!" ,'{{msg.tags}}')
     {% endfor %}
 </script>
-<script>
-$(document).ready(function(){
-  $("#dmsg").click(function(){
-    swal({ title: "You Have to Login/Register first", text: "Click Ok Button to Login", type: "info" ,buttons: true}).then(function() {
-    window.location = "{% url 'login' %}";
-});
-  });
-});
-</script>
 {% endblock 'content' %}
 {% block 'request' %}{% endblock 'request' %}
 {% block 'extrajs' %}
@@ -273,5 +261,23 @@ $(document).ready(function(){
 	});
 });
 </script>
-
+<script>
+$(document).ready(function(){
+  $(".dmsg1").click(function(){
+  	swal({
+	  title: "You Have to Login first",
+	  text: "Click Ok Button to Login..!!",
+	  icon: "warning",
+	  buttons: true,
+	  dangerMode: true,
+	})
+	.then((login) => {
+	  if (login) {
+		window.location = "{% url 'login' %}";
+	  } else {
+	  }
+	});
+  });
+});
+</script>
 {% endblock 'extrajs' %}

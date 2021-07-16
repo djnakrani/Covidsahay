@@ -32,22 +32,22 @@
         <div class="col-md-9 register-box">
                         <div class="tab-content">
                             <div class="tab-pane show active">
-                                <img class="img" src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+                                <img class="img" src="{{STATFILE}}images/covid-icon.png" alt=""/>
                                 <h1 class="register-heading">Welcome</h1>
                                 <div class="row register-form">
                                     <form method="post" action="" class="col-md-12">
                                         {% csrf_token %}
                                         <div class="form-group col-md-6">
-                                            <input type="text" class="form-text" placeholder="First Name*" name="fName" />
+                                            <input type="text" class="form-text" placeholder="First Name*" name="fName" required/>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <input type="text" class="form-text" placeholder="Last Name*" name="lName" />
+                                            <input type="text" class="form-text" placeholder="Last Name*" name="lName" required/>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <input type="text" class="form-text" placeholder="Mobile number*" name="mono" />
+                                            <input type="number" class="form-text" placeholder="Mobile number*" name="mono" maxlength="10" required/>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <select class="form-text" name="gender">
+                                            <select class="form-text" name="gender" required>
                                               <option value="" >Select Gender*</option>
                                               <option value="Male">Male</option>
                                               <option value="Female">Female</option>
@@ -57,25 +57,24 @@
                                              <input type="text" class="form-text" placeholder="Enter Your Birthdate*" onfocus="(this.type='date')" name="dob">
                                         </div>
                                         <div class="form-group col-md-5">
-                                             <select class="form-text" name="bGrp">
+                                             <select class="form-text" name="bGrp" required>
                                               <option value="">Select BloodGroup*</option>
                                               <option value="A+">A+</option>
+                                              <option value="A-">A-</option>
                                               <option value="B+">B+</option>
-                                              <option value="B+">C+</option>
-                                              <option value="A+">A+</option>
-                                              <option value="B+">O+</option>
-                                              <option value="A+">A-</option>
-                                              <option value="B+">B-</option>
-                                              <option value="A+">C-</option>
-                                              <option value="B+">O-</option>
+                                              <option value="B-">B-</option>
+                                              <option value="AB+">AB+</option>
+                                              <option value="AB-">AB-</option>
+                                              <option value="O+">O+</option>
+                                              <option value="O-">O-</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <input type="text" class="form-text" placeholder="Email Id*" name="email" />
+                                            <input type="email" class="form-text" placeholder="Email Id*" name="email" required/>
                                         </div>
                                         <div class="form-group col-md-4">
 <!--                                            <input type="text" class="form-text" placeholder="State*" value="" />-->
-                                             <select class="form-text" name="state">
+                                             <select class="form-text" name="state" required>
                                               <option value="">Select State*</option>
                                               {% for s in state %}
                                                 <option value="{{s.id}}">{{s.State}}</option>
@@ -93,29 +92,26 @@
                                         </div>
                                         <div class="form-group col-md-4">
 <!--                                            <input type="text" class="form-text" placeholder="Area*" value="" />-->
-                                             <select class="form-text" name="area">
+                                             <select class="form-text" name="area" required>
                                               <option value="">Select Area*</option>
                                               <option value="Nana Varachha">Nana Varachha</option>
                                               <option value="Katargam">Katargam</option>
                                             </select>
                                         </div>
-                                        <div class="form-group col-md-9">
-                                            <input type="text" class="form-text" placeholder="Address*" name="add" />
-                                        </div>
-                                        <div class="form-group col-md-3">
-                                            <input type="text" class="form-text" placeholder="Pincode*" name="pincode" />
+                                        <div class="form-group col-md-12">
+                                            <input type="text" class="form-text" placeholder="Address*" name="add" required/>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <input type="password" class="form-text" placeholder="Password*" name="pwd" />
+                                            <input type="password" class="form-text" placeholder="Password*" name="pwd" id="pwd" required/>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <input type="password" class="form-text"  placeholder="Confirm Password*" name="conPwd" />
+                                            <input type="password" class="form-text" placeholder="Confirm Password*" name="conPwd" id="conPwd" required/>
                                         </div>
                                         <div class="form-group col-md-12">
-                                             <input type="submit" class="btnRegister"  value="Register"/>
+                                             <input type="submit" class="btnRegister" name="register" value="Register"/>
                                         </div>
                                         <div class="formLast col-md-12">
-                                            <h4>If You already have an Account Click on <a class="lo" href="{% url 'login' %}">Login</a></h4>
+                                            <h4>If You already have an Account Click on <a class="lo" style="color: #ec1c25;" href="{% url 'login' %}">Login</a></h4>
                                         </div>
                                     </form>
                                 </div>
@@ -133,8 +129,11 @@
 <script src="{{STATFILE}}js/banner.js"></script>
 <script src="{{STATFILE}}js/script.js"></script>
 <script src="{{STATFILE}}js/login.js"></script>
-<script type="text/javascript">
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    {% for msg in messages %}
+        swal('{{msg}}', "",'{{msg.tags}}')
+    {% endfor %}
 </script>
 </body>
 </html>
