@@ -57,9 +57,15 @@ def django_register(request):
                  objUser.save()
                  messages.success(request, "You have successfully Registered")
                  return HttpResponseRedirect('login')
-             else:
-                 messages.error(request, "Password Does not Match")
-     return render(request, 'view/register.html')
+            #  else:
+            #      messages.error(request, "Password Does not Match")
+     state=State.objects.all()
+     city=City.objects.all()
+     context={
+         "state":state,
+         "city":city,
+     }
+     return render(request, 'view/register.html',context)
 
 def django_index(request):
      context = {
