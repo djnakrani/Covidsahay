@@ -13,3 +13,6 @@ class City(models.Model):
    name = models.CharField(max_length=30, null=True)
    State = models.ForeignKey(State, on_delete=models.SET_NULL, null=True)
 
+class Area(models.Model):
+   aname = models.CharField(max_length=30, null=True)
+   City = models.ForeignKey(City,on_delete=models.SET_NULL,null=True)

@@ -68,7 +68,7 @@
                     <input type="hidden" name="selected">
                     <label for="">City:</label>
                     <div id="city_div">
-                        <select class="form-text" name="city" id="city">
+                        <select class="form-text" name="city" id="city" onchange="myarea()">
                             <option value="">Select City*</option>
                             {% for c in city %}
                             {% if c.name == all.city and c.State.name == all.state %}
@@ -76,17 +76,25 @@
                             {% elif c.State.name == all.state %}
                                 <option value="{{c.name}}">{{c.name}}</option>
                             {% endif %}
-                        {% endfor %}
+                            {% endfor %}
                         </select>
                     </div>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="">Area:</label>
-                     <select class="form-text" name="area">
-                      <option value="">Select Area*</option>
-                      <option value="Nana Varachha" selected>Nana Varachha</option>
-                      <option value="Katargam">Katargam</option>
-                    </select>
+                    <div id="area_div">
+                        <select class="form-text" name="area" id="area">
+                            <option value="">Select Area*</option>
+                            {% for a in area %}
+                            <!-- <option value="{{a.aname}}">{{a.City.name}}</option> -->
+                                {% if a.aname == all.area  %}
+                                    <option value="{{a.aname}}" selected>{{a.aname}}</option>
+                                {% elif a.City.name == all.city %}
+                                    <option value="{{a.aname}}">{{a.aname}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group col-md-12">
                     <label for="">Address:</label>
@@ -114,13 +122,24 @@
 function mycity(){
     stateid=document.getElementById('state').value;
     // alert(stateid);
-    output = '<select class="form-text" name="city" id="city"> <option value="">Select City*</option>';
+    output = '<select class="form-text" name="city" id="city" onchange="myarea()"> <option value="">Select City*</option>';
     {% for c in city %}
         if(stateid == "{{c.State.name}}"){
             output += '<option value="{{c.name}}">{{c.name}}</option>';
         }
     {% endfor %}
     $('#city_div').html(output);
+}
+function myarea(){
+    cityid=document.getElementById('city').value;
+    // alert(cityid);
+    output = '<select class="form-text" name="area" id="area"> <option value="">Select Area*</option>';
+    {% for a in area %}
+        if(cityid == "{{a.City.name}}"){
+            output += '<option value="{{a.aname}}">{{a.aname}}</option>';
+        }
+    {% endfor %}
+    $('#area_div').html(output);
 }
     {% for msg in messages %}
         swal("", '{{msg}}', '{{msg.tags}}')

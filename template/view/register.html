@@ -82,18 +82,17 @@
                                         </div>
                                         <div class="form-group col-md-4">
                                             <div id="city_div">
-                                                <select class="form-text" name="city" id="city" required>
+                                                <select class="form-text" name="city" id="city" onchange="myarea()" required>
                                                 <option value="">Select City*</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group col-md-4">
-<!--                                            <input type="text" class="form-text" placeholder="Area*" value="" />-->
-                                             <select class="form-text" name="area"  required>
+                                            <div id="area_div">
+                                            <select class="form-text" name="area" id="area" required>
                                               <option value="">Select Area*</option>
-                                              <option value="Nana Varachha">Nana Varachha</option>
-                                              <option value="Katargam">Katargam</option>
                                             </select>
+                                            </div>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <input type="text" class="form-text" placeholder="Address*" name="add" required/>
@@ -131,13 +130,24 @@
 function mycity(){
     stateid=document.getElementById('state').value;
     // alert(stateid);
-    output = '<select class="form-text" name="city" id="city"> <option value="">Select City*</option>';
+    output = '<select class="form-text" name="city" id="city" onchange="myarea()"> <option value="">Select City*</option>';
     {% for c in city %}
         if(stateid == "{{c.State.name}}"){
             output += '<option value="{{c.name}}">{{c.name}}</option>';
         }
     {% endfor %}
     $('#city_div').html(output);
+}
+function myarea(){
+    cityid=document.getElementById('city').value;
+    // alert(cityid);
+    output = '<select class="form-text" name="area" id="area"> <option value="">Select Area*</option>';
+    {% for a in area %}
+        if(cityid == "{{a.City.name}}"){
+            output += '<option value="{{a.aname}}">{{a.aname}}</option>';
+        }
+    {% endfor %}
+    $('#area_div').html(output);
 }
 function match()
 {

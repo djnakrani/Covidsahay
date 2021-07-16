@@ -62,9 +62,11 @@ def django_register(request):
             #      messages.error(request, "Password Does not Match")
      state=State.objects.all()
      city=City.objects.all()
+     area=Area.objects.all()
      context={
          "state":state,
          "city":city,
+         "area":area,
      }
      return render(request, 'view/register.html',context)
 
@@ -154,7 +156,7 @@ def activities(request, need):
     opwhat = Requests.objects.values_list('whatFor', flat=True).distinct()
     city = City.objects.all()
     state = State.objects.all()
-    area = User.objects.values_list('area', flat=True).distinct()
+    area = Area.objects.all()
     context = {
         "uId": getSession(request),
         "req": req,
@@ -312,12 +314,14 @@ def django_mydetails(request):
         user = User.objects.filter(id=uId)
         state=State.objects.all()
         city=City.objects.all()
+        area = Area.objects.all()
         #  print(user)
         context = {
             "uId": uId,
             "user": user,
             "state":state,
             "city":city,
+            "area":area,
         }
         return render(request, 'view/mydetails.html', context)
 
