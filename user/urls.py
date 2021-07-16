@@ -13,6 +13,4 @@ urlpatterns = [
     path('myrequest', views.django_myrequest, name='myrequest'),
     path('mydetails', views.django_mydetails, name='mydetails'),
     path('changepassword', views.django_changeuserpassword, name='changeuserpassword'),
-    path('ajax/city_view', views.city_view, name='city_view'),
-
 ]

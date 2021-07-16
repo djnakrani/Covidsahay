@@ -53,18 +53,30 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="">State:</label>
-                    <select class="form-text" name="state" id="state" onchange="mycity()" required>
+                    <select class="form-text" name="state" id="state" onchange="mycity()" onload="mycity()" required>
                         <option value="">Select State*</option>
                         {% for s in state %}
-                        <option value="{{s.id}}">{{s.State}}</option>
+                            {% if s.name == all.state %}
+                                <option value="{{s.name}}" selected>{{s.name}}</option>
+                            {% else %}
+                                <option value="{{s.name}}">{{s.name}}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                 </div>
                 <div class="form-group col-md-4">
+                    <input type="hidden" name="selected">
                     <label for="">City:</label>
                     <div id="city_div">
                         <select class="form-text" name="city" id="city">
                             <option value="">Select City*</option>
+                            {% for c in city %}
+                            {% if c.name == all.city and c.State.name == all.state %}
+                                <option value="{{c.name}}" selected>{{c.name}}</option>
+                            {% elif c.State.name == all.state %}
+                                <option value="{{c.name}}">{{c.name}}</option>
+                            {% endif %}
+                        {% endfor %}
                         </select>
                     </div>
                 </div>
@@ -103,9 +115,9 @@ function mycity(){
     stateid=document.getElementById('state').value;
     // alert(stateid);
     output = '<select class="form-text" name="city" id="city"> <option value="">Select City*</option>';
-    {% for s in city %}
-        if(stateid == "{{s.State.id}}"){
-            output += '<option value="{{s.id}}">{{s.City}}</option>';
+    {% for c in city %}
+        if(stateid == "{{c.State.name}}"){
+            output += '<option value="{{c.name}}">{{c.name}}</option>';
         }
     {% endfor %}
     $('#city_div').html(output);

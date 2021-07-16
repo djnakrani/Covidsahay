@@ -133,8 +133,8 @@ def activities(request, need):
         req = Requests.objects.filter(status="Accepted").order_by('-date')
 
     opwhat = Requests.objects.values_list('whatFor', flat=True).distinct()
-    city = User.objects.values_list('city', flat=True).distinct()
-    state = User.objects.values_list('state', flat=True).distinct()
+    city = City.objects.all()
+    state = State.objects.all()
     area = User.objects.values_list('area', flat=True).distinct()
     context = {
         "uId": getSession(request),
@@ -283,19 +283,6 @@ def django_changeuserpassword(request):
             "user": user,
         }
         return render(request, 'view/changepassword.html', context)
-
-
-def city_view(request):
-    state_id=request.GET.get('stateid')
-    state=State.objects.filter(id=state_id)
-    print(state)
-    city=City.objects.filter(State=state)
-    print(city)
-    context={
-        'city':city,
-    }
-    return render(request, 'view/City.html', context)
-    
 
 def getSession(request):
     uId = ''

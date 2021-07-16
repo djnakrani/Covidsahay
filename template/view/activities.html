@@ -53,12 +53,12 @@
 					</optgroup>
 					<optgroup label="City">
 						{% for a in city %}
-						<option value="{{a}}">{{a}}</option>
+						<option value="{{a.name}}">{{a.name}}</option>
 						{% endfor %}
 					</optgroup>
 					<optgroup label="State">
 						{% for a in state %}
-						<option value="{{a}}">{{a}}</option>
+						<option value="{{a.name}}">{{a.name}}</option>
 						{% endfor %}
 					</optgroup>
 					<optgroup label="Area">
@@ -68,13 +68,6 @@
 					</optgroup>
 				</select>
 			</div>
-			<!-- <div class="col-md-5 col-xl-6">
-				<select name="city" class="form-control" id="city">
-					<option value="">Select City....</option>
-					{% for a in city %}
-					<option value="{{a}}">{{a}}</option>
-					{% endfor %}
-				</select>			</div> -->
 			<div class="col-md-2 col-xl-6">
 				<input type="button" onclick="try1()" class="btn btn-info" value="Search">
 			</div>
@@ -251,6 +244,7 @@ function try1()
             selected.push(option.value);
         }
     }
+	alert(selected);
 	document.getElementById('data').value=selected;
     document.getElementById('search').submit();
 }

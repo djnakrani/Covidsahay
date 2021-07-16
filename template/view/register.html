@@ -76,7 +76,7 @@
                                              <select class="form-text" name="state" id="state" onchange="mycity()" required>
                                               <option value="">Select State*</option>
                                               {% for s in state %}
-                                                <option value="{{s.id}}">{{s.State}}</option>
+                                                <option value="{{s.name}}">{{s.name}}</option>
                                               {% endfor %}
                                             </select>
                                         </div>
@@ -130,10 +130,11 @@
 <script>
 function mycity(){
     stateid=document.getElementById('state').value;
+    // alert(stateid);
     output = '<select class="form-text" name="city" id="city"> <option value="">Select City*</option>';
-    {% for s in city %}
-        if(stateid == "{{s.State.id}}"){
-            output += '<option value="{{s.id}}">{{s.City}}</option>';
+    {% for c in city %}
+        if(stateid == "{{c.State.name}}"){
+            output += '<option value="{{c.name}}">{{c.name}}</option>';
         }
     {% endfor %}
     $('#city_div').html(output);
