@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'import_export',
     'user',
     'myadmin',
 ]
@@ -122,3 +121,17 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [STATIC_DIR,]
 STATICFILES_DIRS = [STATIC_DIR,]
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'covidsahay05@gmail.com'
+EMAIL_HOST_PASSWORD = 'cayyostxsvdlncpt'
+EMAIL_USE_TLS = True
+
+
+# SITE_ID = 2
+# LOGIN_REDIRECT_URL="/"
+# ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+# ACCOUNT_EMAIL_REQUIRED=True
+# ACCOUNT_UNIQUE_EMAIL=True

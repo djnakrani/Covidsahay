@@ -208,7 +208,7 @@ def django_request(request):
          curDate = date.today()
          dt = curDate.strftime("%Y-%m-%d")
          if request.method == 'POST':
-             if request.POST.get('req'):
+             if request.POST.get('fName'):
                  name = request.POST['fName']
                  whatFor = request.POST['whatFor']
                  if whatFor == "Others":
@@ -222,6 +222,7 @@ def django_request(request):
                      prescription = request.FILES['prescription']
                  except KeyError:
                      prescription = 'images/prescription/prec.png'
+                 print(name, whatFor, quantity, adharcard, prescription)
                  objRequests = Requests()
                  objRequests.user_id = context["uId"]
                  objRequests.name = name
@@ -324,9 +325,6 @@ def django_mydetails(request):
             "area":area,
         }
         return render(request, 'view/mydetails.html', context)
-
-def django_forgetpwd(request):
-    return render(request, 'view/forgetpwd.html')
 
 def django_changeuserpassword(request):
     uId=getSession(request)

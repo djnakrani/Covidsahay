@@ -97,8 +97,9 @@
                                         <div class="form-group col-md-12">
                                             <input type="text" class="form-text" placeholder="Address*" name="add" required/>
                                         </div>
+<!--                                        (?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])[a-zA-Z][a-zA-Z0-9]{8,}$-->
                                         <div class="form-group col-md-6">
-                                            <input type="password" class="form-text" placeholder="Password*" name="pwd" pattern="^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])[a-zA-Z][a-zA-Z0-9]{8,}$" title="Minimum One Uppercase,One Lowecase,One Number Required..." id="pwd" required/>
+                                            <input type="password" class="form-text" placeholder="Password*" name="pwd" pattern="^^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" title="Minimum One Uppercase,One Lowecase,One Number Required..." id="pwd" required/>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <input type="password" class="form-text" placeholder="Confirm Password*" onkeyup="match()" name="conPwd" id="conPwd" required/>

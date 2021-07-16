@@ -14,7 +14,7 @@ body {
 
 .sidebar {
   position: fixed;
-  top: 0;
+  top: 5%;
   /* rtl:raw:
   right: 0;
   */
@@ -114,10 +114,9 @@ body {
 }
 
 .mylogo{
-  height:40px;
-  width: 100px;
+  height:60px;
+  width: 160px;
   margin-left: 5%;
-  background: #727272;
 }
 
 .view{
