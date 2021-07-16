@@ -23,34 +23,18 @@
 </head>
 <body class="bodyLogin">
 <section>
-<div class="container register" style="margin-top:5%;">
+<div class="container register" style="margin-top:10%;">
                 <div class="row" style="justify-content: space-around;">
                     <div class="col-md-7 login-box">
                         <div class="tab-content">
                             <div class="tab-pane show active">
 <!--                                https://image.ibb.co/n7oTvU/logo_white.png-->
                                 <img class="img" src="{{STATFILE}}images/covid-icon.png" alt=""/>
-                                <h1 class="register-heading">Welcome Back</h1>
+                                <h2 class="register-heading">For Reset Password, link sent to your emailID, Please check your emailID...!!</h2>
                                 <div class="row justify-content-center register-form">
-                                    <form method="post" action="" class="col-md-9">
-                                        {% csrf_token %}
-                                        <div class="form-group">
-                                            <input type="text" class="form-text" placeholder="Email Id*" name="email" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-text" placeholder="Password*" name="pwd" />
-                                        </div>
-                                        <div class="form-group">
-                                             <input type="submit" class="btnLogin"  value="Login"/>
-                                        </div>
-                                        <div class="formLast">
-                                            <h4>If You don't have an Account Click on
-                                            <a class="reg" href="{% url 'register' %}">Register</a></h4>
-                                        </div>
-                                        <div class="formLast">
-                                            <h4><a class="reg" style="color:#480003;" href="{% url 'password_reset' %}">Forget Password</a></h4>
-                                        </div>
-                                    </form>
+                                    <div class="form-group col-md-12">
+                                         <a href="{% url 'login' %}" class="btn btnLogin1" style="padding:1.5%">Login Again</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

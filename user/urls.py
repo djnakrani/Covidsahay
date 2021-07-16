@@ -10,7 +10,6 @@ urlpatterns = [
     path('gallery', views.django_gallery, name='gallery'),
     path('contact_us', views.django_contact, name='contact-us'),
     path('request', views.django_request, name='request'),
-    path('forgetpwd', views.django_forgetpwd, name='forgetpwd'),
     path('myrequest', views.django_myrequest, name='myrequest'),
     path('mydonation', views.django_mydonation, name='mydonation'),
     path('mydetails', views.django_mydetails, name='mydetails'),

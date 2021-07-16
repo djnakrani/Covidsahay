@@ -30,7 +30,7 @@
                             <div class="tab-pane show active">
 <!--                                https://image.ibb.co/n7oTvU/logo_white.png-->
                                 <img class="img" src="{{STATFILE}}images/covid-icon.png" alt=""/>
-                                <h1 class="register-heading">Welcome Back</h1>
+                                <h1 class="register-heading">Forget Password..??</h1>
                                 <div class="row justify-content-center register-form">
                                     <form method="post" action="" class="col-md-9">
                                         {% csrf_token %}
@@ -38,18 +38,12 @@
                                             <input type="text" class="form-text" placeholder="Email Id*" name="email" />
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-text" placeholder="Password*" name="pwd" />
+                                             <input type="submit" class="btnLogin"  value="Reset Password"/>
                                         </div>
-                                        <div class="form-group">
-                                             <input type="submit" class="btnLogin"  value="Login"/>
-                                        </div>
-                                        <div class="formLast">
-                                            <h4>If You don't have an Account Click on
-                                            <a class="reg" href="{% url 'register' %}">Register</a></h4>
-                                        </div>
-                                        <div class="formLast">
-                                            <h4><a class="reg" style="color:#480003;" href="{% url 'password_reset' %}">Forget Password</a></h4>
-                                        </div>
+<!--                                        <div class="formLast">-->
+<!--                                            <h4>If You don't have an Account Click on-->
+<!--                                            <a class="reg" href="{% url 'register' %}">Register</a></h4>-->
+<!--                                        </div>-->
                                     </form>
                                 </div>
                             </div>
