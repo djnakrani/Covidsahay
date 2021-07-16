@@ -109,7 +109,7 @@ def django_admin_request(request):
      except KeyError:
           return redirect('alogin')
      aDetail = MyAdmin.objects.get(id=aId)
-     Request = Requests.objects.all()
+     Request = Requests.objects.all().order_by('-date')
      context = {
           "aId": aDetail.aName,
           "Request": Request,
