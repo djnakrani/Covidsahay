@@ -42,7 +42,7 @@
 <div class="row text-center">
 <h2 style="margin-top:0;">I WISH TO MAKE A REQUEST<br>
 WE NEED YOUR HELP</h2>
-<form action="" method="post" class="con-form clearfix" enctype="multipart/form-data">
+<form action="" name="request" method="post" class="con-form clearfix" enctype="multipart/form-data">
 	{% csrf_token %}
 	<div class="col-md-8" id="name1">
 		{% for i in curr_user %}
@@ -78,8 +78,8 @@ WE NEED YOUR HELP</h2>
 			 <option value="Others" id="others">Others</option>
 		</select>
 	</div>
-	<div class="form-group col-md-4" style="" id="whatOthers">
-		 <input type="text" placeholder="Enter What you need"class="form-text" name="whatOthers" required>
+	<div class="form-group col-md-4" id="whatOthers">
+		 <input type="text" placeholder="Enter What you need"class="form-text" name="whatOthers">
 	</div>
 	 <div class="form-group col-md-4" style="margin-top:30px">
 		 <input type="number" placeholder="Enter Quantity*" min="1" max="50" class="form-text" name="quantity">

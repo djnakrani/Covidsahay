@@ -5,8 +5,9 @@ body{
 .login-box {
     margin-top: 10%;
     height: auto;
-    background: #1A2226;
+    background: #1a222675;
     text-align: center;
+    border-radius: 40px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
@@ -112,4 +113,9 @@ label {
 
 .loginbttm {
     padding: 0px;
+}
+
+.log-con{
+    margin-top: 50px;
+    padding: 30px;
 }

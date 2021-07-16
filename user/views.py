@@ -234,6 +234,8 @@ def django_request(request):
                  objRequests.save()
                  messages.success(request, "Your Request are successfully Created")
                  return HttpResponseRedirect('/activities')
+         else:
+             print(request.method)
          return render(request, 'view/request.html', context)
 
 
