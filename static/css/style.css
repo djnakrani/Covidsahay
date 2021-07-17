@@ -800,10 +800,10 @@ video {
 #inner-banner{
 	display:block;
 	height: 293px;
-    background:url(../images/inner-bg.jpg) no-repeat;
+    background:url(../images/slide2.jpg) no-repeat;
     background-size:cover;
 	background-attachment:fixed;
-	background-position:center;
+	background-position:bottom;
 }
 #inner-banner .overlay{
 	background:rgba(0,0,0,0.7);

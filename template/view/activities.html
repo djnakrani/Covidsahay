@@ -126,7 +126,7 @@
 
 		<div class="act-pad">
 		<h5>Need {{ i.whatFor }}<br> (Quantity : {{i.quantity}})</h5>
-		<p id="decs">My name is {{ i.name | title}}. I am from {{ i.user.city }}.</p>
+		<p id="decs">My name is {{ i.name | title}}.<br> I am from {{ i.user.city }}.</p>
 			{% if uId == 'Null' %}
 				<button id="dmsg" class="btn1 dmsg" >donate now</button>
 			{% else  %}
@@ -186,7 +186,7 @@
 	<form action="" method="post" >
 		{% csrf_token %}
 		<input type="hidden" name="rId" id="r-rid" value="">
-		<button type="submit" name="rId" class="btn btn-primary" style="background: #2f3191">Donate</button>
+		<button type="submit" class="btn btn-primary" style="background: #2f3191">Donate</button>
 	</form>
 <!--	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
 

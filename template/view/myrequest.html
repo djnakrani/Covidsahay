@@ -34,9 +34,9 @@
                             {% elif all.status == 'DAccepted' %}
                                 <div class="col-md-3"><label for="">STATUS : </label><p class="">Donor Accepted</p></div>
                             {% elif all.status == 'Due' %}
-                                <div class="col-md-3"><label for="">STATUS : </label><p class="">Completed</p></div>
+                                <div class="col-md-3"><label for="">STATUS : </label><p class="">Expired</p></div>
                             {% else %}
-                                <div class="col-md-3"><label for="">STATUS : </label><p class="">{{all.status|upper}}</p></div>
+                                <div class="col-md-3"><label for="">STATUS : </label><p class="">{{all.status|title}}</p></div>
                             {% endif %}
 						</div>                                                    
                     </div>
@@ -48,23 +48,27 @@
                             {% endif %}
                          {% endfor %}
                             <br><br>
-                    {% if all.status != "Due" %}
-                      <form action="" method="POST">
-                         {% csrf_token %}
-                            <input type="hidden" name="rId" value="{{all.id}}">
-
-                            <button type="submit" name="request" id="msg" value="Cancelled" class="btn btn-success">Cancel</button>
-                        </form>
+                    {% if all.status == "Due" %}
+                        <h6 style="margin-left: -20%;color:red;">Your Request is expired</h6>
+                    {% elif all.status == "Completed" %}
+                        <h6 style="margin-left: -20%;color:red;">Your Request is Completed</h6>
                     {% else %}
-                        <h6 style="margin-left: -50%;color:red;">Your Request is expired or Completed</h6>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="rId" value="{{all.id}}">
+
+                        <button type="submit" name="request" id="msg" value="Cancelled" class="btn btn-success">Cancel</button>
+                    </form>
                     {% endif %}
                         </div>
                 </div>
                 <div class="clearfix"></div>
 			</div>
+
                 {% endif %}
                 {% endfor %}
-<!--                    <div class="text-danger text-center">No Request More Request....</div>-->
+
+
         </div>
     </div>
 </div>

@@ -117,10 +117,12 @@ def django_activities(request):
             messages.success(request, "You Donate successfully.")
             return HttpResponseRedirect('/activities', context)
         else:
+            print("This is test")
             context = activities(request, "")
         return render(request, 'view/activities.html', context)
     else:
         context = activities(request, "")
+        print("This is GET Methods", request.method)
         return render(request, 'view/activities.html', context)
 
 def activities(request, need):
@@ -140,7 +142,6 @@ def activities(request, need):
                 objReq.id = rId
                 objReq.status = "Due"
                 objReq.save(update_fields=['status'])
-
 
     if need:
         user = User.objects.filter(city__in=need) | User.objects.filter(state__in=need) | User.objects.filter(
@@ -198,8 +199,7 @@ def django_request(request):
     if uId == "Null":
         return redirect('index')
     else:
-         uid = getSession(request)
-         curr_user = User.objects.filter(id=uid)
+         curr_user = User.objects.filter(id=uId)
          print("Current User is ", curr_user)
          context = {
             "uId": getSession(request),
