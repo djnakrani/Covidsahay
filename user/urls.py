@@ -13,5 +13,6 @@ urlpatterns = [
     path('myrequest', views.django_myrequest, name='myrequest'),
     path('mydonation', views.django_mydonation, name='mydonation'),
     path('mydetails', views.django_mydetails, name='mydetails'),
+    path('resetpassword', views.resetpassword, name='resetpassword'),
     path('changepassword', views.django_changeuserpassword, name='changeuserpassword'),
 ]
