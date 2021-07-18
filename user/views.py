@@ -1,6 +1,8 @@
 import datetime
 from time import timezone
 
+from django.conf import settings
+from django.core.mail import send_mail
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, HttpResponseRedirect, redirect
 from .models import *
@@ -347,6 +349,23 @@ def django_changeuserpassword(request):
             "user": user,
         }
         return render(request, 'view/changepassword.html', context)
+
+def resetpassword(request):
+    if request.method == "POST":
+        mailid=request.POST['email']
+        user = User.objects.filter(email=mailid)
+        if user.exists():
+            for u in user:
+                subject = 'Covidsahay Reset Password'
+                message = f'Hi {u.fName} {u.lName}, Your old Password Is {u.pwd}.'
+                email_from = settings.EMAIL_HOST_USER
+                recipient_list = [u.email]
+                send_mail( subject, message, email_from, recipient_list,fail_silently=False)
+                messages.success(request,"Your Password Send In Your Mail")
+                return redirect('login')
+        else:
+            messages.error(request,"Sorry User Not Exist...")
+    return render(request, 'view/resetpassword.html')
 
 def getSession(request):
     uId = ''
