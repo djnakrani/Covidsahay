@@ -7,6 +7,7 @@ urlpatterns = [
     path('/alluser', django_admin_alluser, name='alluser'), 
     path('/Request', django_admin_request, name='request2'), 
     path('/PasswordChange', django_admin_changepassword, name='changepassword'),
-    path('/CheckRequest', request_check, name='CheckRequest'),    
-    path('/Donors',django_admin_donor, name='donors'),
+    path('/CheckRequest', request_check, name='CheckRequest'),
+    path('/feedback', django_admin_feedback, name='feedback'),
+    path('/Donors', django_admin_donor, name='donors'),
 ]

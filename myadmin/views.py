@@ -146,3 +146,19 @@ def django_admin_donor(request):
                     request.session.flush()
                return redirect('alogin')
      return render(request, 'Myadmin_panel/donors.html', context)
+
+def django_admin_feedback(request):
+     try:
+          aId = request.session['admin_id']
+     except KeyError:
+          return redirect('alogin')
+     feedback = Contact.objects.all()
+     context = {
+          "uFeedback": feedback,
+     }
+     if request.method == 'POST':
+          if request.POST.get('logout'):
+               if request.session.has_key('admin_id'):
+                    request.session.flush()
+               return redirect('alogin')
+     return render(request, 'Myadmin_panel/feedback.html', context)

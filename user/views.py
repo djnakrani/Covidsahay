@@ -357,11 +357,14 @@ def resetpassword(request):
         if user.exists():
             for u in user:
                 subject = 'Covidsahay Reset Password'
-                message = f'Hi {u.fName} {u.lName}, Your old Password Is {u.pwd}.'
+                if u.gender == "Male":
+                    message = f'Hii Mr. {u.fName} {u.lName}, Your old Password Is {u.pwd}. \n You can also change your password after login into our website if you want.'
+                else:
+                    message = f'Hii Mrs. {u.fName} {u.lName}, Your old Password Is {u.pwd}.'
                 email_from = settings.EMAIL_HOST_USER
                 recipient_list = [u.email]
-                send_mail( subject, message, email_from, recipient_list,fail_silently=False)
-                messages.success(request,"Your Password Send In Your Mail")
+                send_mail(subject, message, email_from, recipient_list, fail_silently=False)
+                messages.success(request, "Your Password Send In Your Mail")
                 return redirect('login')
         else:
             messages.error(request,"Sorry User Not Exist...")
