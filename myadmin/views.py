@@ -36,7 +36,7 @@ def django_admin_dashboard(request):
                totalpending += 1
           elif x.status == "Accepted":
                totalapproval += 1
-          else:
+          elif x.status == "Rejected":
                totalreject += 1
      try:
           aId = request.session['admin_id']
