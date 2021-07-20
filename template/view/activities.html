@@ -212,8 +212,8 @@
     $('#r-area').html($(this).data('area'));
     $('#r-city').html($(this).data('city'));
     $('#r-state').html($(this).data('state'));
-<!--	$('#r-adhar').html($(this).data('adhar'));-->
-<!--    $('#r-pres').html($(this).data('pres'));-->
+// <!--	$('#r-adhar').html($(this).data('adhar'));-->
+// <!--    $('#r-pres').html($(this).data('pres'));-->
     var id = $(this).data('rid');
     $('#r-rid').val(id);
     var path = 'http://127.0.0.1:8000/';
@@ -265,7 +265,7 @@ function try1()
             selected.push(option.value);
         }
     }
-<!--	alert(selected);-->
+// <!--	alert(selected);-->
 	document.getElementById('data').value=selected;
     document.getElementById('search').submit();
 }
