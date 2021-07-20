@@ -2,11 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65c1750e-2282-4f3c-ad76-354133c7e615" name="Default Changelist" comment="Pending Done">
+      <change afterPath="$PROJECT_DIR$/static/images/Tryit Editor v3.6.html.mht" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/Myadmin_panel/feedback.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myadmin/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myadmin/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myadmin/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myadmin/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/admin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/Myadmin_panel/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/Myadmin_panel/header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template/Myadmin_panel/request.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/Myadmin_panel/request.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template/view/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/view/mydonation.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/mydonation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/view/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/view/request.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/request.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/view/resetpassword.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/view/resetpassword.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,11 +122,12 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/template/view" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/template/Myadmin_panel" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/template/Myadmin_panel" />
       <recent name="$PROJECT_DIR$/template/view" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -314,7 +325,21 @@
       <option name="project" value="LOCAL" />
       <updated>1626465078951</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Pending Done">
+      <created>1626603985397</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1626603985397</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Pending Done">
+      <created>1626604011293</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1626604011293</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="UnknownFeatures">

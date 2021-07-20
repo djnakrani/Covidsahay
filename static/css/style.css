@@ -1532,3 +1532,21 @@ h5 {
 .img-zoom:hover{
   transform: scale(1.5);
 }
+       .fixedButton{
+            position: fixed;
+            bottom: 0px;
+            right: 0px;
+            padding: 20px;
+        }
+        .roundedFixedBtn{
+          height: 60px;
+          line-height: 60px;
+          width: 60px;
+          font-size: 2em;
+          font-weight: bold;
+          border-radius: 50%;
+          background-color: #4CAF50;
+          color: white;
+          text-align: center;
+          cursor: pointer;
+        }
