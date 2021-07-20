@@ -25,8 +25,8 @@
 		</div>
 		<div class="col-md-6 col-xl-6">
 			<div class="callout-actions">
-				{% if uId == 'Null' %}
-						<a href="" id="dmsg1" class="button dmsg1" >Request now</a>
+				   {% if uId == 'Null' %}
+                        <a href="" id="msg1" class="button rMsg">Request Now</a>
                     {% else  %}
                         <a href="{% url 'request' %}" class="button">Request Now</a>
                     {% endif %}
@@ -234,23 +234,24 @@
     {% endfor %}
 </script>
 <script>
-$(document).ready(function(){
-  $(".dmsg").click(function(){
-  	swal({
-	  title: "You Have to Login first",
-	  text: "Click Ok Button to Login..!!",
-	  icon: "warning",
-	  buttons: true,
-	  dangerMode: true,
-	})
-	.then((login) => {
-	  if (login) {
-		window.location = "{% url 'login' %}";
-	  } else {
-	  }
+	$(document).ready(function(){
+	  $(".rMsg").click(function(){
+		swal({
+		  title: "You Have to Login first",
+		  text: "Click Ok Button to Login..!!",
+		  icon: "warning",
+		  buttons: true,
+		  timer: 9000,
+		  dangerMode: true,
+		})
+		.then((login) => {
+		  if (login) {
+			window.location = "{% url 'login' %}";
+		  } else {
+		  }
+		});
+	  });
 	});
-  });
-});
 </script>
 {% endblock 'content' %}
 {% block 'request' %}{% endblock 'request' %}

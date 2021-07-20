@@ -117,7 +117,7 @@ def django_activities(request):
             objReq.save(update_fields=['status'])
             context = activities(request, "")
             messages.success(request, "You Donate successfully.")
-            return HttpResponseRedirect('/activities', context)
+            return HttpResponseRedirect('/mydonation', context)
         else:
             print("This is test")
             context = activities(request, "")
@@ -235,7 +235,7 @@ def django_request(request):
                  objRequests.prescription = prescription
                  objRequests.save()
                  messages.success(request, "Your Request are successfully Created")
-                 return HttpResponseRedirect('/activities')
+                 return HttpResponseRedirect('/myrequest')
          else:
              print(request.method)
          return render(request, 'view/request.html', context)
@@ -262,7 +262,7 @@ def django_myrequest(request):
                     objReq.status = "Due"
                     objReq.save(update_fields=['status'])
 
-        Request = Requests.objects.all().order_by('-status')
+        Request = Requests.objects.all().order_by('-date')
         Donors = Donor.objects.all()
         print("Donors", Donors)
         print(type(Donors))
@@ -283,7 +283,7 @@ def django_mydonation(request):
     if uId == "Null":
         return redirect('index')
     else:
-        Request = Requests.objects.all().order_by('-status')
+        Request = Requests.objects.all().order_by('-date')
         Donors = Donor.objects.all()
         context = {
          "uId": getSession(request),

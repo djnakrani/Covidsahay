@@ -22,10 +22,11 @@ def django_admin_panel(request):
 
 def django_admin_dashboard(request):
      datauser = User.objects.all()
+     datadonation = Donor.objects.all()
      datarequest = Requests.objects.all()
      totaluser = datauser.count()
      totalrequest = datarequest.count()
-     totaldonation = 0
+     totaldonation = datadonation.count()
      totalpending = 0
      totalapproval = 0
      totalreject = 0
